@@ -1,7 +1,7 @@
 \documentclass[dvipsnames,parskip,a4paper]{scrartcl}
 
 % Colour and design packages
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 
@@ -20,13 +20,15 @@
 
 % Our consistent sizing
 \newcommand{\cardroundingradius}{4mm}
+\newcommand{\cardboxroundingradius}{0.5mm}
+\newcommand{\cardtextborderspace}{1.4mm}
 \newcommand{\cardwidth}{57mm}
 \newcommand{\cardheight}{86mm}
 \newcommand{\cardimageheight}{43mm}
-\newcommand{\cardtitletextheight}{7mm}
-\newcommand{\cardtextboxheight}{14.3mm}
-\newcommand{\tvspace}{4mm}
-\newcommand{\tvheight}{5mm}
+\newcommand{\cardtitleheight}{7.1mm}
+\newcommand{\cardtextheight}{14.3mm}
+\newcommand{\cardtcspace}{4mm}
+\newcommand{\cardtcheight}{6mm}
 
 % Our consistent colours
 \newcommand{\cardtitlecolour}{lightgray}
@@ -35,33 +37,39 @@
 \newcommand{\cardtypecolour}{lightgray}
 
 % Our card template
-\newcommand{\inventory}[4]{
+\newcommand{\card}[4]{
 
 \begin{tikzpicture}
-\draw[rounded corners=\cardroundingradius] (0,0) rectangle
+\draw[rounded corners = \cardroundingradius] (0,0) rectangle
     (\cardwidth, \cardheight);
 
 \node (title) at (0.5 * \cardwidth, \cardheight - \cardroundingradius)
     [ anchor = north, fill = \cardtitlecolour!20, draw = \cardtitlecolour, thick,
-    text width = \cardwidth - 2 * (\cardroundingradius + 1.4mm)]
+    rounded corners = \cardboxroundingradius,
+    text width = \cardwidth - 2 * (\cardroundingradius + \cardtextborderspace),
+    minimum height = \cardtitleheight]
     { \Large #1 };
 
-\node (text) at (0.5 * \cardwidth, \cardroundingradius + \tvheight + \tvspace)
-    [ anchor = south,
-    fill = \cardtextboxcolour!20, draw = \cardtextboxcolour, thick,
-    text width = \cardwidth - 2 * (\cardroundingradius + 1.4mm),
-    text depth = \cardtextboxheight, align = justify]
+\node (text) at (0.5 * \cardwidth, \cardroundingradius + \cardtcheight + \cardtcspace)
+    [ anchor = south, fill = \cardtextboxcolour!20, draw = \cardtextboxcolour, thick,
+    rounded corners = \cardboxroundingradius,
+    text width = \cardwidth - 2 * (\cardroundingradius + \cardtextborderspace),
+    text depth = \cardtextheight, align = justify]
     { #3 };
-
-\node (value)
-    [ fill = \cardvaluecolour!20, draw = \cardvaluecolour, thick,
-    below right = \tvspace + \tvheight and 0mm of text, anchor = south east]
-    { #4 Gold };
 
 \node (type)
     [ fill = \cardtypecolour!20, draw = \cardtypecolour, thick,
-    below left = \tvspace + \tvheight and 0mm of text, anchor = south west]
+    below left = \cardtcspace + \cardtcheight and 0mm of text, anchor = south west,
+    rounded corners = \cardboxroundingradius,
+    minimum height = \cardtcheight]
     { #2 };
+
+\node (cost)
+    [ fill = \cardvaluecolour!20, draw = \cardvaluecolour, thick,
+    below right = \cardtcspace + \cardtcheight and 0mm of text, anchor = south east,
+    rounded corners = \cardboxroundingradius,
+    minimum height = \cardtcheight]
+    { #4 Gold };
 
 \end{tikzpicture}
 
@@ -69,13 +77,13 @@
 
 % Elemental symbols
 \newcommand{\circlesize}{1.25mm}
-\newcommand{\fire}{\tikz\draw[darkgray,fill=red] (0,0) circle (\circlesize);}
-\newcommand{\earth}{\tikz\draw[darkgray,fill=brown] (0,0) circle (\circlesize);}
-\newcommand{\water}{\tikz\draw[darkgray,fill=blue] (0,0) circle (\circlesize);}
-\newcommand{\nature}{\tikz\draw[darkgray,fill=green] (0,0) circle (\circlesize);}
-\newcommand{\magic}{\tikz\draw[darkgray,fill=violet] (0,0) circle (\circlesize);}
-\newcommand{\gold}{\tikz\draw[darkgray,fill=yellow] (0,0) circle (\circlesize);}
-\newcommand{\utility}{\tikz\draw[darkgray,fill=orange] (0,0) circle (\circlesize);}
+\newcommand{\fire}{\tikz\draw[darkgray, fill = Red] (0,0) circle (\circlesize);}
+\newcommand{\earth}{\tikz\draw[darkgray, fill = Brown] (0,0) circle (\circlesize);}
+\newcommand{\water}{\tikz\draw[darkgray, fill = NavyBlue] (0,0) circle (\circlesize);}
+\newcommand{\nature}{\tikz\draw[darkgray, fill = ForestGreen] (0,0) circle (\circlesize);}
+\newcommand{\magic}{\tikz\draw[darkgray, fill = Purple] (0,0) circle (\circlesize);}
+\newcommand{\gold}{\tikz\draw[darkgray, fill = Yellow] (0,0) circle (\circlesize);}
+\newcommand{\utility}{\tikz\draw[darkgray, fill = Orange] (0,0) circle (\circlesize);}
 
 % Costs
 \newcommand{\onecost}{3}
@@ -83,7 +91,7 @@
 \newcommand{\threecost}{12}
 \newcommand{\fourcost}{18}
 
-\title{Rules and Cards for Elemental Card-Dice Game}
+\title{Rules and Cards for Elemental Deck Builder}
 \author{Emil Indzhev}
 
 \begin{document}
@@ -98,7 +106,7 @@ The game is played between two players who take turns. The player whose health r
 
 \item
 
-Seven dice are rolled at the start of the game. Those are the fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and utility \utility \ dice. These dice determine the strengths of various cards.
+Seven dice are rolled at the start of the game: fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and utility \utility. They determine the strengths of various cards.
 
 \item
 
@@ -106,7 +114,7 @@ Players start with 100 health, 6 gold, 5 Basic Income cards in their deck and no
 
 \item
 
-All other cards are shuffled into two decks: cheap (costing \onecost \ or \twocost \ gold) and expensive (costing \threecost \ or \fourcost \ gold). Four cards are dealt from each deck. Those are the shops from which cards can be purchased. At the end of a player's turn, the oldest card in each of the two card shops is removed. Then both shops are refilled back to four cards from their respective decks. The removed cards are set aside. When a shop's deck is empty but a card must be drawn from it, the pile of removed cards is shuffled and added to the shop's deck.
+All other cards are shuffled into two decks: cheap (costing \onecost \ or \twocost \ gold) and expensive (costing \threecost \ or \fourcost \ gold). Four cards are dealt from each deck. Those are the shops from which cards can be purchased. At the end of a player's turn, the oldest card in each of the two card shops is removed. Then both shops are refilled back to four cards from their respective decks. The removed cards are set aside. When a store's deck is empty but a card must be drawn from it, the pile of removed cards is shuffled and added to the store's deck.
 
 \item
 
@@ -138,173 +146,181 @@ All fractional number amounts are always rounded up before execution.
 
 \begin{longtable}{ c c c }
 
-\inventory{Fire}{Action}{Deal \fire \ damage to your opponent.}{\twocost}
+\card{Fire}{Action}{Deal \fire \ damage to your opponent.}{\twocost}
 &
-\inventory{Tremor}{Action}{Deal \earth \ damage to your opponent.}{\twocost}
+\card{Tremor}{Action}{Deal \earth \ damage to your opponent.}{\twocost}
 &
-\inventory{Heavy Rain}{Action}{Deal \water \ damage to both yourself and  your opponent.}{\twocost}
+\card{Heavy Rain}{Action}{Deal \water \ damage to both yourself and  your opponent.}{\twocost}
 &
-\inventory{Blazing Fire}{Action}{Deal $2 \times$\fire \ damage to your opponent.}{\threecost}
+\card{Blazing Fire}{Action}{Deal $2 \times$\fire \ damage to your opponent.}{\threecost}
 &
-\inventory{Earthquake}{Action}{Deal $2 \times$\earth \ damage to your opponent.}{\threecost}
+\card{Earthquake}{Action}{Deal $2 \times$\earth \ damage to your opponent.}{\threecost}
 &
-\inventory{Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and  your opponent.}{\threecost}
+\card{Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and  your opponent.}{\threecost}
 &
-\inventory{Magical Firestorm}{Action}{Deal \fire$\times$\magic \ damage to your opponent.}{\fourcost}
+\card{Magical Firestorm}{Action}{Deal \fire$\times$\magic \ damage to your opponent.}{\fourcost}
 &
-\inventory{Meteor Strike}{Action}{Deal \earth$\times$\magic \ damage to your opponent.}{\fourcost}
+\card{Meteor Strike}{Action}{Deal \earth$\times$\magic \ damage to your opponent.}{\fourcost}
 &
-\inventory{Biblical Flood}{Action}{Deal \water$\times$\magic \ damage to both yourself and  your opponent.}{\fourcost}
+\card{Biblical Flood}{Action}{Deal \water$\times$\magic \ damage to both yourself and  your opponent.}{\fourcost}
 &
-\inventory{Volcanic Eruption}{Action}{Deal \fire$\times$\earth \ damage to your opponent.}{\fourcost}
+\card{Volcanic Eruption}{Action}{Deal \fire$\times$\earth \ damage to your opponent.}{\fourcost}
 &
 
-\inventory{Ecology}{Action}{Heal \nature \ health.}{\onecost}
+\card{Ecology}{Action}{Heal \nature \ health.}{\onecost}
 &
-\inventory{Reforestation}{Action}{Heal $2 \times$\nature \ health.}{\twocost}
+\card{Reforestation}{Action}{Heal $2 \times$\nature \ health.}{\twocost}
 &
-\inventory{Nature Reserves}{Action}{Heal \earth$\times$\nature \ health.}{\threecost}
+\card{Nature Reserves}{Action}{Heal \earth$\times$\nature \ health.}{\threecost}
 &
-\inventory{Hot Springs}{Action}{Heal \water$\times$\nature \ health.}{\threecost}
+\card{Hot Springs}{Action}{Heal \water$\times$\nature \ health.}{\threecost}
 &
-\inventory{Mystical Restoration}{Action}{Heal \magic$\times$\nature \ health.}{\threecost}
+\card{Mystical Restoration}{Action}{Heal \magic$\times$\nature \ health.}{\threecost}
 & 
 
-\inventory{Treasury 1}{Action}{Gain \gold \ gold.}{\onecost}
+\card{Marketplace}{Action}{Gain \gold \ gold.}{\onecost}
 &
-\inventory{Gold Refinery}{Action}{Gain $2 \times$\gold \ gold.}{\twocost}
+\card{Treasury}{Action}{Gain $2 \times$\gold \ gold.}{\twocost}
 &
-\inventory{Gold Mine}{Action}{Gain \earth$\times$\gold \ gold.}{\threecost}
+\card{Gold Mine}{Action}{Gain \earth$\times$\gold \ gold.}{\threecost}
 &
-\inventory{Gold Panning}{Action}{Gain \water$\times$\gold \ gold.}{\threecost}
+\card{Gold Panning}{Action}{Gain \water$\times$\gold \ gold.}{\threecost}
 &
-\inventory{Ancient Alchemy}{Action}{Gain \magic$\times$\gold \ gold.}{\threecost}
-&
-\inventory{Free Market}{Action}{Double your gold.}{\fourcost}
+\card{Ancient Alchemy}{Action}{Gain \magic$\times$\gold \ gold.}{\threecost}
 &
 
-\inventory{Water Reservoirs}{Passive}{Shield \water \ against \fire \ damage.}{\twocost}
+\card{Water Reservoirs}{Passive}{Shield \water \ against \fire \ damage.}{\twocost}
 &
-\inventory{Solid Infrastructure}{Passive}{Shield \earth \ against \earth \ and \water \ damage.}{\twocost}
+\card{Solid Infrastructure}{Passive}{Shield \earth \ against \earth \ and \water \ damage.}{\twocost}
 &
-\inventory{Natural Forests}{Passive}{Shield \nature \ against \magic \ and \water \ damage.}{\twocost}
+\card{Natural Forests}{Passive}{Shield \nature \ against \magic \ and \water \ damage.}{\twocost}
 &
-\inventory{Paid Militia}{Passive}{Shield any amount of damage by paying one gold per unit of damage.}{\threecost}
+\card{Paid Militia}{Passive}{Shield any amount of damage by paying one gold per unit of damage.}{\threecost}
 &
-\inventory{Magical Barrier}{Passive}{Shield \magic$\times$\magic \ against combo damage.}{\fourcost}
+\card{Magical Barrier}{Passive}{Shield \magic$\times$\magic \ against combo damage.}{\fourcost}
 &
  
-\inventory{Prometheus's Gift}{Action}{Triple the strength of all your \fire \ effects for the rest of this turn.}{\threecost}
+\card{Prometheus's Gift}{Action}{Triple the strength of all your \fire \ effects.}{\threecost}
 &
-\inventory{Gaia's Protection}{Action}{Double the strength of all your \earth \ effects for the rest of this turn.}{\threecost}
+\card{Gaia's Protection}{Action}{Double the strength of all your \earth \ effects.}{\threecost}
 &
-\inventory{Poseidon's Trident}{Action}{Double the strength of all your \water \ effects for the rest of this turn.}{\threecost}
+\card{Poseidon's Trident}{Action}{Double the strength of all your \water \ effects.}{\threecost}
 &
-\inventory{Ancient Grimoire}{Action}{Double the strength of all your \magic \ effects for the rest of this turn.}{\threecost}
+\card{Ancient Grimoire}{Action}{Double the strength of all your \magic \ effects.}{\threecost}
 &
-\inventory{Nymphs' Grace}{Action}{Double the strength of all your \nature \ effects for the rest of this turn.}{\twocost}
+\card{Nymphs' Grace}{Action}{Double the strength of all your \nature \ effects.}{\twocost}
 &
-\inventory{Midas Touch}{Action}{Double the strength of all your \gold \ effects for the rest of this turn.}{\twocost}
+\card{Midas Touch}{Action}{Double the strength of all your \gold \ effects.}{\twocost}
 &
-\inventory{Purism}{Action}{Double the strength of all your non-combo effects for the rest of this turn.}{\twocost}
-&
-
-\inventory{Gambling}{Action}{Reroll a die once.}{\onecost}
-&
-\inventory{Cheap Trick}{Action}{Change the value of a die by one.}{\onecost}
-&
-\inventory{Second Chance}{Action}{Reroll a die up to twice.}{\twocost}
-&
-\inventory{Sleight of Hand}{Action}{Change the value of a die by up to two.}{\twocost}
-&
-\inventory{Calculated Risk}{Action}{Reroll a die up to four times.}{\threecost}
-&
-\inventory{Smoke and Mirrors}{Action}{Change the value of a die by up to three.}{\threecost}
-&
-\inventory{Perspective Shift}{Action}{Flip a die over.}{\threecost}
-&
-\inventory{Trickster God}{Action}{Swap the values of two dice.}{\fourcost}
+\card{Purism}{Action}{Double the strength of all your non-combo effects.}{\twocost}
 &
 
-\inventory{Mirror Wall}{Blessing}{Draw a card and look at your opponent's hand.}{\onecost}
+\card{Gambling}{Action}{Reroll a die once.}{\onecost}
 &
-\inventory{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down actions.}{\onecost}
+\card{Cheap Trick}{Action}{Change the value of a die by one.}{\onecost}
 &
-\inventory{Sneak Peek}{Blessing}{Draw a card and look at the top \utility \ cards of your deck.}{\onecost}
+\card{Second Chance}{Action}{Reroll a die up to twice.}{\twocost}
 &
-\inventory{Reconnaissance}{Blessing}{Draw a card and look at the top \utility \ cards of your opponent's deck.}{\onecost}
+\card{Sleight of Hand}{Action}{Change the value of a die by up to two.}{\twocost}
 &
-\inventory{Impatience}{Action}{Look at and reorder the top \utility \ cards of your deck.}{\twocost}
+\card{Calculated Risk}{Action}{Reroll a die up to four times.}{\threecost}
 &
-\inventory{Sabotage}{Action}{Look at and reorder the top \utility \ cards of your opponent's deck.}{\twocost}
+\card{Smoke and Mirrors}{Action}{Change the value of a die by up to three.}{\threecost}
 &
-\inventory{Magnetic Hands}{Action}{Move a chosen card from your deck to your hand and then shuffle your deck.}{\threecost}
+\card{Perspective Shift}{Action}{Flip a die over.}{\threecost}
 &
-\inventory{Express Shipping}{Action}{Move a card you just bought to your hand.}{\threecost}
-&
-
-\inventory{Weak Hands}{Blessing}{Your opponent must discard \utility \ cards from their hand.}{\threecost}
-&
-\inventory{Faulty Table}{Blessing}{Your opponent must discard \utility \ cards from their face down actions.}{\threecost}
-&
-\inventory{Veto}{Action}{Cancel an action of your opponent.}{\fourcost}
+\card{Trickster God}{Action}{Swap the values of two dice.}{\fourcost}
 &
 
-\inventory{Multitasking Novice}{Blessing}{Gain $\frac{1}{3} \times$\utility \ actions for the rest of this turn.}{\onecost}
+\card{Mirror Wall}{Blessing}{Draw a card and look at your opponent's hand.}{\onecost}
 &
-\inventory{Multitasking Master}{Blessing}{Gain $\frac{1}{2} \times$\utility \ actions for the rest of this turn.}{\twocost}
+\card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down actions.}{\onecost}
 &
-\inventory{Multitasking Lord}{Blessing}{Gain $\frac{2}{3} \times$\utility \ actions for the rest of this turn.}{\threecost}
+\card{Sneak Peek}{Blessing}{Draw a card and look at the top \utility \ cards of your deck.}{\onecost}
 &
-\inventory{Multitasking God}{Blessing}{Gain \utility \ actions for the rest of this turn}{\fourcost}
+\card{Reconnaissance}{Blessing}{Draw a card and look at the top \utility \ cards of your opponent's deck.}{\onecost}
 &
-
-\inventory{Exploration Novice}{Action}{Draw $\frac{1}{3} \times$\utility \ more cards.}{\onecost}
+\card{Impatience}{Action}{Look at and reorder the top \utility \ cards of your deck.}{\twocost}
 &
-\inventory{Exploration Master}{Action}{Draw $\frac{1}{2} \times$\utility \ more cards.}{\twocost}
+\card{Sabotage}{Action}{Look at and reorder the top \utility \ cards of your opponent's deck.}{\twocost}
 &
-\inventory{Exploration Lord}{Action}{Draw $\frac{2}{3} \times$\utility \ more cards.}{\threecost}
-&
-\inventory{Exploration God}{Action}{Draw \utility \ more cards.}{\fourcost}
+\card{Magnetic Hands}{Action}{Move a chosen card from your deck to your hand and then shuffle your deck.}{\threecost}
 &
 
-\inventory{Recycling Novice}{Action}{Remove up to $\frac{1}{3} \times$\utility \ cards from your hand and return them to the card store.}{\onecost}
+\card{Deep Pockets}{Blessing}{Bid for an additional card.}{\twocost}
 &
-\inventory{Recycling Master}{Action}{Remove up to $\frac{1}{2} \times$\utility \ cards from your hand and return them to the card store.}{\twocost}
-&
-\inventory{Recycling Lord}{Action}{Remove up to $\frac{2}{3} \times$\utility \ cards from your hand and return them to the card store.}{\threecost}
-&
-\inventory{Recycling God}{Action}{Remove up to \utility \ cards from your hand and return them to the card store.}{\fourcost}
+\card{Express Shipping}{Action}{Move all cards you just bought to your hand.}{\threecost}
 &
 
-\inventory{Big Handed}{Passive}{You can now hold an additional \utility \ cards in your hand.}{\twocost}
+\card{Weak Hands}{Blessing}{Your opponent must discard \utility \ cards from their hand.}{\threecost}
 &
-\inventory{Cheapskate}{Passive}{Face down actions no longer cost gold to play.}{\threecost}
+\card{Faulty Table}{Blessing}{Your opponent must discard \utility \ cards from their face down actions.}{\threecost}
 &
-\inventory{Truly Blessed}{Passive}{Draw a card each time you play a blessing but you may no longer draw cards from active effects.}{\fourcost}
-&
-\inventory{Always Lucky}{Passive}{Draw an additional card each turn.}{\fourcost}
+\card{Veto}{Action}{Cancel an action of your opponent.}{\fourcost}
 &
 
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+\card{Multitasking Novice}{Blessing}{Play up to $\frac{1}{3} \times$\utility \ additional actions.}{\onecost}
 &
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+\card{Multitasking Master}{Blessing}{Play up to $\frac{1}{2} \times$\utility \ additional actions.}{\twocost}
 &
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+\card{Multitasking Lord}{Blessing}{Play up to $\frac{2}{3} \times$\utility \ additional actions.}{\threecost}
 &
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+\card{Multitasking God}{Blessing}{Play up to \utility \ additional actions}{\fourcost}
 &
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+
+\card{Exploration Novice}{Action}{Draw $\frac{1}{3} \times$\utility \ more cards.}{\onecost}
 &
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+\card{Exploration Master}{Action}{Draw $\frac{1}{2} \times$\utility \ more cards.}{\twocost}
 &
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+\card{Exploration Lord}{Action}{Draw $\frac{2}{3} \times$\utility \ more cards.}{\threecost}
 &
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+\card{Exploration God}{Action}{Draw \utility \ more cards.}{\fourcost}
 &
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+
+\card{Recycling Novice}{Action}{Remove up to $\frac{1}{3} \times$\utility \ cards from your hand and return them to the card store.}{\onecost}
 &
-\inventory{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+\card{Recycling Master}{Action}{Remove up to $\frac{1}{2} \times$\utility \ cards from your hand and return them to the card store.}{\twocost}
+&
+\card{Recycling Lord}{Action}{Remove up to $\frac{2}{3} \times$\utility \ cards from your hand and return them to the card store.}{\threecost}
+&
+\card{Recycling God}{Action}{Remove up to \utility \ cards from your hand and return them to the card store.}{\fourcost}
+&
+
+\card{Big Handed}{Passive}{You may now hold \utility \ additional cards in your hand.}{\twocost}
+&
+\card{Cheapskate}{Passive}{Face down actions no longer cost gold to play.}{\threecost}
+&
+\card{Truly Blessed}{Passive}{Draw a card each time you play a blessing but you may no longer draw cards from active effects.}{\fourcost}
+&
+\card{Always Lucky}{Passive}{Draw an additional card each turn.}{\fourcost}
+&
+
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+\card{Basic Income}{Blessing}{Gain 1 gold.}{\onecost}
+&
+
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
 &
 
 \end{longtable}
