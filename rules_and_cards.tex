@@ -43,28 +43,24 @@
 
 \node (title) at (0.5 * \cardwidth, \cardheight - \cardroundingradius)
     [ anchor = north, fill = \cardtitlecolour!20, draw = \cardtitlecolour, thick,
-    text width = \cardwidth - 2 * (\cardroundingradius + 1mm),
-    minimum height = \cardtitletextheight]
+    text width = \cardwidth - 2 * (\cardroundingradius + 1.4mm)]
     { \Large #1 };
 
 \node (text) at (0.5 * \cardwidth, \cardroundingradius + \tvheight + \tvspace)
     [ anchor = south,
     fill = \cardtextboxcolour!20, draw = \cardtextboxcolour, thick,
-    text width = \cardwidth - 2 * (\cardroundingradius + 1mm),
-    text depth = \cardtextboxheight,
-    align = justify]
+    text width = \cardwidth - 2 * (\cardroundingradius + 1.4mm),
+    text depth = \cardtextboxheight, align = justify]
     { #3 };
 
 \node (value)
     [ fill = \cardvaluecolour!20, draw = \cardvaluecolour, thick,
-    below right = \tvspace + 0.5 * \tvheight and 0mm of text, anchor = east,
-    minimum height = \tvheight]
+    below right = \tvspace + \tvheight and 0mm of text, anchor = south east]
     { #4 Gold };
 
 \node (type)
     [ fill = \cardtypecolour!20, draw = \cardtypecolour, thick,
-    below left = \tvspace + 0.5 * \tvheight and 0mm of text, anchor = west,
-    minimum height = \tvheight]
+    below left = \tvspace + \tvheight and 0mm of text, anchor = south west]
     { #2 };
 
 \end{tikzpicture}
@@ -140,7 +136,7 @@ All fractional number amounts are always rounded up before execution.
 
 \newpage
 
-\begin{longtable}{ m m m }
+\begin{longtable}{ c c c }
 
 \inventory{Fire}{Action}{Deal \fire \ damage to your opponent.}{\twocost}
 &
