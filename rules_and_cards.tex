@@ -12,8 +12,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1.5cm]{geometry}
 
-\setlength{\parskip}{0mm}
-\setlength{\columnsep}{0mm}
+\setlength{\parskip}{0pt}
 \setlength{\tabcolsep}{0pt}
 
 % To make sure we don't have page numbers.
@@ -30,6 +29,7 @@
 \newcommand{\cardtextheight}{14.3mm}
 \newcommand{\cardtcspace}{4mm}
 \newcommand{\cardtcheight}{6mm}
+\newcommand{\circlesize}{1.25mm}
 
 % Our consistent colours
 \newcommand{\cardtitlecolour}{lightgray}
@@ -77,14 +77,14 @@
 }
 
 % Elemental symbols
-\newcommand{\circlesize}{1.25mm}
-\newcommand{\fire}{\tikz\draw[darkgray, fill = Red] (0,0) circle (\circlesize);}
-\newcommand{\earth}{\tikz\draw[darkgray, fill = Brown] (0,0) circle (\circlesize);}
-\newcommand{\water}{\tikz\draw[darkgray, fill = NavyBlue] (0,0) circle (\circlesize);}
-\newcommand{\nature}{\tikz\draw[darkgray, fill = ForestGreen] (0,0) circle (\circlesize);}
-\newcommand{\magic}{\tikz\draw[darkgray, fill = Purple] (0,0) circle (\circlesize);}
-\newcommand{\gold}{\tikz\draw[darkgray, fill = Yellow] (0,0) circle (\circlesize);}
-\newcommand{\utility}{\tikz\draw[darkgray, fill = Orange] (0,0) circle (\circlesize);}
+\newcommand{\drawcircle}[1]{\tikz[baseline = (current bounding box.south)]\draw[darkgray, fill = #1] (0,0) circle (\circlesize);}}
+\newcommand{\fire}{\drawcircle{Red}}
+\newcommand{\earth}{\drawcircle{Sepia}}
+\newcommand{\water}{\drawcircle{RoyalBlue}}
+\newcommand{\nature}{\drawcircle{Green}}
+\newcommand{\magic}{\drawcircle{Mulberry}}
+\newcommand{\gold}{\drawcircle{Yellow}}
+\newcommand{\utility}{\drawcircle{Orange}}
 
 % Costs
 \newcommand{\onecost}{3}
@@ -159,11 +159,11 @@ All fractional number amounts are always rounded up before execution.
 &
 \card{Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and  your opponent.}{\threecost}
 &
-\card{Magical Firestorm}{Action}{Deal \fire$\times$\magic \ damage to your opponent.}{\fourcost}
+\card{Magical Firestorm}{Action}{Deal \magic$\times$\fire \ damage to your opponent.}{\fourcost}
 &
-\card{Meteor Strike}{Action}{Deal \earth$\times$\magic \ damage to your opponent.}{\fourcost}
+\card{Meteor Strike}{Action}{Deal \magic$\times$\earth \ damage to your opponent.}{\fourcost}
 &
-\card{Biblical Flood}{Action}{Deal \water$\times$\magic \ damage to both yourself and  your opponent.}{\fourcost}
+\card{Biblical Flood}{Action}{Deal \magic$\times$\water \ damage to both yourself and  your opponent.}{\fourcost}
 &
 \card{Volcanic Eruption}{Action}{Deal \fire$\times$\earth \ damage to your opponent.}{\fourcost}
 &
@@ -172,22 +172,22 @@ All fractional number amounts are always rounded up before execution.
 &
 \card{Reforestation}{Action}{Heal $2 \times$\nature \ health.}{\twocost}
 &
-\card{Nature Reserves}{Action}{Heal \earth$\times$\nature \ health.}{\threecost}
+\card{Nature Reserves}{Action}{Heal \nature$\times$\earth \ health.}{\threecost}
 &
-\card{Hot Springs}{Action}{Heal \water$\times$\nature \ health.}{\threecost}
+\card{Hot Springs}{Action}{Heal \nature$\times$\water \ health.}{\threecost}
 &
-\card{Mystical Restoration}{Action}{Heal \magic$\times$\nature \ health.}{\threecost}
+\card{Mystical Restoration}{Action}{Heal \nature$\times$\magic \ health.}{\threecost}
 & 
 
 \card{Marketplace}{Action}{Gain \gold \ gold.}{\onecost}
 &
 \card{Treasury}{Action}{Gain $2 \times$\gold \ gold.}{\twocost}
 &
-\card{Gold Mine}{Action}{Gain \earth$\times$\gold \ gold.}{\threecost}
+\card{Gold Mine}{Action}{Gain \gold$\times$\earth \ gold.}{\threecost}
 &
-\card{Gold Panning}{Action}{Gain \water$\times$\gold \ gold.}{\threecost}
+\card{Gold Panning}{Action}{Gain \gold$\times$\water \ gold.}{\threecost}
 &
-\card{Ancient Alchemy}{Action}{Gain \magic$\times$\gold \ gold.}{\threecost}
+\card{Ancient Alchemy}{Action}{Gain \gold$\times$\magic \ gold.}{\threecost}
 &
 
 \card{Water Reservoirs}{Passive}{Shield \water \ against \fire \ damage.}{\twocost}
