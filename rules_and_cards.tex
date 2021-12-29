@@ -12,8 +12,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1.5cm]{geometry}
 
-\setlength{\columnsep}{0mm}
 \setlength{\parskip}{0mm}
+\setlength{\columnsep}{0mm}
+\setlength{\tabcolsep}{0pt}
 
 % To make sure we don't have page numbers.
 \usepackage{nopageno}
@@ -39,7 +40,7 @@
 % Our card template
 \newcommand{\card}[4]{
 
-\begin{tikzpicture}
+\begin{tikzpicture}[baseline = (current bounding box.center)]
 \draw[rounded corners = \cardroundingradius] (0,0) rectangle
     (\cardwidth, \cardheight);
 
@@ -71,7 +72,7 @@
     minimum height = \cardtcheight]
     { #4 Gold };
 
-\end{tikzpicture}
+\end{tikzpicture}%
 
 }
 
