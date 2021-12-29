@@ -19,15 +19,14 @@
 \usepackage{nopageno}
 
 % Our consistent sizing
-\newcommand{\cardmargin}{2mm}
 \newcommand{\cardroundingradius}{4mm}
 \newcommand{\cardwidth}{57mm}
 \newcommand{\cardheight}{86mm}
 \newcommand{\cardimageheight}{43mm}
-\newcommand{\cardtextboxheight}{17mm}
-\newcommand{\cardsubvaluesheight}{67mm}
-\newcommand{\cardboxpadding}{1mm}
 \newcommand{\cardtitletextheight}{7mm}
+\newcommand{\cardtextboxheight}{14.3mm}
+\newcommand{\tvspace}{4mm}
+\newcommand{\tvheight}{5mm}
 
 % Our consistent colours
 \newcommand{\cardtitlecolour}{lightgray}
@@ -40,31 +39,32 @@
 
 \begin{tikzpicture}
 \draw[rounded corners=\cardroundingradius] (0,0) rectangle
-    (\cardwidth - \cardmargin, \cardheight - \cardmargin);
+    (\cardwidth, \cardheight);
 
-\node (title) at (0.5 * \cardwidth - \cardboxpadding, \cardheight -
-    2 * \cardroundingradius - \cardboxpadding)
-    [ fill=\cardtitlecolour!20, draw=\cardtitlecolour, thick,
-    text width = \cardwidth - 2* (\cardmargin + \cardroundingradius),
+\node (title) at (0.5 * \cardwidth, \cardheight - \cardroundingradius)
+    [ anchor = north, fill = \cardtitlecolour!20, draw = \cardtitlecolour, thick,
+    text width = \cardwidth - 2 * (\cardroundingradius + 1mm),
     minimum height = \cardtitletextheight]
     { \Large #1 };
 
-\node (text)
-    [ fill=\cardtextboxcolour!20, draw=\cardtextboxcolour, thick,
-    below left = \cardimageheight + \cardtitletextheight and 0mm of
-    title, anchor = west,
-    text width = \cardwidth - 2 * (\cardmargin + \cardroundingradius), text
-    depth = \cardtextboxheight - 2 * \cardboxpadding, align=justify]
+\node (text) at (0.5 * \cardwidth, \cardroundingradius + \tvheight + \tvspace)
+    [ anchor = south,
+    fill = \cardtextboxcolour!20, draw = \cardtextboxcolour, thick,
+    text width = \cardwidth - 2 * (\cardroundingradius + 1mm),
+    text depth = \cardtextboxheight,
+    align = justify]
     { #3 };
 
 \node (value)
-    [ fill=\cardvaluecolour!20, draw=\cardvaluecolour, thick,
-    below right = \cardsubvaluesheight and 0mm of title, anchor = east]
+    [ fill = \cardvaluecolour!20, draw = \cardvaluecolour, thick,
+    below right = \tvspace + 0.5 * \tvheight and 0mm of text, anchor = east,
+    minimum height = \tvheight]
     { #4 Gold };
 
 \node (type)
-    [ fill=\cardtypecolour!20, draw=\cardtypecolour, thick,
-    below left = \cardsubvaluesheight and 0mm of title, anchor = west]
+    [ fill = \cardtypecolour!20, draw = \cardtypecolour, thick,
+    below left = \tvspace + 0.5 * \tvheight and 0mm of text, anchor = west,
+    minimum height = \tvheight]
     { #2 };
 
 \end{tikzpicture}
@@ -106,7 +106,7 @@ Seven dice are rolled at the start of the game. Those are the fire \fire, earth 
 
 \item
 
-Players start with 150 health, 6 gold, 5 Basic Income cards in their deck and no cards in their hand.
+Players start with 100 health, 6 gold, 5 Basic Income cards in their deck and no cards in their hand.
 
 \item
 
@@ -122,15 +122,11 @@ Playing an action consists of either executing it or placing it face down on the
 
 \item
 
-A player may respond to their opponent's action by playing an action which affects (or may affect) its result; the response is executed before the action that triggered it. This requires paying the cost of the action but does not count towards the player's action limit on their next turn. The action may either come from the player's hand or their face down actions.
+A player may respond to their opponent's action by playing an action which affects (or may affect) its result; the response is executed before the action that triggered it. This requires paying the cost of the action but does not count towards the player's action limit on their next turn. The action may either come from the player's hand or their face down actions. The opponent is then allowed to play further actions and/or blessings before executing the original action that triggered the response. In the case of actions, the player may respond to them as well.
 
 \item
 
 Bidding for a card consists of a player announcing their interest in buying a card from one of the shops for its stated cost. Then their opponent may outbid them to two times that. The player may then match their opponent's bid. This bidding in multiples of the stated cost continues until either the opponent doesn't outbid or the player doesn't match. The player is allowed to play actions during the auction. Its winner gets the card. If it is a passive card, it is immediately activated for the rest of the game. Otherwise, it is added to the player's discard pile.
-
-\item
-
-All action and blessing executions as well as bidding for a card may be interleaved during a turn.
 
 \item
 
@@ -144,7 +140,7 @@ All fractional number amounts are always rounded up before execution.
 
 \newpage
 
-\begin{longtable}{ccc}
+\begin{longtable}{ m m m }
 
 \inventory{Fire}{Action}{Deal \fire \ damage to your opponent.}{\twocost}
 &
@@ -167,22 +163,20 @@ All fractional number amounts are always rounded up before execution.
 \inventory{Volcanic Eruption}{Action}{Deal \fire$\times$\earth \ damage to your opponent.}{\fourcost}
 &
 
-% TODO -- Names
-\inventory{Ecology 1}{Action}{Heal \nature \ health.}{\onecost}
+\inventory{Ecology}{Action}{Heal \nature \ health.}{\onecost}
 &
-\inventory{Ecology 2}{Action}{Heal $2 \times$\nature \ health.}{\twocost}
+\inventory{Reforestation}{Action}{Heal $2 \times$\nature \ health.}{\twocost}
 &
 \inventory{Nature Reserves}{Action}{Heal \earth$\times$\nature \ health.}{\threecost}
 &
 \inventory{Hot Springs}{Action}{Heal \water$\times$\nature \ health.}{\threecost}
 &
 \inventory{Mystical Restoration}{Action}{Heal \magic$\times$\nature \ health.}{\threecost}
-&
+& 
 
-% TODO -- Names
 \inventory{Treasury 1}{Action}{Gain \gold \ gold.}{\onecost}
 &
-\inventory{Treasury 2}{Action}{Gain $2 \times$\gold \ gold.}{\twocost}
+\inventory{Gold Refinery}{Action}{Gain $2 \times$\gold \ gold.}{\twocost}
 &
 \inventory{Gold Mine}{Action}{Gain \earth$\times$\gold \ gold.}{\threecost}
 &
@@ -219,18 +213,17 @@ All fractional number amounts are always rounded up before execution.
 \inventory{Purism}{Action}{Double the strength of all your non-combo effects for the rest of this turn.}{\twocost}
 &
 
-% TODO -- Names for Sleight of Hand
 \inventory{Gambling}{Action}{Reroll a die once.}{\onecost}
 &
-\inventory{Sleight of Hand 1}{Action}{Change the value of a die by one.}{\onecost}
+\inventory{Cheap Trick}{Action}{Change the value of a die by one.}{\onecost}
 &
 \inventory{Second Chance}{Action}{Reroll a die up to twice.}{\twocost}
 &
-\inventory{Sleight of Hand 2}{Action}{Change the value of a die by up to two.}{\twocost}
+\inventory{Sleight of Hand}{Action}{Change the value of a die by up to two.}{\twocost}
 &
 \inventory{Calculated Risk}{Action}{Reroll a die up to four times.}{\threecost}
 &
-\inventory{Sleight of Hand 3}{Action}{Change the value of a die by up to three.}{\threecost}
+\inventory{Smoke and Mirrors}{Action}{Change the value of a die by up to three.}{\threecost}
 &
 \inventory{Perspective Shift}{Action}{Flip a die over.}{\threecost}
 &
@@ -247,7 +240,7 @@ All fractional number amounts are always rounded up before execution.
 &
 \inventory{Impatience}{Action}{Look at and reorder the top \utility \ cards of your deck.}{\twocost}
 &
-\inventory{Sabotagge}{Action}{Look at and reorder the top \utility \ cards of your opponent's deck.}{\twocost}
+\inventory{Sabotage}{Action}{Look at and reorder the top \utility \ cards of your opponent's deck.}{\twocost}
 &
 \inventory{Magnetic Hands}{Action}{Move a chosen card from your deck to your hand and then shuffle your deck.}{\threecost}
 &
@@ -261,34 +254,31 @@ All fractional number amounts are always rounded up before execution.
 \inventory{Veto}{Action}{Cancel an action of your opponent.}{\fourcost}
 &
 
-% TODO -- Names
-\inventory{Multitasking 1}{Blessing}{Gain $\frac{1}{3} \times$\utility \ actions for the rest of this turn.}{\onecost}
+\inventory{Multitasking Novice}{Blessing}{Gain $\frac{1}{3} \times$\utility \ actions for the rest of this turn.}{\onecost}
 &
-\inventory{Multitasking 2}{Blessing}{Gain $\frac{1}{2} \times$\utility \ actions for the rest of this turn.}{\twocost}
+\inventory{Multitasking Master}{Blessing}{Gain $\frac{1}{2} \times$\utility \ actions for the rest of this turn.}{\twocost}
 &
-\inventory{Multitasking 3}{Blessing}{Gain $\frac{2}{3} \times$\utility \ actions for the rest of this turn.}{\threecost}
+\inventory{Multitasking Lord}{Blessing}{Gain $\frac{2}{3} \times$\utility \ actions for the rest of this turn.}{\threecost}
 &
-\inventory{Multitasking 4}{Blessing}{Gain \utility \ actions for the rest of this turn}{\fourcost}
-&
-
-% TODO -- Names
-\inventory{Exploration 1}{Action}{Draw $\frac{1}{3} \times$\utility \ more cards.}{\onecost}
-&
-\inventory{Exploration 2}{Action}{Draw $\frac{1}{2} \times$\utility \ more cards.}{\twocost}
-&
-\inventory{Exploration 3}{Action}{Draw $\frac{2}{3} \times$\utility \ more cards.}{\threecost}
-&
-\inventory{Exploration 4}{Action}{Draw \utility \ more cards.}{\fourcost}
+\inventory{Multitasking God}{Blessing}{Gain \utility \ actions for the rest of this turn}{\fourcost}
 &
 
-% TODO -- Names
-\inventory{Recycling 1}{Action}{Remove up to $\frac{1}{3} \times$\utility \ cards from your hand and return them to the card store.}{\onecost}
+\inventory{Exploration Novice}{Action}{Draw $\frac{1}{3} \times$\utility \ more cards.}{\onecost}
 &
-\inventory{Recycling 2}{Action}{Remove up to $\frac{1}{2} \times$\utility \ cards from your hand and return them to the card store.}{\twocost}
+\inventory{Exploration Master}{Action}{Draw $\frac{1}{2} \times$\utility \ more cards.}{\twocost}
 &
-\inventory{Recycling 3}{Action}{Remove up to $\frac{2}{3} \times$\utility \ cards from your hand and return them to the card store.}{\threecost}
+\inventory{Exploration Lord}{Action}{Draw $\frac{2}{3} \times$\utility \ more cards.}{\threecost}
 &
-\inventory{Recycling 4}{Action}{Remove up to \utility \ cards from your hand and return them to the card store.}{\fourcost}
+\inventory{Exploration God}{Action}{Draw \utility \ more cards.}{\fourcost}
+&
+
+\inventory{Recycling Novice}{Action}{Remove up to $\frac{1}{3} \times$\utility \ cards from your hand and return them to the card store.}{\onecost}
+&
+\inventory{Recycling Master}{Action}{Remove up to $\frac{1}{2} \times$\utility \ cards from your hand and return them to the card store.}{\twocost}
+&
+\inventory{Recycling Lord}{Action}{Remove up to $\frac{2}{3} \times$\utility \ cards from your hand and return them to the card store.}{\threecost}
+&
+\inventory{Recycling God}{Action}{Remove up to \utility \ cards from your hand and return them to the card store.}{\fourcost}
 &
 
 \inventory{Big Handed}{Passive}{You can now hold an additional \utility \ cards in your hand.}{\twocost}
