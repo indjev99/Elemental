@@ -108,7 +108,7 @@ The game is played between two players who take turns. The player whose health r
 
 \item
 
-Seven dice determine the strengths of various cards: fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and chance \chance. The first six are rolled at the start of the game. The seventh one is rolled whenever its value is needed (possibly multiple times per turn).
+Seven dice determine the strengths of various cards: fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and chance \chance. They are rolled at the start of the game. The seventh one is also rerolled whenever its value is needed (possibly multiple times per turn).
 
 \item
 
@@ -174,11 +174,11 @@ All fractional number amounts are always rounded up before execution.
 &
 \card{Biblical Flood}{Action}{Deal \magic$\times$\water \ damage to both yourself and your opponent.}{\fourcost}
 &
-\card{TODO}{Action}{Deal \magic$\times$\chance \ damage to your opponent.}{\fourcost}
+\card{Chaotic Spell}{Action}{Deal \magic$\times$\chance \ damage to your opponent.}{\fourcost}
 &
 \card{Volcanic Eruption}{Action}{Deal \fire$\times$\earth \ damage to your opponent.}{\fourcost}
 &
-\card{TODO} {Action}{Deal \fire$\times$\chance \ damage to your opponent.}{\fourcost}
+\card{Quantum Explosion} {Action}{Deal \fire$\times$\chance \ damage to your opponent.}{\fourcost}
 &
 
 \card{Ecology}{Action}{Heal \nature \ health.}{\onecost}
@@ -190,6 +190,8 @@ All fractional number amounts are always rounded up before execution.
 \card{Hot Springs}{Action}{Heal \nature$\times$\water \ health.}{\threecost}
 &
 \card{Mystical Restoration}{Action}{Heal \nature$\times$\magic \ health.}{\threecost}
+& 
+\card{Alternative Medicine}{Action}{Heal \nature$\times$\chance \ health.}{\threecost}
 & 
 
 \card{Marketplace}{Action}{Gain \gold \ gold.}{\onecost}
@@ -211,7 +213,7 @@ All fractional number amounts are always rounded up before execution.
 &
 \card{Natural Forests}{Passive}{Shield \nature \ against \magic \ and \water \ damage.}{\twocost}
 &
-\card{Paid Militia}{Passive}{Shield any amount of damage by paying one gold to your opponent per unit of damage.}{\threecost}
+\card{Paid Militia}{Passive}{Shield any amount of damage by paying one gold per unit of damage to your opponent.}{\threecost}
 &
 \card{Magical Barrier}{Passive}{Shield \magic$\times$\magic \ against combo damage.}{\fourcost}
 &
@@ -229,6 +231,9 @@ All fractional number amounts are always rounded up before execution.
 \card{Midas Touch}{Action}{Double the strength of all your \gold \ effects.}{\twocost}
 &
 \card{Purism}{Action}{Double the strength of all your non-combo effects.}{\twocost}
+&
+
+\card{Risk Aversion}{Passive}{You may choose not to reroll the \chance \ die when its value is needed.}{\threecost}
 &
 
 \card{Gambling}{Action}{Reroll a die once.}{\onecost}
@@ -252,27 +257,28 @@ All fractional number amounts are always rounded up before execution.
 &
 \card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down actions.}{\onecost}
 &
-\card{Sneak Peek}{Blessing}{Draw a card and look at the top 2 cards of your deck.}{\onecost}
+\card{Sneak Peek}{Blessing}{Draw a card and look at the top 5 cards of your deck.}{\onecost}
 &
-\card{Reconnaissance}{Blessing}{Draw a card and look at the top 3 cards of your opponent's deck.}{\onecost}
+\card{Reconnaissance}{Blessing}{Draw a card and look at the top 5 cards of your opponent's deck.}{\onecost}
 &
-\card{Impatience}{Action}{Look at and reorder the top 4 cards of your deck.}{\twocost}
+\card{Impatience}{Action}{Look at and reorder the top 5 cards of your deck.}{\twocost}
 &
 \card{Sabotage}{Action}{Look at and reorder the top 5 cards of your opponent's deck.}{\twocost}
 &
-\card{Magnetic Hands}{Action}{Move a chosen card from your deck to your hand and then shuffle your deck.}{\threecost}
+\card{Magnetic Hands}{Action}{Move a chosen card from your deck to your hand and then shuffle your deck.}{\twocost}
+&
+
+\card{Weak Hands}{Blessing}{Your opponent must discard 4 cards from their hand.}{\threecost}
+&
+\card{Faulty Table}{Blessing}{Your opponent must discard 4 cards from their face down actions.}{\threecost}
+&
+
+\card{Veto}{Action}{Cancel an action of your opponent.}{\threecost}
 &
 
 \card{Deep Pockets}{Passive}{You may bid for more than card per turn.}{\twocost}
 &
 \card{Express Shipping}{Passive}{All cards you buy go into your hand.}{\threecost}
-&
-
-\card{Weak Hands}{Blessing}{Your opponent must discard 3 cards from their hand.}{\threecost}
-&
-\card{Faulty Table}{Blessing}{Your opponent must discard 3 cards from their face down actions.}{\threecost}
-&
-\card{Veto}{Action}{Cancel an action of your opponent.}{\threecost}
 &
 
 \card{Multitasking Novice}{Blessing}{Play up to 1 additional action.}{\onecost}
@@ -293,7 +299,7 @@ All fractional number amounts are always rounded up before execution.
 \card{Exploration God}{Action}{Draw 5 more cards.}{\fourcost}
 &
 
-\card{Recycling Novice}{Action}{Remove up to 1 card from your hand and return them to the card store.}{\onecost}
+\card{Recycling Novice}{Action}{Remove up to 1 card from your hand and return it to the card store.}{\onecost}
 &
 \card{Recycling Master}{Action}{Remove up to 2 cards from your hand and return them to the card store.}{\twocost}
 &
@@ -332,6 +338,10 @@ All fractional number amounts are always rounded up before execution.
 \card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
 &
 
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+&
 \card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
 &
 \card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
