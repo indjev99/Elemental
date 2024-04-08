@@ -93,6 +93,12 @@
 \newcommand{\threecost}{12}
 \newcommand{\fourcost}{18}
 
+\newcommand{\rerollcost}{2}
+\newcommand{\facedowncost}{5}
+
+\newcommand{\handsize}{4}
+\newcommand{\shopsize}{5}
+
 \title{Rules and Cards for Elemental Deck Builder}
 \author{Emil Indzhev}
 
@@ -104,47 +110,35 @@
 
 \item
 
-The game is played between two players who take turns. The player whose health reaches zero first loses and the other wins.
+The game is played between two players who take turns. The player whose HP reaches 0 first loses. If both players' HPs reach 0 at the same time, the one whose action caused this wins.
 
 \item
 
-Seven dice determine the strengths of various cards: fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and chance \chance. They are rolled at the start of the game. The seventh one is also rerolled whenever its value is needed (possibly multiple times per turn).
+Seven dice determine the strengths of various cards: fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and chance \chance. They are rolled at the start of the game. The last one is also rerolled whenever its value is needed (possibly multiple times per turn). Various cards can change their values.
 
 \item
 
-Players start with 100 health, 6 gold, 5 Basic Income cards in their deck and no cards in their hand. The player whose health reaches 0 first loses. If both players' health pools reach 0 at the same time, the one with more health wins. If equal, the player with more gold wins.
+Each starts with 60 HP, 6 gold and 8 Basic Income cards in their draw pile.
 
 \item
 
-All other cards are shuffled into two decks: cheap (costing \onecost \ or \twocost \ gold) and expensive (costing \threecost \ or \fourcost \ gold). Four cards are dealt from each deck. Those are the shops from which cards can be purchased. At the end of a player's turn, the oldest card in each of the two card shops is removed, if no card was bought from that shop. Then both shops are refilled back to four cards from their respective decks. The removed cards are set aside. When a store's deck is empty but a card must be drawn from it, the pile of removed cards is shuffled and added to the store's deck.
+All non-starter cards are shuffled into a shop deck. Initially, there is no shop laid out. When a player re-rolls the shop, which costs \rerollcost gold, the current laid out shop is moved to the shop's discard pile and \shopsize cards are drawn from the shop's draw pile. When a card is bought by a player, by paying its cost, it is not automatically replaced with a new card.
 
 \item
 
-On each turn a player may do the following in any order: gain one gold, draw one card, discard any number of cards, play one action, play any number of blessings and/or bid for one card. When a card is played, its effect is executed and then it goes to the discard pile. When a player must draw but their deck is empty, their discard pile is shuffled and then added to their deck. The player must end their turn with at most 5 cards in their hand.
+On each turn a player may (in any order): gain one gold, play at most one action from their hand, play any number of blessings from their hand, play any number of face down actions, re-roll the shop at most twice, buy at most one card from the shop. Playing an action from one's hand, consists of either playing it now or placing it face down, which costs \facedowncost gold. A played card, after its effect is executed, goes to the player's discard pile. After a player's turn is over, they have to discard their hand and draw \handsize cards from their draw pile (this is also done at the start of the game). A player may have at most 2 face down actions at a time.
 
 \item
 
-Playing an action consists of either executing it or placing it face down on the table for a later turn. Executing it later isn't counted towards that turn's action limit but requires paying half its card cost.
+Whenever a card needs to be drawn from a deck's draw pile, but it is empty. Its discard pile is shuffled and it becomes the draw pile.
 
 \item
 
-A player may respond to their opponent's action by playing an action which affects (or may affect) its result; the response is executed before the action that triggered it. This requires paying half the card cost of the action but does not count towards the player's action limit on their next turn. The action may either come from the player's hand or their face down actions. The opponent is then allowed to play further actions and/or blessings before executing the original action that triggered the response. In the case of actions, the player may respond to them as well.
-
-\item
-
-If a card is played and its effect needs the top $X$ cards of a player's deck, but the deck has fewer than $X$ cards, the player's discard pile is shuffled and added to the bottom of their deck.
-
-\item
-
-Bidding for a card consists of a player announcing their interest in buying a card from one of the shops for its stated cost. Then their opponent may outbid them to two times that. The player may then match their opponent's bid. This bidding in multiples of the stated cost continues until either the opponent doesn't outbid or the player doesn't match. The player is allowed to play actions during the auction. Its winner gets the card. If it is a passive card, it is immediately activated for the rest of the game. Otherwise, it is added to the player's discard pile.
+Blessings and face down actions may also be played during the opponent's turn. This can be done at any time, including between the opponent playing a card and executing its action. In such a situation, the player whose turn it is, may in turn, also respond before executing their original action. This can repeat ad infinitum.
 
 \item
 
 A player dealing damage (to their opponent or themselves) receives gold equal to the damage dealt.
-
-\item
-
-All fractional number amounts are always rounded up before execution.
 
 \end{itemize}
 
@@ -164,9 +158,21 @@ All fractional number amounts are always rounded up before execution.
 &
 \card{Earthquake}{Action}{Deal $2 \times$\earth \ damage to your opponent.}{\threecost}
 &
-\card{Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and  your opponent.}{\threecost}
+\card{Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and your opponent.}{\threecost}
 &
 \card{Haphazard Offence}{Action}{Deal $2 \times$\chance \ to your opponent.}{\threecost}
+&
+\card{Volcanic Eruption}{Action}{Deal \fire$+$\earth \ damage to your opponent.}{\threecost}
+&
+\card{Wildfire}{Action}{Deal \fire$+$\chance \ damage to your opponent.}{\threecost}
+&
+\card{Uncharted Lands}{Action}{Deal \earth$+$\chance \ damage to your opponent.}{\threecost}
+&
+\card{Hot Steam}{Action}{Deal \water$+$\fire \ damage to both yourself and your opponent.}{\threecost}
+&
+\card{Quicksand}{Action}{Deal \water$+$\earth \ damage to both yourself and your opponent.}{\threecost}
+&
+\card{Wild Seas}{Action}{Deal \water$+$\chance \ damage to both yourself and your opponent.}{\threecost}
 &
 \card{Magical Firestorm}{Action}{Deal \magic$\times$\fire \ damage to your opponent.}{\fourcost}
 &
@@ -176,46 +182,42 @@ All fractional number amounts are always rounded up before execution.
 &
 \card{Chaotic Spell}{Action}{Deal \magic$\times$\chance \ damage to your opponent.}{\fourcost}
 &
-\card{Volcanic Eruption}{Action}{Deal \fire$\times$\earth \ damage to your opponent.}{\fourcost}
-&
-\card{Quantum Explosion} {Action}{Deal \fire$\times$\chance \ damage to your opponent.}{\fourcost}
-&
 
-\card{Ecology}{Action}{Heal \nature \ health.}{\onecost}
+\card{Ecology}{Action}{Restore \nature \ HP.}{\onecost}
 &
-\card{Reforestation}{Action}{Heal $2 \times$\nature \ health.}{\twocost}
+\card{Reforestation}{Action}{Restore $2 \times$\nature \ HP.}{\twocost}
 &
-\card{Nature Reserves}{Action}{Heal \nature$\times$\earth \ health.}{\threecost}
+\card{Nature Reserves}{Action}{Restore \nature$+$\earth \ HP.}{\twocost}
 &
-\card{Hot Springs}{Action}{Heal \nature$\times$\water \ health.}{\threecost}
-&
-\card{Mystical Restoration}{Action}{Heal \nature$\times$\magic \ health.}{\threecost}
+\card{Hot Springs}{Action}{Restore \nature$+$\water \ HP.}{\twocost}
 & 
-\card{Alternative Medicine}{Action}{Heal \nature$\times$\chance \ health.}{\threecost}
+\card{Alternative Medicine}{Action}{Restore \nature$+$\chance \ HP.}{\twocost}
+&
+\card{Mystical Restoration}{Action}{Restore \magic$\times$\nature \ HP.}{\threecost}
 & 
 
 \card{Marketplace}{Action}{Gain \gold \ gold.}{\onecost}
 &
 \card{Treasury}{Action}{Gain $2 \times$\gold \ gold.}{\twocost}
 &
-\card{Gold Mine}{Action}{Gain \gold$\times$\earth \ gold.}{\threecost}
+\card{Gold Mine}{Action}{Gain \gold$+$\earth \ gold.}{\twocost}
 &
-\card{Gold Panning}{Action}{Gain \gold$\times$\water \ gold.}{\threecost}
+\card{Gold Panning}{Action}{Gain \gold$+$\water \ gold.}{\twocost}
 &
-\card{Ancient Alchemy}{Action}{Gain \gold$\times$\magic \ gold.}{\threecost}
+\card{Free Market}{Action}{Gain \gold$+$\chance \ gold.}{\twocost}
 &
-\card{Speculative Investment}{Action}{Gain \gold$\times$\chance \ gold.}{\threecost}
+\card{Ancient Alchemy}{Action}{Gain \magic$\times$\gold \ gold.}{\threecost}
 &
 
-\card{Water Reservoirs}{Passive}{Shield \water \ against \fire \ damage.}{\twocost}
+\card{Water Reservoirs}{Action}{Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\twocost}
 &
-\card{Solid Infrastructure}{Passive}{Shield \earth \ against \earth \ and \water \ damage.}{\twocost}
+\card{Solid Infrastructure}{Action}{Shield \earth \ against \earth \ damage until the end of your opponent's turn.}{\twocost}
 &
-\card{Natural Forests}{Passive}{Shield \nature \ against \magic \ and \water \ damage.}{\twocost}
+\card{Natural Forests}{Action}{Shield \nature \ against \water \ damage until the end of your opponent's turn.}{\twocost}
 &
-\card{Paid Militia}{Passive}{Shield any amount of damage by paying one gold per unit of damage to your opponent.}{\threecost}
+\card{Magical Barrier}{Action}{Shield \magic \ against multi-element damage until the end of your opponent's turn.}{\twocost}
 &
-\card{Magical Barrier}{Passive}{Shield \magic$\times$\magic \ against combo damage.}{\fourcost}
+\card{Paid Militia}{Action}{Shield any amount by paying one gold per unit of damage until the end of your opponent's turn.}{\twocost}
 &
  
 \card{Prometheus's Gift}{Action}{Triple the strength of all your \fire \ effects.}{\threecost}
@@ -230,7 +232,7 @@ All fractional number amounts are always rounded up before execution.
 &
 \card{Midas Touch}{Action}{Double the strength of all your \gold \ effects.}{\twocost}
 &
-\card{Purism}{Action}{Double the strength of all your non-combo effects.}{\twocost}
+\card{Purism}{Action}{Double the strength of all your single-element effects.}{\threecost}
 &
 
 \card{Risk Aversion}{Passive}{You may choose not to reroll the \chance \ die when its value is needed.}{\threecost}
@@ -257,23 +259,24 @@ All fractional number amounts are always rounded up before execution.
 &
 \card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down actions.}{\onecost}
 &
-\card{Sneak Peek}{Blessing}{Draw a card and look at the top 5 cards of your deck.}{\onecost}
+\card{Sneak Peek}{Blessing}{Draw a card and look at the top \handsize cards of your deck.}{\onecost}
 &
-\card{Reconnaissance}{Blessing}{Draw a card and look at the top 5 cards of your opponent's deck.}{\onecost}
+\card{Reconnaissance}{Blessing}{Draw a card and look at the top \handsize cards of your opponent's deck.}{\onecost}
 &
-\card{Impatience}{Action}{Look at and reorder the top 5 cards of your deck.}{\twocost}
+
+\card{Impatience}{Action}{Reorder your deck.}{\twocost}
 &
-\card{Sabotage}{Action}{Look at and reorder the top 5 cards of your opponent's deck.}{\twocost}
+\card{Sabotage}{Action}{Reorder your opponent's deck.}{\twocost}
 &
 \card{Magnetic Hands}{Action}{Move a chosen card from your deck to your hand and then shuffle your deck.}{\twocost}
 &
 
-\card{Weak Hands}{Blessing}{Your opponent must discard 4 cards from their hand.}{\threecost}
+\card{Weak Hands}{Action}{Your opponent must discard 3 cards from their hand.}{\threecost}
 &
-\card{Faulty Table}{Blessing}{Your opponent must discard 4 cards from their face down actions.}{\threecost}
+\card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down actions.}{\threecost}
 &
 
-\card{Veto}{Action}{Cancel an action of your opponent.}{\threecost}
+\card{Veto}{Action}{Cancel an action of your opponent and permanently remove this card.}{\threecost}
 &
 
 \card{Deep Pockets}{Passive}{You may bid for more than card per turn.}{\twocost}
@@ -290,60 +293,70 @@ All fractional number amounts are always rounded up before execution.
 \card{Multitasking God}{Blessing}{Play up to 4 additional actions}{\fourcost}
 &
 
-\card{Exploration Novice}{Action}{Draw 2 more cards.}{\onecost}
+\card{Exploration Novice}{Action}{Draw 2 cards.}{\onecost}
 &
-\card{Exploration Master}{Action}{Draw 3 more cards.}{\twocost}
+\card{Exploration Master}{Action}{Draw 3 cards.}{\twocost}
 &
-\card{Exploration Lord}{Action}{Draw 4 more cards.}{\threecost}
+\card{Exploration Lord}{Action}{Draw 4 cards.}{\threecost}
 &
-\card{Exploration God}{Action}{Draw 5 more cards.}{\fourcost}
-&
-
-\card{Recycling Novice}{Action}{Remove up to 1 card from your hand and return it to the card store.}{\onecost}
-&
-\card{Recycling Master}{Action}{Remove up to 2 cards from your hand and return them to the card store.}{\twocost}
-&
-\card{Recycling Lord}{Action}{Remove up to 3 cards from your hand and return them to the card store.}{\threecost}
-&
-\card{Recycling God}{Action}{Remove up to 4 cards from your hand and return them to the card store.}{\fourcost}
+\card{Exploration God}{Action}{Draw 5 cards.}{\fourcost}
 &
 
-\card{Big Handed}{Passive}{You may now hold 3 additional cards in your hand.}{\twocost}
+\card{Recycling Novice}{Action}{Permanently remove up to 1 card from your hand.}{\onecost}
 &
-\card{Cheapskate}{Passive}{Face down actions and action responses no longer cost gold to play.}{\threecost}
+\card{Recycling Master}{Action}{Permanently remove up to 2 cards from your hand.}{\twocost}
+&
+\card{Recycling Lord}{Action}{Permanently remove up to 3 cards from your hand.}{\threecost}
+&
+\card{Recycling God}{Action}{Permanently remove up to 4 cards from your hand.}{\fourcost}
+&
+
+\card{Re-roller}{Passive}{Shop re-rolls cost 1 less gold.}{\threecost}
+&
+\card{Big Handed}{Passive}{Draw 1 extra card after your turn.}{\fourcost}
+&
+\card{Roomy Table}{Passive}{You have space for 1 extra face down action.}{\threecost}
+&
+\card{Cheapskate}{Passive}{Face down actions no longer cost gold to play.}{\threecost}
 &
 \card{Proactive}{Passive}{You may draw a card as an action.}{\threecost}
 &
-\card{Truly Blessed}{Passive}{Draw a card the first time you play a blessing.}{\fourcost}
+\card{Truly Blessed}{Passive}{Draw a card whenever you play a blessing.}{\fourcost}
 &
 
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
-\card{Basic Income}{Blessing}{Gain 1 gold.}{\free}
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
 
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
-&
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
-&
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
-&
 \card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
 &
 \card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
