@@ -92,11 +92,13 @@
 \newcommand{\twocost}{7}
 \newcommand{\threecost}{12}
 \newcommand{\fourcost}{18}
+\newcommand{\fivecost}{25}
 
 \newcommand{\rerollcost}{2}
 \newcommand{\facedowncost}{5}
 
 \newcommand{\handsize}{4}
+\newcommand{\dacedownsize}{2}
 \newcommand{\shopsize}{5}
 
 \title{Rules and Cards for Elemental Deck Builder}
@@ -114,19 +116,19 @@ The game is played between two players who take turns. The player whose HP reach
 
 \item
 
-Seven dice determine the strengths of various cards: fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and chance \chance. They are rolled at the start of the game. The last one is also rerolled whenever its value is needed (possibly multiple times per turn). Various cards can change their values.
+Seven dice determine the strengths of various cards: fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and chance \chance. They are rolled at the start of the game. The chance \chance \ die is also re-rolled whenever its value is needed (possibly multiple times per turn) and dice-control cards cannot affect it.
 
 \item
 
-Each starts with 60 HP, 6 gold and 8 Basic Income cards in their draw pile.
+Each starts with 60 HP and 8 Basic Income cards in their draw pile. The first player starts with 5 gold and the second with 6 gold.
 
 \item
 
-All non-starter cards are shuffled into a shop deck. Initially, there is no shop laid out. When a player re-rolls the shop, which costs \rerollcost gold, the current laid out shop is moved to the shop's discard pile and \shopsize cards are drawn from the shop's draw pile. When a card is bought by a player, by paying its cost, it is not automatically replaced with a new card.
+All non-starter cards are shuffled into a shop deck. Initially, there is no shop laid out. When a player re-rolls the shop, which costs \rerollcost \ gold, the current laid out shop is moved to the shop's discard pile and \shopsize \ cards are drawn from the shop's draw pile. When a card is bought by a player, by paying its cost, it is not automatically replaced with a new card. The bought card goes to the player's discard pile, unless it is a passive card, in which case it is immediately and permanently deployed.
 
 \item
 
-On each turn a player may (in any order): gain one gold, play at most one action from their hand, play any number of blessings from their hand, play any number of face down actions, re-roll the shop at most twice, buy at most one card from the shop. Playing an action from one's hand, consists of either playing it now or placing it face down, which costs \facedowncost gold. A played card, after its effect is executed, goes to the player's discard pile. After a player's turn is over, they have to discard their hand and draw \handsize cards from their draw pile (this is also done at the start of the game). A player may have at most 2 face down actions at a time.
+On each turn a player may (in any order): gain one gold, play at most one action from their hand, play any number of blessings from their hand, play any number of face down cards, re-roll the shop at most twice, buy at most one card from the shop. Instead of playing an action, the player may place a card face down, which costs \facedowncost \ gold. A played card, after its effect is executed, goes to the player's discard pile. After a player's turn is over, they have to discard their hand and draw \handsize \ cards from their draw pile (this is also done at the start of the game). A player may have at most \dacedownsize \ face down cards at a time.
 
 \item
 
@@ -134,7 +136,7 @@ Whenever a card needs to be drawn from a deck's draw pile, but it is empty. Its 
 
 \item
 
-Blessings and face down actions may also be played during the opponent's turn. This can be done at any time, including between the opponent playing a card and executing its action. In such a situation, the player whose turn it is, may in turn, also respond before executing their original action. This can repeat ad infinitum.
+Blessings and face down cards may also be played during the opponent's turn. This can be done at any time, including between the opponent playing a card and executing its action. In such a situation, the player whose turn it is, may in turn, also respond before executing their original action. This can repeat ad infinitum.
 
 \item
 
@@ -194,7 +196,7 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 \card{Alternative Medicine}{Action}{Restore \nature$+$\chance \ HP.}{\twocost}
 &
 \card{Mystical Restoration}{Action}{Restore \magic$\times$\nature \ HP.}{\threecost}
-& 
+&
 
 \card{Marketplace}{Action}{Gain \gold \ gold.}{\onecost}
 &
@@ -235,18 +237,18 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 \card{Purism}{Action}{Double the strength of all your single-element effects.}{\threecost}
 &
 
-\card{Risk Aversion}{Passive}{You may choose not to reroll the \chance \ die when its value is needed.}{\threecost}
+\card{Risk Aversion}{Passive}{You may choose not to re-roll the \chance \ die when its value is needed.}{\threecost}
 &
 
-\card{Gambling}{Action}{Reroll a die once.}{\onecost}
+\card{Gambling}{Action}{Re-roll a die once.}{\onecost}
 &
 \card{Cheap Trick}{Action}{Change the value of a die by one.}{\onecost}
 &
-\card{Second Chance}{Action}{Reroll a die up to twice.}{\twocost}
+\card{Second Chance}{Action}{Re-roll a die up to twice.}{\twocost}
 &
 \card{Sleight of Hand}{Action}{Change the value of a die by up to two.}{\twocost}
 &
-\card{Calculated Risk}{Action}{Reroll a die up to four times.}{\threecost}
+\card{Calculated Risk}{Action}{Re-roll a die up to four times.}{\threecost}
 &
 \card{Smoke and Mirrors}{Action}{Change the value of a die by up to three.}{\threecost}
 &
@@ -257,11 +259,13 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 
 \card{Mirror Wall}{Blessing}{Draw a card and look at your opponent's hand.}{\onecost}
 &
-\card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down actions.}{\onecost}
+\card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down cards.}{\onecost}
 &
 \card{Sneak Peek}{Blessing}{Draw a card and look at the top \handsize cards of your deck.}{\onecost}
 &
 \card{Reconnaissance}{Blessing}{Draw a card and look at the top \handsize cards of your opponent's deck.}{\onecost}
+&
+\card{Forecast}{Blessing}{Draw a card and look at the top \shopsize cards of the shop's draw pile.}{\onecost}
 &
 
 \card{Impatience}{Action}{Reorder your deck.}{\twocost}
@@ -273,24 +277,23 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 
 \card{Weak Hands}{Action}{Your opponent must discard 3 cards from their hand.}{\threecost}
 &
-\card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down actions.}{\threecost}
+\card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down cards.}{\threecost}
 &
 
 \card{Veto}{Action}{Cancel an action of your opponent and permanently remove this card.}{\threecost}
 &
 
-\card{Deep Pockets}{Passive}{You may bid for more than card per turn.}{\twocost}
+\card{All for one}{Blessing}{Discard 3 cards from your hand and play up to 1 extra action.}{\onecost}
 &
-\card{Express Shipping}{Passive}{All cards you buy go into your hand.}{\threecost}
+\card{Deal with the Devil}{Blessing}{Draw a card from the shop's draw pile and ``buy" it for free; play up to 2 extra actions.}{\onecost}
 &
-
-\card{Multitasking Novice}{Blessing}{Play up to 1 additional action.}{\onecost}
+\card{Multitasking Novice}{Blessing}{Play up to 1 extra action.}{\twocost}
 &
-\card{Multitasking Master}{Blessing}{Play up to 2 additional actions.}{\twocost}
+\card{Multitasking Master}{Blessing}{Play up to 2 extra actions.}{\threecost}
 &
-\card{Multitasking Lord}{Blessing}{Play up to 3 additional actions.}{\threecost}
+\card{Multitasking Lord}{Blessing}{Play up to 3 extra actions.}{\fourcost}
 &
-\card{Multitasking God}{Blessing}{Play up to 4 additional actions}{\fourcost}
+\card{Multitasking God}{Blessing}{Play up to 4 extra actions.}{\fivecost}
 &
 
 \card{Exploration Novice}{Action}{Draw 2 cards.}{\onecost}
@@ -306,20 +309,29 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 &
 \card{Recycling Master}{Action}{Permanently remove up to 2 cards from your hand.}{\twocost}
 &
-\card{Recycling Lord}{Action}{Permanently remove up to 3 cards from your hand.}{\threecost}
+\card{Recycling Lord}{Action}{Permanently remove up to 3 cards from your hand or this card.}{\threecost}
 &
-\card{Recycling God}{Action}{Permanently remove up to 4 cards from your hand.}{\fourcost}
+\card{Recycling God}{Action}{Permanently remove up to 4 cards from your hand, discard pile or this card.}{\fourcost}
 &
 
+\card{Wish}{Action}{Buy any card in the game, then shuffle the shop's draw pile.}{\fivecost}
+&
+
+\card{Deep Pockets}{Passive}{You may re-roll the shop and buy cards from it an unlimited number of times per turn.}{\twocost}
+&
+\card{Express Shipping}{Passive}{All cards you buy go into your hand.}{\threecost}
+&
 \card{Re-roller}{Passive}{Shop re-rolls cost 1 less gold.}{\threecost}
 &
 \card{Big Handed}{Passive}{Draw 1 extra card after your turn.}{\fourcost}
 &
-\card{Roomy Table}{Passive}{You have space for 1 extra face down action.}{\threecost}
+\card{Roomy Table}{Passive}{You have space for 1 extra face down card.}{\threecost}
 &
-\card{Cheapskate}{Passive}{Face down actions no longer cost gold to play.}{\threecost}
+\card{Cheapskate}{Passive}{Face down cards no longer cost gold to play.}{\threecost}
 &
-\card{Proactive}{Passive}{You may draw a card as an action.}{\threecost}
+\card{Proactive}{Passive}{Play up to 1 extra action per turn, but draw 1 fewer cards after your turn.}{\fourcost}
+&
+\card{At what cost}{Passive}{Permanently remove a passive card upon buying this; play up to 1 extra action per turn.}{\fourcost}
 &
 \card{Truly Blessed}{Passive}{Draw a card whenever you play a blessing.}{\fourcost}
 &
@@ -357,6 +369,14 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 \card{Basic Income}{Action}{Gain 1 gold.}{\free}
 &
 
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+&
 \card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
 &
 \card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
