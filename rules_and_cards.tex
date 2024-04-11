@@ -1,7 +1,7 @@
 \documentclass[dvipsnames,parskip,a4paper]{scrartcl}
 
 % Colour and design packages
-\usepackage[dvipsnames]{xcolor}
+\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 
@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{etoolbox}
 \usepackage{longtable}
+\usepackage[export]{adjustbox}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1.5cm]{geometry}
 
@@ -21,54 +22,79 @@
 % Our consistent sizing
 \newcommand{\cardroundingradius}{4mm}
 \newcommand{\cardboxroundingradius}{0.5mm}
-\newcommand{\cardtextborderspace}{1.4mm}
+\newcommand{\cardtextborderspace}{1.28mm}
 \newcommand{\cardwidth}{57mm}
 \newcommand{\cardheight}{86mm}
-\newcommand{\cardimageheight}{43mm}
 \newcommand{\cardtitleheight}{7.1mm}
-\newcommand{\cardtextheight}{14.3mm}
-\newcommand{\cardtcspace}{4mm}
+\newcommand{\cardtextheight}{20mm}
 \newcommand{\cardtcheight}{6mm}
+\newcommand{\cardborderspace}{3mm}
+\newcommand{\cardvspace}{3mm}
 \newcommand{\circlesize}{1.25mm}
 
-% Our consistent colours
-\newcommand{\cardtitlecolour}{lightgray}
-\newcommand{\cardtextboxcolour}{lightgray}
-\newcommand{\cardvaluecolour}{lightgray}
-\newcommand{\cardtypecolour}{lightgray}
+\newcommand{\cardimgborderspace}{0.1mm}
+\newcommand{\cardimgwidth}{50.8mm}
+\newcommand{\cardimgheight}{37.7mm}
+\newcommand{\cardimghalfwidth}{25.4mm}
+\newcommand{\cardimghalfheight}{18.85mm}
 
-% Our card template
-\newcommand{\card}[4]{
+% Consistent colours
+\newcommand{\cardcolour}{gray!50}
+\newcommand{\cardboxcolour}{gray!25}
+\newcommand{\cardboxbordercolour}{gray}
+
+% Card template
+\newcommand{\card}[5]{
 
 \begin{tikzpicture}[baseline = (current bounding box.center)]
-\draw[rounded corners = \cardroundingradius] (0,0) rectangle
+\draw[rounded corners = \cardroundingradius, fill = \cardcolour] (0,0) rectangle
     (\cardwidth, \cardheight);
 
-\node (title) at (0.5 * \cardwidth, \cardheight - \cardroundingradius)
-    [ anchor = north, fill = \cardtitlecolour!20, draw = \cardtitlecolour, thick,
+\node (title) at (0.5 * \cardwidth, \cardheight - \cardborderspace)
+    [ anchor = north, fill = \cardboxcolour, draw = \cardboxbordercolour, thick, text centered, 
     rounded corners = \cardboxroundingradius,
-    text width = \cardwidth - 2 * (\cardroundingradius + \cardtextborderspace),
+    inner sep = \cardtextborderspace,
+    text width = \cardwidth - 2 * (\cardborderspace + \cardtextborderspace),
     minimum height = \cardtitleheight]
     { \Large #1 };
 
-\node (text) at (0.5 * \cardwidth, \cardroundingradius + \cardtcheight + \cardtcspace)
-    [ anchor = south, fill = \cardtextboxcolour!20, draw = \cardtextboxcolour, thick,
+\node (image) at (0.5 * \cardwidth, \cardborderspace + \cardtcheight + \cardtextheight + 2 * \cardvspace)
+    [ anchor = south, fill = \cardboxcolour, thick, text centered,
     rounded corners = \cardboxroundingradius,
-    text width = \cardwidth - 2 * (\cardroundingradius + \cardtextborderspace),
-    text depth = \cardtextheight, align = justify]
+    inner sep = \cardimgborderspace,
+    text width = \cardwidth - 2 * (\cardborderspace + \cardimgborderspace),
+    minimum height = \cardheight - \cardtcheight - \cardtextheight - \cardtitleheight - 2 * \cardborderspace - 3 * \cardvspace]
+    {\includegraphics[max size={\cardimgwidth}{\cardimgheight}, min size={\cardimgwidth}{\cardimgheight}, Clip*={.5\width-\cardimghalfwidth} {.5\height-\cardimghalfheight} {.5\width+\cardimghalfwidth} {.5\height+\cardimghalfheight}]{ #5 }};
+
+\node (image_border) at (0.5 * \cardwidth, \cardborderspace + \cardtcheight + \cardtextheight + 2 * \cardvspace)
+    [ anchor = south, draw = \cardboxbordercolour, thick, text centered,
+    rounded corners = \cardboxroundingradius,
+    inner sep = \cardimgborderspace,
+    text width = \cardwidth - 2 * (\cardborderspace + \cardimgborderspace),
+    minimum height = \cardheight - \cardtcheight - \cardtextheight - \cardtitleheight - 2 * \cardborderspace - 3 * \cardvspace]
+    {};
+
+\node (text) at (0.5 * \cardwidth, \cardborderspace + \cardtcheight + \cardvspace)
+    [ anchor = south, fill = \cardboxcolour, draw = \cardboxbordercolour, thick, text centered,
+    rounded corners = \cardboxroundingradius,
+    inner sep = \cardtextborderspace,
+    text width = \cardwidth - 2 * (\cardborderspace + \cardtextborderspace),
+    minimum height = \cardtextheight]
     { #3 };
 
 \node (type)
-    [ fill = \cardtypecolour!20, draw = \cardtypecolour, thick,
-    below left = \cardtcspace + \cardtcheight and 0mm of text, anchor = south west,
+    [ fill = \cardboxcolour, draw = \cardboxbordercolour, thick,
+    below left = \cardvspace + \cardtcheight and 0mm of text, anchor = south west,
     rounded corners = \cardboxroundingradius,
+    inner sep = \cardtextborderspace,
     minimum height = \cardtcheight]
     { #2 };
 
 \node (cost)
-    [ fill = \cardvaluecolour!20, draw = \cardvaluecolour, thick,
-    below right = \cardtcspace + \cardtcheight and 0mm of text, anchor = south east,
+    [ fill = \cardboxcolour, draw = \cardboxbordercolour, thick,
+    below right = \cardvspace + \cardtcheight and 0mm of text, anchor = south east,
     rounded corners = \cardboxroundingradius,
+    inner sep = \cardtextborderspace,
     minimum height = \cardtcheight]
     { #4 Gold };
 
@@ -148,238 +174,238 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 
 \begin{longtable}{ c c c }
 
-\card{Fire}{Action}{Deal \fire \ damage to your opponent.}{\twocost}
+\card{Fire}{Action}{Deal \fire \ damage to your opponent.}{\twocost}{imgs/fire.png}
 &
-\card{Tremor}{Action}{Deal \earth \ damage to your opponent.}{\twocost}
+\card{Tremor}{Action}{Deal \earth \ damage to your opponent.}{\twocost}{imgs/tremor.png}
 &
-\card{Heavy Rain}{Action}{Deal \water \ damage to both yourself and  your opponent.}{\twocost}
+\card{Heavy Rain}{Action}{Deal \water \ damage to both yourself and  your opponent.}{\twocost}{imgs/heavy_rain.png}
 &
-\card{Blind Attack}{Action}{Deal \chance \ to your opponent.}{\twocost}
+\card{Blind Attack}{Action}{Deal \chance \ to your opponent.}{\twocost}{imgs/blind_attack.png}
 &
-\card{Blazing Fire}{Action}{Deal $2 \times$\fire \ damage to your opponent.}{\threecost}
+\card{Blazing Fire}{Action}{Deal $2 \times$\fire \ damage to your opponent.}{\threecost}{imgs/blazing_fire.png}
 &
-\card{Earthquake}{Action}{Deal $2 \times$\earth \ damage to your opponent.}{\threecost}
+\card{Massive Earthquake}{Action}{Deal $2 \times$\earth \ damage to your opponent.}{\threecost}{imgs/earthquake.png}
 &
-\card{Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and your opponent.}{\threecost}
+\card{Torrential Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and your opponent.}{\threecost}{}
 &
-\card{Haphazard Offence}{Action}{Deal $2 \times$\chance \ to your opponent.}{\threecost}
+\card{Haphazard Offence}{Action}{Deal $2 \times$\chance \ to your opponent.}{\threecost}{}
 &
-\card{Volcanic Eruption}{Action}{Deal \fire$+$\earth \ damage to your opponent.}{\threecost}
+\card{Lava Surge}{Action}{Deal \fire$+$\earth \ damage to your opponent.}{\threecost}{}
 &
-\card{Wildfire}{Action}{Deal \fire$+$\chance \ damage to your opponent.}{\threecost}
+\card{Erratic Blaze}{Action}{Deal \fire$+$\chance \ damage to your opponent.}{\threecost}{}
 &
-\card{Uncharted Lands}{Action}{Deal \earth$+$\chance \ damage to your opponent.}{\threecost}
+\card{Chaotic Avalanche}{Action}{Deal \earth$+$\chance \ damage to your opponent.}{\threecost}{}
 &
-\card{Hot Steam}{Action}{Deal \water$+$\fire \ damage to both yourself and your opponent.}{\threecost}
+\card{Scalding Fog}{Action}{Deal \water$+$\fire \ damage to both yourself and your opponent.}{\threecost}{}
 &
-\card{Quicksand}{Action}{Deal \water$+$\earth \ damage to both yourself and your opponent.}{\threecost}
+\card{Devastating Mudslide}{Action}{Deal \water$+$\earth \ damage to both yourself and your opponent.}{\threecost}{}
 &
-\card{Wild Seas}{Action}{Deal \water$+$\chance \ damage to both yourself and your opponent.}{\threecost}
+\card{Wild Seas}{Action}{Deal \water$+$\chance \ damage to both yourself and your opponent.}{\threecost}{}
 &
-\card{Magical Firestorm}{Action}{Deal \magic$\times$\fire \ damage to your opponent.}{\fourcost}
+\card{Magical Inferno}{Action}{Deal \magic$\times$\fire \ damage to your opponent.}{\fourcost}{}
 &
-\card{Meteor Strike}{Action}{Deal \magic$\times$\earth \ damage to your opponent.}{\fourcost}
+\card{Arcane Meteor}{Action}{Deal \magic$\times$\earth \ damage to your opponent.}{\fourcost}{}
 &
-\card{Biblical Flood}{Action}{Deal \magic$\times$\water \ damage to both yourself and your opponent.}{\fourcost}
+\card{Biblical Flood}{Action}{Deal \magic$\times$\water \ damage to both yourself and your opponent.}{\fourcost}{}
 &
-\card{Chaotic Spell}{Action}{Deal \magic$\times$\chance \ damage to your opponent.}{\fourcost}
+\card{Ethereal Havoc}{Action}{Deal \magic$\times$\chance \ damage to your opponent.}{\fourcost}{}
 &
 
-\card{Ecology}{Action}{Restore \nature \ HP.}{\onecost}
+\card{Ecology}{Action}{Restore \nature \ HP.}{\onecost}{}
 &
-\card{Reforestation}{Action}{Restore $2 \times$\nature \ HP.}{\twocost}
+\card{Reforestation}{Action}{Restore $2 \times$\nature \ HP.}{\twocost}{}
 &
-\card{Nature Reserves}{Action}{Restore \nature$+$\earth \ HP.}{\twocost}
+\card{Nature Reserves}{Action}{Restore \nature$+$\earth \ HP.}{\twocost}{}
 &
-\card{Hot Springs}{Action}{Restore \nature$+$\water \ HP.}{\twocost}
+\card{Hot Springs}{Action}{Restore \nature$+$\water \ HP.}{\twocost}{}
 & 
-\card{Alternative Medicine}{Action}{Restore \nature$+$\chance \ HP.}{\twocost}
+\card{Clover Field}{Action}{Restore \nature$+$\chance \ HP.}{\twocost}{}
 &
-\card{Mystical Restoration}{Action}{Restore \magic$\times$\nature \ HP.}{\threecost}
-&
-
-\card{Marketplace}{Action}{Gain \gold \ gold.}{\onecost}
-&
-\card{Treasury}{Action}{Gain $2 \times$\gold \ gold.}{\twocost}
-&
-\card{Gold Mine}{Action}{Gain \gold$+$\earth \ gold.}{\twocost}
-&
-\card{Gold Panning}{Action}{Gain \gold$+$\water \ gold.}{\twocost}
-&
-\card{Free Market}{Action}{Gain \gold$+$\chance \ gold.}{\twocost}
-&
-\card{Ancient Alchemy}{Action}{Gain \magic$\times$\gold \ gold.}{\threecost}
+\card{Mystical Restoration}{Action}{Restore \magic$\times$\nature \ HP.}{\threecost}{}
 &
 
-\card{Water Reservoirs}{Action}{Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\twocost}
+\card{Marketplace}{Action}{Gain \gold \ gold.}{\onecost}{}
 &
-\card{Solid Infrastructure}{Action}{Shield \earth \ against \earth \ damage until the end of your opponent's turn.}{\twocost}
+\card{Treasury}{Action}{Gain $2 \times$\gold \ gold.}{\twocost}{}
 &
-\card{Natural Forests}{Action}{Shield \nature \ against \water \ damage until the end of your opponent's turn.}{\twocost}
+\card{Gold Mine}{Action}{Gain \gold$+$\earth \ gold.}{\twocost}{}
 &
-\card{Magical Barrier}{Action}{Shield \magic \ against multi-element damage until the end of your opponent's turn.}{\twocost}
+\card{Gold Panning}{Action}{Gain \gold$+$\water \ gold.}{\twocost}{}
 &
-\card{Paid Militia}{Action}{Shield any amount by paying one gold per unit of damage until the end of your opponent's turn.}{\twocost}
+\card{Free Market}{Action}{Gain \gold$+$\chance \ gold.}{\twocost}{}
+&
+\card{Ancient Alchemy}{Action}{Gain \magic$\times$\gold \ gold.}{\threecost}{}
+&
+
+\card{Water Reservoirs}{Action}{Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\twocost}{}
+&
+\card{Solid Infrastructure}{Action}{Shield \earth \ against \water \ damage until the end of your opponent's turn.}{\twocost}{}
+&
+\card{Natural Forests}{Action}{Shield \nature \ against \earth \ damage until the end of your opponent's turn.}{\twocost}{}
+&
+\card{Magical Barrier}{Action}{Shield \magic \ against multi-element damage until the end of your opponent's turn.}{\twocost}{}
+&
+\card{Paid Militia}{Action}{Shield any amount by paying one gold per unit of damage until the end of your opponent's turn.}{\twocost}{}
 &
  
-\card{Prometheus's Gift}{Action}{Triple the strength of all your \fire \ effects.}{\threecost}
+\card{Prometheus's Gift}{Action}{Triple the strength of all your \fire \ effects.}{\threecost}{}
 &
-\card{Gaia's Protection}{Action}{Double the strength of all your \earth \ effects.}{\threecost}
+\card{Gaia's Protection}{Action}{Double the strength of all your \earth \ effects.}{\threecost}{}
 &
-\card{Poseidon's Trident}{Action}{Double the strength of all your \water \ effects.}{\threecost}
+\card{Poseidon's Trident}{Action}{Double the strength of all your \water \ effects.}{\threecost}{}
 &
-\card{Ancient Grimoire}{Action}{Double the strength of all your \magic \ effects.}{\threecost}
+\card{Ancient Grimoire}{Action}{Double the strength of all your \magic \ effects.}{\threecost}{}
 &
-\card{Nymphs' Grace}{Action}{Double the strength of all your \nature \ effects.}{\twocost}
+\card{Nymphs' Grace}{Action}{Double the strength of all your \nature \ effects.}{\twocost}{}
 &
-\card{Midas Touch}{Action}{Double the strength of all your \gold \ effects.}{\twocost}
+\card{Midas Touch}{Action}{Double the strength of all your \gold \ effects.}{\twocost}{}
 &
-\card{Purism}{Action}{Double the strength of all your single-element effects.}{\threecost}
-&
-
-\card{Risk Aversion}{Passive}{You may choose not to re-roll the \chance \ die when its value is needed.}{\threecost}
+\card{Purism}{Action}{Double the strength of all your single-element effects.}{\threecost}{}
 &
 
-\card{Gambling}{Action}{Re-roll a die once.}{\onecost}
-&
-\card{Cheap Trick}{Action}{Change the value of a die by one.}{\onecost}
-&
-\card{Second Chance}{Action}{Re-roll a die up to twice.}{\twocost}
-&
-\card{Sleight of Hand}{Action}{Change the value of a die by up to two.}{\twocost}
-&
-\card{Calculated Risk}{Action}{Re-roll a die up to four times.}{\threecost}
-&
-\card{Smoke and Mirrors}{Action}{Change the value of a die by up to three.}{\threecost}
-&
-\card{Perspective Shift}{Action}{Flip a die over.}{\threecost}
-&
-\card{Trickster God}{Action}{Swap the values of two dice.}{\fourcost}
+\card{Risk Aversion}{Passive}{You may choose not to re-roll the \chance \ die when its value is needed.}{\threecost}{}
 &
 
-\card{Mirror Wall}{Blessing}{Draw a card and look at your opponent's hand.}{\onecost}
+\card{Gambling}{Action}{Re-roll a die once.}{\onecost}{}
 &
-\card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down cards.}{\onecost}
+\card{Cheap Trick}{Action}{Change the value of a die by one.}{\onecost}{}
 &
-\card{Sneak Peek}{Blessing}{Draw a card and look at the top \handsize cards of your deck.}{\onecost}
+\card{Second Chance}{Action}{Re-roll a die up to twice.}{\twocost}{}
 &
-\card{Reconnaissance}{Blessing}{Draw a card and look at the top \handsize cards of your opponent's deck.}{\onecost}
+\card{Sleight of Hand}{Action}{Change the value of a die by up to two.}{\twocost}{}
 &
-\card{Forecast}{Blessing}{Draw a card and look at the top \shopsize cards of the shop's draw pile.}{\onecost}
+\card{Calculated Risk}{Action}{Re-roll a die up to four times.}{\threecost}{}
 &
-
-\card{Impatience}{Action}{Reorder your deck.}{\twocost}
+\card{Smoke and Mirrors}{Action}{Change the value of a die by up to three.}{\threecost}{}
 &
-\card{Sabotage}{Action}{Reorder your opponent's deck.}{\twocost}
+\card{Perspective Shift}{Action}{Flip a die over.}{\threecost}{}
 &
-\card{Magnetic Hands}{Action}{Move a chosen card from your deck to your hand and then shuffle your deck.}{\twocost}
-&
-
-\card{Weak Hands}{Action}{Your opponent must discard 3 cards from their hand.}{\threecost}
-&
-\card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down cards.}{\threecost}
+\card{Trickster God}{Action}{Swap the values of two dice.}{\fourcost}{}
 &
 
-\card{Veto}{Action}{Cancel an action of your opponent and permanently remove this card.}{\threecost}
+\card{Mirror Wall}{Blessing}{Draw a card and look at your opponent's hand.}{\onecost}{}
+&
+\card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down cards.}{\onecost}{}
+&
+\card{Sneak Peek}{Blessing}{Draw a card and look at the top \handsize \ cards of your deck.}{\onecost}{}
+&
+\card{Reconnaissance}{Blessing}{Draw a card and look at the top \handsize \ cards of your opponent's deck.}{\onecost}{}
+&
+\card{Forecast}{Blessing}{Draw a card and look at the top \shopsize \ cards of the shop's draw pile.}{\onecost}{}
 &
 
-\card{All for one}{Blessing}{Discard 3 cards from your hand and play up to 1 extra action.}{\onecost}
+\card{Impatience}{Action}{Reorder your deck.}{\twocost}{}
 &
-\card{Deal with the Devil}{Blessing}{Draw a card from the shop's draw pile and ``buy" it for free; play up to 2 extra actions.}{\onecost}
+\card{Sabotage}{Action}{Reorder your opponent's deck.}{\twocost}{}
 &
-\card{Multitasking Novice}{Blessing}{Play up to 1 extra action.}{\twocost}
-&
-\card{Multitasking Master}{Blessing}{Play up to 2 extra actions.}{\threecost}
-&
-\card{Multitasking Lord}{Blessing}{Play up to 3 extra actions.}{\fourcost}
-&
-\card{Multitasking God}{Blessing}{Play up to 4 extra actions.}{\fivecost}
+\card{Magnetic Hands}{Action}{Move a chosen card from your deck to your hand and then shuffle your deck.}{\twocost}{}
 &
 
-\card{Exploration Novice}{Action}{Draw 2 cards.}{\onecost}
+\card{Weak Hands}{Action}{Your opponent must discard 3 cards from their hand.}{\threecost}{}
 &
-\card{Exploration Master}{Action}{Draw 3 cards.}{\twocost}
-&
-\card{Exploration Lord}{Action}{Draw 4 cards.}{\threecost}
-&
-\card{Exploration God}{Action}{Draw 5 cards.}{\fourcost}
+\card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down cards.}{\threecost}{}
 &
 
-\card{Recycling Novice}{Action}{Permanently remove up to 1 card from your hand.}{\onecost}
-&
-\card{Recycling Master}{Action}{Permanently remove up to 2 cards from your hand.}{\twocost}
-&
-\card{Recycling Lord}{Action}{Permanently remove up to 3 cards from your hand or this card.}{\threecost}
-&
-\card{Recycling God}{Action}{Permanently remove up to 4 cards from your hand, discard pile or this card.}{\fourcost}
+\card{Veto}{Action}{Cancel an action of your opponent and permanently remove this card.}{\threecost}{}
 &
 
-\card{Wish}{Action}{Buy any card in the game, then shuffle the shop's draw pile.}{\fivecost}
+\card{All for One}{Blessing}{Discard 3 cards from your hand and play up to 1 extra action.}{\onecost}{}
+&
+\card{Deal with the Devil}{Blessing}{Draw a card from the shop's draw pile and ``buy" it for free; play up to 2 extra actions.}{\onecost}{}
+&
+\card{Multitasking Novice}{Blessing}{Play up to 1 extra action.}{\twocost}{}
+&
+\card{Multitasking Master}{Blessing}{Play up to 2 extra actions.}{\threecost}{}
+&
+\card{Multitasking Lord}{Blessing}{Play up to 3 extra actions.}{\fourcost}{}
+&
+\card{Multitasking God}{Blessing}{Play up to 4 extra actions.}{\fivecost}{}
 &
 
-\card{Deep Pockets}{Passive}{You may re-roll the shop and buy cards from it an unlimited number of times per turn.}{\twocost}
+\card{Exploration Novice}{Action}{Draw 2 cards.}{\onecost}{}
 &
-\card{Express Shipping}{Passive}{All cards you buy go into your hand.}{\threecost}
+\card{Exploration Master}{Action}{Draw 3 cards.}{\twocost}{}
 &
-\card{Re-roller}{Passive}{Shop re-rolls cost 1 less gold.}{\threecost}
+\card{Exploration Lord}{Action}{Draw 4 cards.}{\threecost}{}
 &
-\card{Big Handed}{Passive}{Draw 1 extra card after your turn.}{\fourcost}
-&
-\card{Roomy Table}{Passive}{You have space for 1 extra face down card.}{\threecost}
-&
-\card{Cheapskate}{Passive}{Face down cards no longer cost gold to play.}{\threecost}
-&
-\card{Proactive}{Passive}{Play up to 1 extra action per turn, but draw 1 fewer cards after your turn.}{\fourcost}
-&
-\card{At what cost}{Passive}{Permanently remove a passive card upon buying this; play up to 1 extra action per turn.}{\fourcost}
-&
-\card{Truly Blessed}{Passive}{Draw a card whenever you play a blessing.}{\fourcost}
+\card{Exploration God}{Action}{Draw 5 cards.}{\fourcost}{}
 &
 
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+\card{Recycling Novice}{Action}{Permanently remove up to 1 card from your hand.}{\onecost}{}
 &
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+\card{Recycling Master}{Action}{Permanently remove up to 2 cards from your hand.}{\twocost}{}
 &
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+\card{Recycling Lord}{Action}{Permanently remove up to 3 cards from your hand or this card.}{\threecost}{}
 &
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
-&
-\card{Basic Income}{Action}{Gain 1 gold.}{\free}
+\card{Recycling God}{Action}{Permanently remove up to 4 cards from your hand, discard pile or this card.}{\fourcost}{}
 &
 
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+\card{Wish}{Action}{Buy any card in the game, then shuffle the shop's draw pile.}{\fivecost}{}
 &
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+
+\card{Deep Pockets}{Passive}{You may re-roll the shop and buy cards from it an unlimited number of times per turn.}{\twocost}{}
 &
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+\card{Express Shipping}{Passive}{All cards you buy go into your hand.}{\threecost}{}
 &
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+\card{Re-roller}{Passive}{Shop re-rolls cost 1 less gold.}{\threecost}{}
 &
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+\card{Big Handed}{Passive}{Draw 1 extra card after your turn.}{\fourcost}{}
 &
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }
+\card{Roomy Table}{Passive}{You have space for 1 extra face down card.}{\threecost}{}
+&
+\card{Cheapskate}{Passive}{Face down cards no longer cost gold to play.}{\threecost}{}
+&
+\card{Proactive}{Passive}{Play up to 1 extra action per turn, but draw 1 fewer cards after your turn.}{\fourcost}{}
+&
+\card{At what cost}{Passive}{Permanently remove a passive card upon buying this; play up to 1 extra action per turn.}{\fourcost}{}
+&
+\card{Truly Blessed}{Passive}{Draw a card whenever you play a blessing.}{\fourcost}{}
+&
+
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+\card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
+&
+
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
+&
+\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
 &
 
 \end{longtable}
