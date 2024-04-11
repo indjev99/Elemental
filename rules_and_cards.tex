@@ -26,7 +26,7 @@
 \newcommand{\cardwidth}{57mm}
 \newcommand{\cardheight}{86mm}
 \newcommand{\cardtitleheight}{7.1mm}
-\newcommand{\cardtextheight}{20mm}
+\newcommand{\cardtextheight}{15.6mm}
 \newcommand{\cardtcheight}{6mm}
 \newcommand{\cardborderspace}{3mm}
 \newcommand{\cardvspace}{3mm}
@@ -34,13 +34,13 @@
 
 \newcommand{\cardimgborderspace}{0.1mm}
 \newcommand{\cardimgwidth}{50.8mm}
-\newcommand{\cardimgheight}{37.7mm}
+\newcommand{\cardimgheight}{42.1mm}
 \newcommand{\cardimghalfwidth}{25.4mm}
-\newcommand{\cardimghalfheight}{18.85mm}
+\newcommand{\cardimghalfheight}{21.05mm}
 
 % Consistent colours
-\newcommand{\cardcolour}{gray!50}
-\newcommand{\cardboxcolour}{gray!25}
+\newcommand{\cardcolour}{gray!60}
+\newcommand{\cardboxcolour}{gray!30}
 \newcommand{\cardboxbordercolour}{gray}
 
 % Card template
@@ -142,7 +142,7 @@ The game is played between two players who take turns. The player whose HP reach
 
 \item
 
-Seven dice determine the strengths of various cards: fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and chance \chance. They are rolled at the start of the game. The chance \chance \ die is also re-rolled whenever its value is needed (possibly multiple times per turn) and dice-control cards cannot affect it.
+Seven dice determine the strengths of various cards: fire \fire, earth \earth, water \water, nature \nature, magic \magic, gold \gold \ and chance \chance. They are rolled at the start of the game. The chance \chance \ die is also rerolled whenever its value is needed (possibly multiple times per turn) and dice-control cards cannot affect it.
 
 \item
 
@@ -150,11 +150,11 @@ Each starts with 60 HP and 8 Basic Income cards in their draw pile. The first pl
 
 \item
 
-All non-starter cards are shuffled into a shop deck. Initially, there is no shop laid out. When a player re-rolls the shop, which costs \rerollcost \ gold, the current laid out shop is moved to the shop's discard pile and \shopsize \ cards are drawn from the shop's draw pile. When a card is bought by a player, by paying its cost, it is not automatically replaced with a new card. The bought card goes to the player's discard pile, unless it is a passive card, in which case it is immediately and permanently deployed.
+All non-starter cards are shuffled into a shop deck. Initially, there is no shop laid out. When a player rerolls the shop, which costs \rerollcost \ gold, the current laid out shop is moved to the shop's discard pile and \shopsize \ cards are drawn from the shop's draw pile. When a card is bought by a player, by paying its cost, it is not automatically replaced with a new card. The bought card goes to the player's discard pile, unless it is a passive card, in which case it is immediately and permanently deployed.
 
 \item
 
-On each turn a player may (in any order): gain one gold, play at most one action from their hand, play any number of blessings from their hand, play any number of face down cards, re-roll the shop at most twice, buy at most one card from the shop. Instead of playing an action, the player may place a card face down, which costs \facedowncost \ gold. A played card, after its effect is executed, goes to the player's discard pile. After a player's turn is over, they have to discard their hand and draw \handsize \ cards from their draw pile (this is also done at the start of the game). A player may have at most \dacedownsize \ face down cards at a time.
+On each turn a player may (in any order): gain one gold, play at most one action from their hand, play any number of blessings from their hand, play any number of face down cards, reroll the shop at most twice, buy at most one card from the shop. Instead of playing an action, the player may place a card face down, which costs \facedowncost \ gold. A played card, after its effect is executed, goes to the player's discard pile. After a player's turn is over, they have to discard their hand and draw \handsize \ cards from their draw pile (this is also done at the start of the game). A player may have at most \dacedownsize \ face down cards at a time.
 
 \item
 
@@ -186,34 +186,34 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 &
 \card{Massive Earthquake}{Action}{Deal $2 \times$\earth \ damage to your opponent.}{\threecost}{imgs/earthquake.png}
 &
-\card{Torrential Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and your opponent.}{\threecost}{}
+\card{Torrential Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and your opponent.}{\threecost}{imgs/torrential_rainstorm.png}
 &
-\card{Haphazard Offence}{Action}{Deal $2 \times$\chance \ to your opponent.}{\threecost}{}
+\card{Haphazard Offence}{Action}{Deal $2 \times$\chance \ to your opponent.}{\threecost}{imgs/haphazard_offence.png}
 &
-\card{Lava Surge}{Action}{Deal \fire$+$\earth \ damage to your opponent.}{\threecost}{}
+\card{Lava Surge}{Action}{Deal \fire$+$\earth \ damage to your opponent.}{\threecost}{imgs/lava_surge.png}
 &
-\card{Erratic Blaze}{Action}{Deal \fire$+$\chance \ damage to your opponent.}{\threecost}{}
+\card{Erratic Blaze}{Action}{Deal \fire$+$\chance \ damage to your opponent.}{\threecost}{imgs/erratic_blaze.png}
 &
-\card{Chaotic Avalanche}{Action}{Deal \earth$+$\chance \ damage to your opponent.}{\threecost}{}
+\card{Chaotic Avalanche}{Action}{Deal \earth$+$\chance \ damage to your opponent.}{\threecost}{imgs/chaotic_avalanche.png}
 &
-\card{Scalding Fog}{Action}{Deal \water$+$\fire \ damage to both yourself and your opponent.}{\threecost}{}
+\card{Scalding Fog}{Action}{Deal \water$+$\fire \ damage to both yourself and your opponent.}{\threecost}{imgs/scalding_fog.png}
 &
-\card{Devastating Mudslide}{Action}{Deal \water$+$\earth \ damage to both yourself and your opponent.}{\threecost}{}
+\card{Devastating Mudslide}{Action}{Deal \water$+$\earth \ damage to both yourself and your opponent.}{\threecost}{imgs/devastating_mudslide.png}
 &
-\card{Wild Seas}{Action}{Deal \water$+$\chance \ damage to both yourself and your opponent.}{\threecost}{}
+\card{Wild Seas}{Action}{Deal \water$+$\chance \ damage to both yourself and your opponent.}{\threecost}{imgs/wild_seas.png}
 &
-\card{Magical Inferno}{Action}{Deal \magic$\times$\fire \ damage to your opponent.}{\fourcost}{}
+\card{Magical Inferno}{Action}{Deal \fire$\times$\magic \ damage to your opponent.}{\fourcost}{imgs/magical_inferno.png}
 &
-\card{Arcane Meteor}{Action}{Deal \magic$\times$\earth \ damage to your opponent.}{\fourcost}{}
+\card{Arcane Meteor}{Action}{Deal \earth$\times$\magic \ damage to your opponent.}{\fourcost}{imgs/arcane_meteor.png}
 &
-\card{Biblical Flood}{Action}{Deal \magic$\times$\water \ damage to both yourself and your opponent.}{\fourcost}{}
+\card{Biblical Flood}{Action}{Deal \water$\times$\magic \ damage to both yourself and your opponent.}{\fourcost}{imgs/biblical_flood.png}
 &
-\card{Ethereal Havoc}{Action}{Deal \magic$\times$\chance \ damage to your opponent.}{\fourcost}{}
+\card{Ethereal Havoc}{Action}{Deal \chance$\times$\magic \ damage to your opponent.}{\fourcost}{imgs/ethereal_havoc.png}
 &
 
-\card{Ecology}{Action}{Restore \nature \ HP.}{\onecost}{}
+\card{Flower Garden}{Action}{Restore \nature \ HP.}{\onecost}{}
 &
-\card{Reforestation}{Action}{Restore $2 \times$\nature \ HP.}{\twocost}{}
+\card{Lush Forests}{Action}{Restore $2 \times$\nature \ HP.}{\twocost}{}
 &
 \card{Nature Reserves}{Action}{Restore \nature$+$\earth \ HP.}{\twocost}{}
 &
@@ -221,7 +221,7 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 & 
 \card{Clover Field}{Action}{Restore \nature$+$\chance \ HP.}{\twocost}{}
 &
-\card{Mystical Restoration}{Action}{Restore \magic$\times$\nature \ HP.}{\threecost}{}
+\card{Mystical Restoration}{Action}{Restore \nature$\times$\magic \ HP.}{\threecost}{}
 &
 
 \card{Marketplace}{Action}{Gain \gold \ gold.}{\onecost}{}
@@ -234,7 +234,7 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 &
 \card{Free Market}{Action}{Gain \gold$+$\chance \ gold.}{\twocost}{}
 &
-\card{Ancient Alchemy}{Action}{Gain \magic$\times$\gold \ gold.}{\threecost}{}
+\card{Ancient Alchemy}{Action}{Gain \gold$\times$\magic \ gold.}{\threecost}{}
 &
 
 \card{Water Reservoirs}{Action}{Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\twocost}{}
@@ -245,7 +245,7 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 &
 \card{Magical Barrier}{Action}{Shield \magic \ against multi-element damage until the end of your opponent's turn.}{\twocost}{}
 &
-\card{Paid Militia}{Action}{Shield any amount by paying one gold per unit of damage until the end of your opponent's turn.}{\twocost}{}
+\card{Paid Militia}{Action}{\small Shield any damage by paying one gold per damage until the end of your opponent's turn.}{\twocost}{}
 &
  
 \card{Prometheus's Gift}{Action}{Triple the strength of all your \fire \ effects.}{\threecost}{}
@@ -263,18 +263,18 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 \card{Purism}{Action}{Double the strength of all your single-element effects.}{\threecost}{}
 &
 
-\card{Risk Aversion}{Passive}{You may choose not to re-roll the \chance \ die when its value is needed.}{\threecost}{}
+\card{Risk Aversion}{Passive}{You may choose not to reroll the \chance \ die when its value is needed.}{\threecost}{}
 &
 
-\card{Gambling}{Action}{Re-roll a die once.}{\onecost}{}
+\card{Gambling}{Action}{Reroll a die once.}{\onecost}{}
 &
 \card{Cheap Trick}{Action}{Change the value of a die by one.}{\onecost}{}
 &
-\card{Second Chance}{Action}{Re-roll a die up to twice.}{\twocost}{}
+\card{Second Chance}{Action}{Reroll a die up to twice.}{\twocost}{}
 &
 \card{Sleight of Hand}{Action}{Change the value of a die by up to two.}{\twocost}{}
 &
-\card{Calculated Risk}{Action}{Re-roll a die up to four times.}{\threecost}{}
+\card{Calculated Risk}{Action}{Reroll a die up to four times.}{\threecost}{}
 &
 \card{Smoke and Mirrors}{Action}{Change the value of a die by up to three.}{\threecost}{}
 &
@@ -311,7 +311,7 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 
 \card{All for One}{Blessing}{Discard 3 cards from your hand and play up to 1 extra action.}{\onecost}{}
 &
-\card{Deal with the Devil}{Blessing}{Draw a card from the shop's draw pile and ``buy" it for free; play up to 2 extra actions.}{\onecost}{}
+\card{Deal with the Devil}{Blessing}{Buy the top card of the shop's draw pile for free; play up to 2 extra actions.}{\onecost}{}
 &
 \card{Multitasking Novice}{Blessing}{Play up to 1 extra action.}{\twocost}{}
 &
@@ -343,21 +343,21 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 \card{Wish}{Action}{Buy any card in the game, then shuffle the shop's draw pile.}{\fivecost}{}
 &
 
-\card{Deep Pockets}{Passive}{You may re-roll the shop and buy cards from it an unlimited number of times per turn.}{\twocost}{}
+\card{Deep Pockets}{Passive}{You may reroll the shop and buy cards an unlimited number of times per turn.}{\twocost}{}
 &
 \card{Express Shipping}{Passive}{All cards you buy go into your hand.}{\threecost}{}
 &
-\card{Re-roller}{Passive}{Shop re-rolls cost 1 less gold.}{\threecost}{}
+\card{Reroller}{Passive}{Shop rerolls cost 1 gold less.}{\threecost}{}
 &
 \card{Big Handed}{Passive}{Draw 1 extra card after your turn.}{\fourcost}{}
 &
-\card{Roomy Table}{Passive}{You have space for 1 extra face down card.}{\threecost}{}
+\card{Spacious Table}{Passive}{You have space for 1 extra face down card.}{\threecost}{}
 &
 \card{Cheapskate}{Passive}{Face down cards no longer cost gold to play.}{\threecost}{}
 &
-\card{Proactive}{Passive}{Play up to 1 extra action per turn, but draw 1 fewer cards after your turn.}{\fourcost}{}
+\card{Proactive}{Passive}{Play up to 1 extra action per turn, but draw 1 card less after your turn.}{\fourcost}{}
 &
-\card{At what cost}{Passive}{Permanently remove a passive card upon buying this; play up to 1 extra action per turn.}{\fourcost}{}
+\card{At What Cost}{Passive}{ \small Permanently remove a passive card upon buying this; play up to 1 extra action per turn.}{\fourcost}{}
 &
 \card{Truly Blessed}{Passive}{Draw a card whenever you play a blessing.}{\fourcost}{}
 &
