@@ -103,7 +103,7 @@
 }
 
 % Elemental symbols
-\newcommand{\drawcircle}[1]{\tikz[baseline = (current bounding box.south)]\draw[darkgray, fill = #1] (0,0) circle (\circlesize);}}
+\newcommand{\drawcircle}[1]{\tikz[baseline = (current bounding box.south)]\draw[darkgray, fill = #1] (0,0) circle (\circlesize);}
 \newcommand{\fire}{\drawcircle{Red}}
 \newcommand{\earth}{\drawcircle{Sepia}}
 \newcommand{\water}{\drawcircle{RoyalBlue}}
@@ -127,7 +127,7 @@
 \newcommand{\dacedownsize}{2}
 \newcommand{\shopsize}{5}
 
-\title{Rules and Cards for Elemental Deck Builder}
+\title{Elemental Dice}
 \author{Emil Indzhev}
 
 \begin{document}
@@ -184,7 +184,7 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 &
 \card{Blazing Fire}{Action}{Deal $2 \times$\fire \ damage to your opponent.}{\threecost}{imgs/blazing_fire.png}
 &
-\card{Massive Earthquake}{Action}{Deal $2 \times$\earth \ damage to your opponent.}{\threecost}{imgs/earthquake.png}
+\card{Massive Earthquake}{Action}{Deal $2 \times$\earth \ damage to your opponent.}{\threecost}{imgs/massive_earthquake.png}
 &
 \card{Torrential Rainstorm}{Action}{Deal $2 \times$\water \ damage to both yourself and your opponent.}{\threecost}{imgs/torrential_rainstorm.png}
 &
@@ -237,11 +237,11 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 \card{Ancient Alchemy}{Action}{Gain \gold$\times$\magic \ gold.}{\threecost}{imgs/ancient_alchemy.png}
 &
 
-\card{Water Reservoirs}{Action}{Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\twocost}{}
+\card{Water Reservoirs}{Action}{Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\onecost}{}
 &
-\card{Solid Infrastructure}{Action}{Shield \earth \ against \water \ damage until the end of your opponent's turn.}{\twocost}{}
+\card{Solid Infrastructure}{Action}{Shield \earth \ against \water \ damage until the end of your opponent's turn.}{\onecost}{}
 &
-\card{Natural Forests}{Action}{Shield \nature \ against \earth \ damage until the end of your opponent's turn.}{\twocost}{}
+\card{Natural Forests}{Action}{Shield \nature \ against \earth \ damage until the end of your opponent's turn.}{\onecost}{}
 &
 \card{Magical Barrier}{Action}{Shield \magic \ against multi-element damage until the end of your opponent's turn.}{\twocost}{}
 &
@@ -287,18 +287,18 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 &
 \card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down cards.}{\onecost}{}
 &
-\card{Sneak Peek}{Blessing}{Draw a card and look at the top \handsize \ cards of your deck.}{\onecost}{}
+\card{Sneak Peek}{Blessing}{Draw a card and look at the top \handsize \ cards of your draw pile.}{\onecost}{}
 &
-\card{Reconnaissance}{Blessing}{Draw a card and look at the top \handsize \ cards of your opponent's deck.}{\onecost}{}
+\card{Reconnaissance}{Blessing}{Draw a card and look at the top \handsize \ cards of your opponent's draw pile.}{\onecost}{}
 &
 \card{Forecast}{Blessing}{Draw a card and look at the top \shopsize \ cards of the shop's draw pile.}{\onecost}{}
 &
 
-\card{Impatience}{Action}{Reorder your deck.}{\twocost}{}
+\card{Impatience}{Action}{Reorder your draw pile.}{\twocost}{}
 &
-\card{Sabotage}{Action}{Reorder your opponent's deck.}{\twocost}{}
+\card{Sabotage}{Action}{Reorder your opponent's draw pile.}{\twocost}{}
 &
-\card{Magnetic Hands}{Action}{Move a chosen card from your deck to your hand and then shuffle your deck.}{\twocost}{}
+\card{Magnetic Hands}{Action}{ \small Move any card from your draw or discard pile to your hand, then shuffle your draw pile.}{\twocost}{}
 &
 
 \card{Weak Hands}{Action}{Your opponent must discard 3 cards from their hand.}{\threecost}{}
@@ -311,7 +311,9 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 
 \card{All for One}{Blessing}{Discard 3 cards from your hand and play up to 1 extra action.}{\onecost}{}
 &
-\card{Deal with the Devil}{Blessing}{Buy the top card of the shop's draw pile for free; play up to 2 extra actions.}{\onecost}{}
+\card{Cruel Pact}{Blessing}{Take \chance \ damage and play up to 1 extra action.}{\onecost}{}
+&
+\card{Deal with the Devil}{Blessing}{Take $2\times$\chance \ damage and play up to 2 extra actions.}{\onecost}{}
 &
 \card{Multitasking Novice}{Blessing}{Play up to 1 extra action.}{\twocost}{}
 &
@@ -331,16 +333,16 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 \card{Exploration God}{Action}{Draw 5 cards.}{\fourcost}{}
 &
 
-\card{Recycling Novice}{Action}{Permanently remove up to 1 card from your hand.}{\onecost}{}
+\card{Optimization Novice}{Action}{Permanently remove up to 1 card from your hand.}{\onecost}{}
 &
-\card{Recycling Master}{Action}{Permanently remove up to 2 cards from your hand.}{\twocost}{}
+\card{Optimization Master}{Action}{Permanently remove up to 2 cards from your hand.}{\twocost}{}
 &
-\card{Recycling Lord}{Action}{Permanently remove up to 3 cards from your hand or this card.}{\threecost}{}
+\card{Optimization Lord}{Action}{Permanently remove up to 3 cards from your hand or this card.}{\threecost}{}
 &
-\card{Recycling God}{Action}{Permanently remove up to 4 cards from your hand, discard pile or this card.}{\fourcost}{}
+\card{Optimization God}{Action}{Permanently remove up to 4 cards from your hand, discard pile or this card.}{\fourcost}{}
 &
 
-\card{Wish}{Action}{Buy any card in the game, then shuffle the shop's draw pile.}{\fivecost}{}
+\card{Wish}{Action}{Buy any avaliable card in the game for free, then shuffle the shop's draw pile.}{\fivecost}{}
 &
 
 \card{Deep Pockets}{Passive}{You may reroll the shop and buy cards an unlimited number of times per turn.}{\twocost}{}
@@ -395,8 +397,6 @@ A player dealing damage (to their opponent or themselves) receives gold equal to
 \card{Basic Income}{Action}{Gain 1 gold.}{\free}{}
 &
 
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
-&
 \card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
 &
 \card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}

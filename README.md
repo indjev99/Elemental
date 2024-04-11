@@ -1,2 +1,2 @@
-# Elemental-Deck-Builder
-Work in progress board game ruleset and cardset.
+# Elemental-Dice
+WIP deck building board game.
