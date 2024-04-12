@@ -1,1 +1,1 @@
-pdflatex rules_and_cards.tex --interaction=nonstopmode
+lualatex rules_and_cards.tex --interaction=nonstopmode <<< "r"
