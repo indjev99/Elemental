@@ -206,7 +206,7 @@ After the player's turn is over, they have to discard their hand to their discar
 
 Blessings and face down cards may also be played during the opponent's turn. This can be done at any time, including between the opponent playing a card and executing its effect. In such a situation, the opponent, may in turn, also respond (possibly with multiple cards) before executing their original action. This can repeat ad infinitum.
 
-For example: It is Alice's turn and she plays a \fire attack. Then, Bob plays a blessing (from his hand) that allows him to see Alice's hand. After that he plays (flips over and activates) two of his face down cards: first, a card that allows him to reroll the \fire die; second, a \water shield agains this attack. Alice wants to counter the shield, so she plays a blessing that allows her to play another action, after which she plays ``Veto'', which cancels Bob's shield. (Note that ``Veto'' can only be played as a response to another active card (action or blessing) by the opponent.)
+For example: It is Alice's turn and she plays a \fire \ attack. Then, Bob plays a blessing (from his hand) that allows him to see Alice's hand. After that he plays (flips over and activates) two of his face down cards: first, a card that allows him to reroll the \fire \ die; second, a \water \ shield agains this attack. Alice wants to counter the shield, so she plays a blessing that allows her to play another action, after which she plays ``Veto'', which cancels Bob's shield.
 
 \subsubsection*{Gold}
 
@@ -218,14 +218,17 @@ Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its 
 
 \subsection*{Shields}
 
-Elemental shields work by subtracting the value of the element they scale with from the value of the element they target in all attacks (without going negative), this is done before any scaling calculations (such as times 2 or times \magic). Note that ``Magical Barrier'' (``Shield \magic \ against \fire, \earth \ or \water \ (only one) in multi-element damage until the end of your opponent's turn.'') can target any of \fire, \earth \ or \water \ (only one per attack), but only in multi-element attacks. The choice of which to target is individual for each attack. Unlike all of these, ``Paid Militia'' (``Shield any damage by paying one gold per damage until the end of your opponent's turn.'') is applied to the final damage number, since it does not scale with or target particular elements. Multiple shields may affect the same attack, if all apply. Note that preventing damage due to shielding also prevents the opponent from gaining the gold they would have received otherwise (since the damage was not actually dealt).
+Elemental shields work by subtracting the value of the element they scale with from the value of the element they target in all attacks (without going negative), this is done before any scaling calculations (such as times 2 or times \magic). Note that ``Magical Barrier'' (``Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.'') can target any of \fire, \earth \ or \water \ (only one per attack), but only in multi-element attacks. The choice of which to target is individual for each attack. Unlike all of these, ``Paid Militia'' (``Shield any damage by paying one gold per damage until the end of your opponent's turn.'') is applied to the final damage number, since it does not scale with or target particular elements. Multiple shields may affect the same attack, if all apply. Note that preventing damage due to shielding also prevents the opponent from gaining the gold they would have received otherwise (since the damage was not actually dealt).
 
 \subsection*{Clarifications}
 
 \begin{itemize}
-\item Permanently removing a card means removing it from your deck and returning it to the game box. It can still be targeted by ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.'').
+\item Players' discard piles are face down and are private information, as is the card chosen with ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.''). Gold and HP are public information.
+\item Permanently removing a card means removing it from your deck and returning it to the game box. It can still be targeted by ``Wish''.
 \item Whenever a player needs to discard some number of cards (from their hand or face down cards) but has fewer than that, they simply discard all such cards and that effect is considered as exectuted.
-\item ``At What Cost'' (``Permanently remove another passive card you own upon buying this; play up to 1 extra action per turn.'') cannot be bought, if the player does not own another passive card.
+\item ``At What Cost'' (``Permanently remove a passive you own upon buying this; play up to 1 extra action per turn.'') cannot be bought, if the player does not own another passive card.
+\item ``Veto'' (``Cancel the last action or blessing of your opponent and permanently remove this card.'') can only be played as a response to another active card (action or blessing) by the opponent.
+\item Do not take too long (no longer than 1-2 minutes, as agreed) for cards such as ``Well-Laid Plans'' (``Reorder your draw pile.'') and ``Sabotage'' (``Reorder your opponent's draw pile.'').
 \end{itemize}
 
 \newpage
@@ -269,21 +272,6 @@ Elemental shields work by subtracting the value of the element they scale with f
 \card{Ethereal Havoc}{Action}{Deal \chance\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fourcost}{imgs/ethereal_havoc.png}
 &
 
-\card{Flower Gardens}{Action}{Gain \nature \ HP.}{\onecost}{imgs/flower_gardens.png}
-&
-\card{Lush Forests}{Action}{Gain 2\hspace{1pt}$\times$\hspace{1pt}\nature \ HP.}{\twocost}{imgs/lush_forests.png}
-&
-\card{Controlled Burn}{Action}{Gain \nature\hspace{1pt}$+$\hspace{1pt}\fire \ HP.}{\twocost}{imgs/controlled_burn.png}
-&
-\card{Fertile Soils}{Action}{Gain \nature\hspace{1pt}$+$\hspace{1pt}\earth \ HP.}{\twocost}{imgs/fertile_soils.png}
-&
-\card{Hot Springs}{Action}{Gain \nature\hspace{1pt}$+$\hspace{1pt}\water \ HP.}{\twocost}{imgs/hot_springs.png}
-& 
-\card{Clover Fields}{Action}{Gain \nature\hspace{1pt}$+$\hspace{1pt}\chance \ HP.}{\twocost}{imgs/clover_fields.png}
-&
-\card{Mystical Restoration}{Action}{Gain \nature\hspace{1pt}$\times$\hspace{1pt}\magic \ HP.}{\threecost}{imgs/mystical_restoration.png}
-&
-
 \card{Marketplace}{Action}{Gain \gold \ gold.}{\onecost}{imgs/marketplace.png}
 &
 \card{Treasury}{Action}{Gain 2\hspace{1pt}$\times$\hspace{1pt}\gold \ gold.}{\twocost}{imgs/treasury.png}
@@ -299,13 +287,28 @@ Elemental shields work by subtracting the value of the element they scale with f
 \card{Ancient Alchemy}{Action}{Gain \gold\hspace{1pt}$\times$\hspace{1pt}\magic \ gold.}{\threecost}{imgs/ancient_alchemy.png}
 &
 
+\card{Flower Gardens}{Action}{Gain \nature \ HP.}{\onecost}{imgs/flower_gardens.png}
+&
+\card{Lush Forests}{Action}{Gain 2\hspace{1pt}$\times$\hspace{1pt}\nature \ HP.}{\twocost}{imgs/lush_forests.png}
+&
+\card{Controlled Burn}{Action}{Gain \nature\hspace{1pt}$+$\hspace{1pt}\fire \ HP.}{\twocost}{imgs/controlled_burn.png}
+&
+\card{Fertile Soils}{Action}{Gain \nature\hspace{1pt}$+$\hspace{1pt}\earth \ HP.}{\twocost}{imgs/fertile_soils.png}
+&
+\card{Hot Springs}{Action}{Gain \nature\hspace{1pt}$+$\hspace{1pt}\water \ HP.}{\twocost}{imgs/hot_springs.png}
+& 
+\card{Clover Fields}{Action}{Gain \nature\hspace{1pt}$+$\hspace{1pt}\chance \ HP.}{\twocost}{imgs/clover_fields.png}
+&
+\card{Mystical Restoration}{Action}{Gain \nature\hspace{1pt}$\times$\hspace{1pt}\magic \ HP.}{\threecost}{imgs/mystical_restoration.png}
+&
+
 \card{Water Reservoirs}{Action}{\small Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\onecost}{imgs/water_reservoirs.png}
 &
 \card{Solid Infrastructure}{Action}{\small Shield \earth \ against \water \ damage until the end of your opponent's turn.}{\onecost}{imgs/solid_infrastructure.png}
 &
 \card{Natural Forests}{Action}{\small Shield \nature \ against \earth \ damage until the end of your opponent's turn.}{\onecost}{imgs/natural_forests.png}
 &
-\card{Magical Barrier}{Action}{\small Shield \magic \ against \fire, \earth \ or \water \ (only one) in multi-element damage until the end of your opponent's turn.}{\twocost}{imgs/magical_barrier.png}
+\card{Magical Barrier}{Action}{\footnotesize Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.}{\twocost}{imgs/magical_barrier.png}
 &
 \card{Paid Militia}{Action}{\small Shield any damage by paying one gold per damage until the end of your opponent's turn.}{\onecost}{imgs/paid_militia.png}
 &
@@ -367,14 +370,14 @@ Elemental shields work by subtracting the value of the element they scale with f
 \card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down cards.}{\threecost}{imgs/faulty_table.png}
 &
 
-\card{Veto}{Action}{Cancel the last active card (blessing or action) of your opponent and permanently remove this card. Can only be played as a response.}{\threecost}{imgs/veto.png}
+\card{Veto}{Action}{ \small Cancel the last action or blessing of your opponent and permanently remove this card.}{\threecost}{imgs/veto.png}
 &
 
 \card{All for One}{Blessing}{Discard 3 cards from your hand and play up to 1 extra action.}{\onecost}{imgs/all_for_one.png}
 &
-\card{Cruel Pact}{Blessing}{Lose \chance \ HP (do not receive gold) and play up to 1 extra action.}{\onecost}{imgs/cruel_pact.png}
+\card{Cruel Pact}{Blessing}{Lose \chance \ HP and play up to 1 extra action.}{\onecost}{imgs/cruel_pact.png}
 &
-\card{Deal with the Devil}{Blessing}{Lose $2\times$\chance \ HP (do not receive gold) and play up to 2 extra actions.}{\onecost}{imgs/deal_with_the_devil.png}
+\card{Deal with the Devil}{Blessing}{Lose $2\times$\chance \ HP and play up to 2 extra actions.}{\onecost}{imgs/deal_with_the_devil.png}
 &
 \card{Multitasking Novice}{Blessing}{Play up to 1 extra action.}{\twocost}{imgs/multitasking_novice.png}
 &
@@ -420,7 +423,7 @@ Elemental shields work by subtracting the value of the element they scale with f
 &
 \card{Clear Mind}{Passive}{Play up to 1 extra action per turn, but draw 1 card less after your turn.}{\fourcost}{imgs/clear_mind.png}
 &
-\card{At What Cost}{Passive}{ \small Permanently remove another passive card you own upon buying this; play up to 1 extra action per turn.}{\fourcost}{imgs/at_what_cost.png}
+\card{At What Cost}{Passive}{ \footnotesize Permanently remove a passive you own upon buying this; play up to 1 extra action per turn.}{\fourcost}{imgs/at_what_cost.png}
 &
 \card{Truly Blessed}{Passive}{Draw a card whenever you play a blessing.}{\fourcost}{imgs/truly_blessed.png}
 &
