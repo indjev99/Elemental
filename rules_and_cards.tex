@@ -179,7 +179,7 @@ There are 3 types of cards:
 \item \gold \ -- All gold (``Gain X gold'') cards scale with \gold. Cheaper than equivalent attack cards.
 \item \nature \ -- All heal (``Gain X HP'') cards scale with \nature. Cheaper than equivalent attack cards.
 \item \magic \ -- A multiplicative scaler in some attacks, gold cards, and heals all cards.
-\item \chance \ -- The most unusual element. Whenever its value is needed, its die is rerolled. Cards that affect the values of dice cannot affect it.
+\item \chance \ -- The most unusual element. Whenever its value is needed, its die is rerolled. Cards that affect the values of dice cannot affect it (except for cards which explicitly specify the opposite.)
 \end{itemize}
 
 There are also buff (``Double the strength of all your X effects'') for all elements except \chance.
@@ -220,14 +220,20 @@ Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its 
 
 Elemental shields work by subtracting the value of the element they scale with from the value of the element they target in all attacks (without going negative), this is done before any scaling calculations (such as times 2 or times \magic). Note that ``Magical Barrier'' (``Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.'') can target any of \fire, \earth \ or \water \ (only one per attack), but only in multi-element attacks. The choice of which to target is individual for each attack. Unlike all of these, ``Paid Militia'' (``Shield any damage by paying one gold per damage until the end of your opponent's turn.'') is applied to the final damage number, since it does not scale with or target particular elements. Multiple shields may affect the same attack, if all apply. Note that preventing damage due to shielding also prevents the opponent from gaining the gold they would have received otherwise (since the damage was not actually dealt).
 
+\subsection*{Buffs}
+
+Elemental buffs work similarly to shields in that they double the effective value of their respective elements prior to any scaling calculations.
+
 \subsection*{Clarifications}
 
 \begin{itemize}
 \item Players' discard piles are face down and are private information, as is the card chosen with ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.''). Gold and HP are public information.
 \item Permanently removing a card means removing it from your deck and returning it to the game box. It can still be targeted by ``Wish''.
 \item Whenever a player needs to discard some number of cards (from their hand or face down cards) but has fewer than that, they simply discard all such cards and that effect is considered as exectuted.
+\item Cards such as ``Gambling'', ``Cheap Trick'', ``Second Chance'', ``Sleight of Hand'', ``Calculated Risk'', ``Smoke and Mirrors'' and ``Perspective Shift'' affect only one die (chosen by the player), i.e. their effect cannot be split up over multiple dice.
 \item ``At What Cost'' (``Permanently remove a passive you own upon buying this; play up to 1 extra action per turn.'') cannot be bought, if the player does not own another passive card.
 \item ``Veto'' (``Cancel the last action or blessing of your opponent and permanently remove this card.'') can only be played as a response to another active card (action or blessing) by the opponent.
+\item ``Madness'' (``Upon buying this reroll all dice (including \chance) and permanently remove this card.'') counts as being played for the purposes of other cards (e.g. could be canceled by ``Veto''). 
 \item Do not take too long (no longer than 1-2 minutes, as agreed) for cards such as ``Well-Laid Plans'' (``Reorder your draw pile.'') and ``Sabotage'' (``Reorder your opponent's draw pile.'').
 \end{itemize}
 
@@ -327,7 +333,8 @@ Elemental shields work by subtracting the value of the element they scale with f
 &
 \card{Purism}{Action}{Double the strength of all your single-element effects.}{\threecost}{imgs/purism.png}
 &
-\card{Fortuna's Protection}{Passive}{You may choose not to reroll the \chance \ die when its value is needed.}{\threecost}{imgs/fortunas_protection.png}
+
+\card{Fortuna's Protection}{Passive}{When the value of the \chance \ die is needed, you may choose for it to not be rerolled.}{\threecost}{imgs/fortunas_protection.png}
 &
 
 \card{Gambling}{Action}{Reroll a die once.}{\onecost}{imgs/gambling.png}
@@ -345,6 +352,9 @@ Elemental shields work by subtracting the value of the element they scale with f
 \card{Perspective Shift}{Action}{Flip a die over.}{\threecost}{imgs/perspective_shift.png}
 &
 \card{Trickster God}{Action}{Swap the values of two dice.}{\fourcost}{imgs/trickster_god.png}
+&
+
+\card{Madness}{Blessing}{ \small Upon buying this, reroll all dice (including \chance) and permanently remove this card.}{\threecost}{imgs/madness.png}
 &
 
 \card{Mirror Wall}{Blessing}{Draw a card and look at your opponent's hand.}{\onecost}{imgs/mirror_wall.png}
@@ -417,7 +427,7 @@ Elemental shields work by subtracting the value of the element they scale with f
 &
 \card{Big Handed}{Passive}{Draw 1 extra card after your turn.}{\fourcost}{imgs/big_handed.png}
 &
-\card{Spacious Table}{Passive}{You have space for 1 extra face down card.}{\threecost}{imgs/spacious_table.png}
+\card{Spacious Table}{Passive}{You have space for 1 extra face down card.}{\twocost}{imgs/spacious_table.png}
 &
 \card{Cheapskate}{Passive}{Face down cards no longer cost gold to play.}{\threecost}{imgs/cheapskate.png}
 &
@@ -469,8 +479,6 @@ Elemental shields work by subtracting the value of the element they scale with f
 \card{Lucky Find}{Blessing}{Gain 1 gold.}{\free}{imgs/lucky_find.png}
 &
 
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
-&
 \card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
 &
 
