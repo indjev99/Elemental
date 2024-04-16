@@ -173,13 +173,15 @@ All non-starter cards cost: \onecost \ gold, \twocost \ gold, \threecost \ gold,
 
 \subsubsection*{The elements}
 
+All 7 elements have a die associated with them. Various elemental cards scale with the values of one or more of these dice. These values mostly remain constant, until changed by some card.
+
 \begin{itemize}
 \item \fire, \earth, \water, \chance \ -- All attack (``Deal X damage'') cards scale with one or two of these elements (and possibly \magic). Dealing damage also gives gold. There are shield cards against the first 3 of these elements.
 \item \water \ -- All attacks that scale with \water \ deal damage to both players.
 \item \gold \ -- All gold (``Gain X gold'') cards scale with \gold. Cheaper than attack cards with equivalent scaling.
 \item \nature \ -- All heal (``Gain X HP'') cards scale with \nature. Gaining HP also gives gold. Cheaper than attack cards with equivalent scaling.
 \item \magic \ -- A multiplicative scaler in some attacks, gold cards, and heal cards.
-\item \chance \ -- The most unusual element. Whenever its value is needed, its die is rerolled. Cards that affect the values of dice cannot affect it (except for cards which explicitly specify the opposite.)
+\item \chance \ -- Whenever its value is needed for some effect, its die is rerolled before calculating the effect's strength. Cards that affect the dice cannot affect it (unless explicitly stated otherwise.)
 \end{itemize}
 
 There are also buff (``Double the strength of all your X effects'') for all elements except \chance.
@@ -210,7 +212,7 @@ For example: It is Alice's turn and she plays a \fire \ attack. Then, Bob plays 
 
 \subsubsection*{Gold}
 
-Gain (represented by the coins) is mainly gained by either playing gold cards, attacks or heal cards: a player dealing damage (to their opponent or themselves) receives gold equal to the damage dealt (cards that say ``Lose X HP'' do not give gold); a player gaining HP receives gold equal to half the HP gained (rounded up). Gold is mainly spent on rerolling the shop, buying cards from it or placing face down cards.
+Gain (represented by the coins) is gained passively (1 per turn) and by playing gold cards, attacks or heal cards. A player dealing damage (to their opponent or themselves) receives gold equal to the damage dealt (cards that say ``Lose X HP'' do not give gold). A player gaining HP receives gold equal to half the HP gained (rounded up). Gold is mainly spent on rerolling the shop, buying cards from it or placing face down cards.
 
 \subsection*{Reshuffling}
 
@@ -323,7 +325,7 @@ Elemental buffs work similarly to shields in that they may affect multiple cards
 \card{Paid Militia}{Action}{\small Shield any damage by paying one gold per damage until the end of your opponent's turn.}{\onecost}{imgs/paid_militia.png}
 &
  
-\card{Prometheus's Gift}{Action}{Triple the strength of all your \fire \ effects.}{\threecost}{imgs/prometheuss_gift.png}
+\card{Prometheus's Gift}{Action}{Double the strength of all your \fire \ effects.}{\threecost}{imgs/prometheuss_gift.png}
 &
 \card{Gaia's Favor}{Action}{Double the strength of all your \earth \ effects.}{\threecost}{imgs/gaias_favor.png}
 &
@@ -333,7 +335,7 @@ Elemental buffs work similarly to shields in that they may affect multiple cards
 &
 \card{Nymphs' Grace}{Action}{Double the strength of all your \nature \ effects.}{\twocost}{imgs/nymphs_grace.png}
 &
-\card{Midas Touch}{Action}{Double the strength of all your \gold \ effects.}{\twocost}{imgs/midas_touch.png}
+\card{Midas Touch}{Action}{Double the strength of all your \gold \ effects.}{\onecost}{imgs/midas_touch.png}
 &
 \card{Purism}{Action}{Double the strength of all your single-element effects.}{\threecost}{imgs/purism.png}
 &
@@ -379,9 +381,9 @@ Elemental buffs work similarly to shields in that they may affect multiple cards
 \card{Magnetic Hands}{Action}{ \small Move any card from your draw or discard pile to your hand, then shuffle your draw pile.}{\twocost}{imgs/magnetic_hands.png}
 &
 
-\card{Weak Hands}{Action}{Your opponent must discard 3 cards from their hand.}{\threecost}{imgs/weak_hands.png}
+\card{Weak Hands}{Action}{Your opponent must discard 3 cards from their hand.}{\twocost}{imgs/weak_hands.png}
 &
-\card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down cards.}{\threecost}{imgs/faulty_table.png}
+\card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down cards.}{\twocost}{imgs/faulty_table.png}
 &
 
 \card{Veto}{Action}{ \small Cancel the last action or blessing of your opponent and permanently remove this card.}{\twocost}{imgs/veto.png}
@@ -402,22 +404,22 @@ Elemental buffs work similarly to shields in that they may affect multiple cards
 \card{Multitasking God}{Blessing}{Play up to 4 extra actions.}{\fivecost}{imgs/multitasking_god.png}
 &
 
-\card{Exploration Novice}{Action}{Draw 2 cards.}{\onecost}{imgs/exploration_novice.png}
+\card{Exploration Novice}{Action}{ \small Draw 2 cards; if this is your first draw this turn, play up to 1 extra action.}{\onecost}{imgs/exploration_novice.png}
 &
-\card{Exploration Master}{Action}{Draw 3 cards.}{\twocost}{imgs/exploration_master.png}
+\card{Exploration Master}{Action}{ \small Draw 3 cards; if this is your first draw this turn, play up to 1 extra action.}{\twocost}{imgs/exploration_master.png}
 &
-\card{Exploration Lord}{Action}{Draw 4 cards.}{\threecost}{imgs/exploration_lord.png}
+\card{Exploration Lord}{Action}{ \small Draw 4 cards; if this is your first draw this turn, play up to 1 extra action.}{\threecost}{imgs/exploration_lord.png}
 &
-\card{Exploration God}{Action}{Draw 5 cards.}{\fourcost}{imgs/exploration_god.png}
+\card{Exploration God}{Action}{ \small Draw 5 cards; if this is your first draw this turn, play up to 1 extra action.}{\fourcost}{imgs/exploration_god.png}
 &
 
 \card{Optimization Novice}{Action}{Permanently remove up to 1 card from your hand.}{\onecost}{imgs/optimization_novice.png}
 &
 \card{Optimization Master}{Action}{Permanently remove up to 2 cards from your hand.}{\twocost}{imgs/optimization_master.png}
 &
-\card{Optimization Lord}{Action}{ \small Permanently remove up to 3 cards from your hand, this card can also be one of the 3.}{\threecost}{imgs/optimization_lord.png}
+\card{Optimization Lord}{Action}{ Permanently remove up to 3 cards from your hand (including this card).}{\threecost}{imgs/optimization_lord.png}
 &
-\card{Optimization God}{Action}{ \small Permanently remove up to 4 cards from your hand or discard pile, this card can also be one of the 4.}{\fourcost}{imgs/optimization_god.png}
+\card{Optimization God}{Action}{ \small Permanently remove up to 4 cards from your hand or discard pile (including this card).}{\fourcost}{imgs/optimization_god.png}
 &
 
 \card{Wish}{Blessing}{Buy any unowned card in the game for free, then shuffle the shop's draw pile.}{\fivecost}{imgs/wish.png}
@@ -425,7 +427,7 @@ Elemental buffs work similarly to shields in that they may affect multiple cards
 
 \card{Reckless Spending}{Passive}{You may reroll the shop and buy cards an unlimited number of times per turn.}{\twocost}{imgs/reckless_spending.png}
 &
-\card{Express Shipping}{Passive}{Whenever you buy a card, you may pay 5 gold for it to go into your hand (instead of your draw pile).}{\twocost}{imgs/express_shipping.png}
+\card{Express Shipping}{Passive}{ Whenever you buy a card, you may pay 5 gold for it to go into your hand.}{\twocost}{imgs/express_shipping.png}
 &
 \card{Merchant's Goodwill}{Passive}{Your shop rerolls cost 1 gold less.}{\twocost}{imgs/merchants_goodwill.png}
 &
