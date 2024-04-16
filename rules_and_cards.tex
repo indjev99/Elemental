@@ -143,11 +143,11 @@ The game is played between two players who build their decks and take turns play
 
 \subsubsection*{Win condition}
 
-The game ends in of two cases:
+The game ends in one of two cases:
 
 \begin{itemize}
 \item A player's HP reaches 0 (or less). Then the other player wins. If both players' HPs reach 0 at the same time, the one whose action caused this wins.
-\item A player's HP reaches 200 (or more). Then they win. (This cannot happen for both players at the same time.)
+\item A player's HP reaches 200 (or more). Then they win. (Cannot happen to both players simultaneously.)
 \end{itemize}
 
 \subsubsection*{Initial setup}
@@ -158,12 +158,12 @@ The game ends in of two cases:
 \item The starting deck of each player consists of 9 ``Basic Income'' cards and 1 ``Lucky Find'' card, which get shuffled together and form the player's draw pile.
 \item All other cards are shuffled together and form the shop's draw pile.
 \item Each player draws \handsize \ cards from their draw pile into their hand.
-\item Each player rolls a die and whoever gets a higher result choses who goes first. (In the case of a draw, repeat this.)
+\item Each player rolls a die and whoever rolls higher choses who goes first. (In case of a tie, reroll.)
 \end{itemize}
 
 \subsubsection*{The cards}
 
-There are 3 types of cards:
+All non-starter cards cost: \onecost \ gold, \twocost \ gold, \threecost \ gold, \fourcost \ gold or \fivecost \ gold. There are 3 types of cards:
 
 \begin{itemize}
 \item Action -- The most common type, these get played from a player's hand and by default a player can only play one of them per turn.
@@ -174,11 +174,11 @@ There are 3 types of cards:
 \subsubsection*{The elements}
 
 \begin{itemize}
-\item \fire, \earth, \water, \chance \ -- All attack (``Deal X damage'') cards scale with one or two of these elements (and possibly \magic). Note that dealing damage also gives gold. There are shield cards against attacks of the first 3 of these elements.
+\item \fire, \earth, \water, \chance \ -- All attack (``Deal X damage'') cards scale with one or two of these elements (and possibly \magic). Dealing damage also gives gold. There are shield cards against the first 3 of these elements.
 \item \water \ -- All attacks that scale with \water \ deal damage to both players.
-\item \gold \ -- All gold (``Gain X gold'') cards scale with \gold. Cheaper than equivalent attack cards.
-\item \nature \ -- All heal (``Gain X HP'') cards scale with \nature. Cheaper than equivalent attack cards.
-\item \magic \ -- A multiplicative scaler in some attacks, gold cards, and heals all cards.
+\item \gold \ -- All gold (``Gain X gold'') cards scale with \gold. Cheaper than attack cards with equivalent scaling.
+\item \nature \ -- All heal (``Gain X HP'') cards scale with \nature. Gaining HP also gives gold. Cheaper than attack cards with equivalent scaling.
+\item \magic \ -- A multiplicative scaler in some attacks, gold cards, and heal cards.
 \item \chance \ -- The most unusual element. Whenever its value is needed, its die is rerolled. Cards that affect the values of dice cannot affect it (except for cards which explicitly specify the opposite.)
 \end{itemize}
 
@@ -210,7 +210,7 @@ For example: It is Alice's turn and she plays a \fire \ attack. Then, Bob plays 
 
 \subsubsection*{Gold}
 
-Gain (represented using the provided coins) is gained by either playing gold cards or attacks: a player dealing damage (to their opponent or themselves) receives gold equal to the damage dealt (cards that say ``Lose X HP'' do not give gold). It is spent by rerolling the shop, buying cards from it or placing face down cards.
+Gain (represented by the coins) is mainly gained by either playing gold cards, attacks or heal cards: a player dealing damage (to their opponent or themselves) receives gold equal to the damage dealt (cards that say ``Lose X HP'' do not give gold); a player gaining HP receives gold equal to half the HP gained (rounded up). Gold is mainly spent on rerolling the shop, buying cards from it or placing face down cards.
 
 \subsection*{Reshuffling}
 
@@ -218,17 +218,21 @@ Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its 
 
 \subsection*{Shields}
 
-Elemental shields work by subtracting the value of the element they scale with from the value of the element they target in all attacks (without going negative), this is done before any scaling calculations (such as times 2 or times \magic). Note that ``Magical Barrier'' (``Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.'') can target any of \fire, \earth \ or \water \ (only one per attack), but only in multi-element attacks. The choice of which to target is individual for each attack. Unlike all of these, ``Paid Militia'' (``Shield any damage by paying one gold per damage until the end of your opponent's turn.'') is applied to the final damage number, since it does not scale with or target particular elements. Multiple shields may affect the same attack, if all apply. Note that preventing damage due to shielding also prevents the opponent from gaining the gold they would have received otherwise (since the damage was not actually dealt).
+Shields may affect multiple attacks while deployed. Multiple shields may affect the same attack, if all apply. Preventing damage due to shielding also prevents gaining the gold the attacker would have received otherwise (since the damage was not actually dealt).
+
+Elemental shields work by subtracting the value of the element they scale with from the value of the element they target (without going negative), this is done before any scaling calculations (such as times 2 or times \magic). Note that ``Magical Barrier'' (``Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.'') can target any of \fire, \earth \ or \water \ (only one per attack), but only in multi-element attacks. The choice of which to target is individual for each attack.
+
+Unlike all of these, ``Paid Militia'' (``Shield any damage by paying one gold per damage until the end of your opponent's turn.'') is applied to the final damage number, since it does not scale with or target particular elements. Preventing the damage (and paying the cost) is optional.
 
 \subsection*{Buffs}
 
-Elemental buffs work similarly to shields in that they double the effective value of their respective elements prior to any scaling calculations.
+Elemental buffs work similarly to shields in that they may affect multiple cards while deployed. Also similarly, they double the effective value of their respective elements prior to any scaling calculations.
 
 \subsection*{Clarifications}
 
 \begin{itemize}
-\item Players' discard piles are face down and are private information, as is the card chosen with ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.''). Gold and HP are public information.
-\item Permanently removing a card means removing it from your deck and returning it to the game box. It can still be targeted by ``Wish''.
+\item Players' discards (and discard piles) are face down and are private information, as are any permanently removed cards or the card chosen with ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.''). Gold, HP and discard and draw pile sizes are public information.
+\item Permanently removing a card means removing it from your deck and returning it to the game box. Removed cards can still be targeted by ``Wish'' (i.e. can be inspected upon playing it). 
 \item Whenever a player needs to discard some number of cards (from their hand or face down cards) but has fewer than that, they simply discard all such cards and that effect is considered as exectuted.
 \item Cards such as ``Gambling'', ``Cheap Trick'', ``Second Chance'', ``Sleight of Hand'', ``Calculated Risk'', ``Smoke and Mirrors'' and ``Perspective Shift'' affect only one die (chosen by the player), i.e. their effect cannot be split up over multiple dice.
 \item ``At What Cost'' (``Permanently remove a passive you own upon buying this; play up to 1 extra action per turn.'') cannot be bought, if the player does not own another passive card.
@@ -354,7 +358,7 @@ Elemental buffs work similarly to shields in that they double the effective valu
 \card{Trickster God}{Action}{Swap the values of two dice.}{\fourcost}{imgs/trickster_god.png}
 &
 
-\card{Madness}{Blessing}{ \small Upon buying this, reroll all dice (including \chance) and permanently remove this card.}{\threecost}{imgs/madness.png}
+\card{Madness}{Blessing}{ \small Upon buying this, reroll all dice (including \chance) and permanently remove this card.}{\onecost}{imgs/madness.png}
 &
 
 \card{Mirror Wall}{Blessing}{Draw a card and look at your opponent's hand.}{\onecost}{imgs/mirror_wall.png}
@@ -380,10 +384,10 @@ Elemental buffs work similarly to shields in that they double the effective valu
 \card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down cards.}{\threecost}{imgs/faulty_table.png}
 &
 
-\card{Veto}{Action}{ \small Cancel the last action or blessing of your opponent and permanently remove this card.}{\threecost}{imgs/veto.png}
+\card{Veto}{Action}{ \small Cancel the last action or blessing of your opponent and permanently remove this card.}{\twocost}{imgs/veto.png}
 &
 
-\card{All for One}{Blessing}{Discard 3 cards from your hand and play up to 1 extra action.}{\onecost}{imgs/all_for_one.png}
+\card{All for One}{Blessing}{Discard 2 cards from your hand and play up to 1 extra action.}{\onecost}{imgs/all_for_one.png}
 &
 \card{Cruel Pact}{Blessing}{Lose \chance \ HP and play up to 1 extra action.}{\onecost}{imgs/cruel_pact.png}
 &
@@ -411,19 +415,19 @@ Elemental buffs work similarly to shields in that they double the effective valu
 &
 \card{Optimization Master}{Action}{Permanently remove up to 2 cards from your hand.}{\twocost}{imgs/optimization_master.png}
 &
-\card{Optimization Lord}{Action}{Permanently remove up to 3 cards from your hand or this card.}{\threecost}{imgs/optimization_lord.png}
+\card{Optimization Lord}{Action}{ \small Permanently remove up to 3 cards from your hand, this card can also be one of the 3.}{\threecost}{imgs/optimization_lord.png}
 &
-\card{Optimization God}{Action}{Permanently remove up to 4 cards from your hand, discard pile or this card.}{\fourcost}{imgs/optimization_god.png}
+\card{Optimization God}{Action}{ \small Permanently remove up to 4 cards from your hand or discard pile, this card can also be one of the 4.}{\fourcost}{imgs/optimization_god.png}
 &
 
-\card{Wish}{Action}{Buy any unowned card in the game for free, then shuffle the shop's draw pile.}{\fivecost}{imgs/wish.png}
+\card{Wish}{Blessing}{Buy any unowned card in the game for free, then shuffle the shop's draw pile.}{\fivecost}{imgs/wish.png}
 &
 
 \card{Reckless Spending}{Passive}{You may reroll the shop and buy cards an unlimited number of times per turn.}{\twocost}{imgs/reckless_spending.png}
 &
-\card{Express Shipping}{Passive}{All cards you buy go into your hand.}{\threecost}{imgs/express_shipping.png}
+\card{Express Shipping}{Passive}{Whenever you buy a card, you may pay 5 gold for it to go into your hand (instead of your draw pile).}{\twocost}{imgs/express_shipping.png}
 &
-\card{Merchant's Goodwill}{Passive}{Shop rerolls cost 1 gold less.}{\threecost}{imgs/merchants_goodwill.png}
+\card{Merchant's Goodwill}{Passive}{Your shop rerolls cost 1 gold less.}{\twocost}{imgs/merchants_goodwill.png}
 &
 \card{Big Handed}{Passive}{Draw 1 extra card after your turn.}{\fourcost}{imgs/big_handed.png}
 &
