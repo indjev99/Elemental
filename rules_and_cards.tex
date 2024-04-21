@@ -124,7 +124,7 @@
 \newcommand{\fivecost}{25}
 
 \newcommand{\rerollcost}{2}
-\newcommand{\facedowncost}{5}
+\newcommand{\facedowncost}{4}
 
 \newcommand{\handsize}{4}
 \newcommand{\dacedownsize}{2}
@@ -156,7 +156,7 @@ The game ends in one of two cases:
 \item All seven elemental dice are rolled and ordered next to the HP tracker like so: \fire, \earth, \water, \gold, \nature, \magic, \chance.
 \item Each player starts with 100 HP and 9 gold (use the HP tracker for the HP and the coins for the gold).
 \item The starting deck of each player consists of 9 ``Basic Income'' cards and 1 ``Lucky Find'' card, which get shuffled together and form the player's draw pile.
-\item All other cards are shuffled together and form the shop's draw pile.
+\item All other cards are shuffled together and form the shop's draw pile. No shop is laid out at the start.
 \item Each player draws \handsize \ cards from their draw pile into their hand.
 \item Each player rolls a die and whoever rolls higher choses who goes first. (In case of a tie, reroll.)
 \end{itemize}
@@ -193,9 +193,9 @@ At the start of their turn, the player gains 1 gold. After that they may (in any
 \begin{itemize}
 \item Play at most one action from their hand (some cards may allow playing multiple actions).
 \item Play any number of blessings from their hand.
-\item Instead of playing an action, place a face down card, which also costs 5 gold. A player may have at most \dacedownsize \ face down cards at a time.
+\item Instead of playing an action, place a face down card, which also costs \facedowncost \ gold. A player may have at most \dacedownsize \ face down cards at a time.
 \item Play (flip over and activate) any number of face down cards.
-\item Reroll the shop at most twice, which costs 2 gold per reroll.
+\item Reroll the shop at most twice, which costs \rerollcost \ gold per reroll.
 Rerolling the shop consists of moving the current laid out shop to the shop's discard pile followed by drawing and laying our \shopsize \ cards from the shop's draw pile. Note that initially there is no shop laid out.
 \item Buy at most one card from the shop by paying its cost. It is not replaced with a new card, so the shop can become empty again. The bought card goes to the player's discard pile, unless it is a passive, in which case it is immediately and permanently deployed.
 \end{itemize}
@@ -208,15 +208,15 @@ After the player's turn is over, they have to discard their hand to their discar
 
 Blessings and face down cards may also be played during the opponent's turn. This can be done at any time, including between the opponent playing a card and executing its effect. In such a situation, the opponent, may in turn, also respond (possibly with multiple cards) before executing their original action. This can repeat ad infinitum.
 
-For example: It is Alice's turn and she plays a \fire \ attack. Then, Bob plays a blessing (from his hand) that allows him to see Alice's hand. After that he plays (flips over and activates) two of his face down cards: first, a card that allows him to reroll the \fire \ die; second, a \water \ shield agains this attack. Alice wants to counter the shield, so she plays a blessing that allows her to play another action, after which she plays ``Veto'', which cancels Bob's shield.
+For example: It is Alice's turn and she plays a \fire \ attack. Then, Bob plays a blessing (from his hand) that allows him to see Alice's hand. After that he plays (flips over and activates) two of his face down cards: first, a card that allows him to reroll the \fire \ die; second, a \water \ shield against this attack. Alice wants to reduce the effectiveness of the shield, so she plays a blessing that allows her to play another action, after which she plays ``Trickster God'' to swap the values of the \fire \ and \water \ dice. However, Bob counters this by playing ``Veto'' (a blessing) from his hand thus canceling the effect of ``Trickster God''.
+
+\subsection*{Discard Pile}
+
+Players' discards (and discard piles) are face down and are private information. Whenever a player needs to discard some number of cards (from their hand or face down cards) but has fewer than that, they simply discard all such cards and that effect is considered as exectuted. Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its discard pile is shuffled and it becomes the draw pile. This is never triggered by inspection (``Look at top X cards of Y'') effects, even if the draw pile has fewer than X cards.
 
 \subsubsection*{Gold}
 
-Gain (represented by the coins) is gained passively (1 per turn) and by playing gold cards, attacks or heal cards. A player dealing damage (to their opponent or themselves) receives gold equal to the damage dealt (cards that say ``Lose X HP'' do not give gold). A player gaining HP receives gold equal to half the HP gained (rounded up). Gold is mainly spent on rerolling the shop, buying cards from it or placing face down cards.
-
-\subsection*{Reshuffling}
-
-Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its discard pile is shuffled and it becomes the draw pile. This is not triggered by inspection (``Look at top X cards of Y'') cards, even if the deck has fewer than X cards in it (or even 0).
+Gain (represented by the coins) is gained passively (1 per turn) and by playing gold cards, attacks or heal cards. A player dealing damage (to their opponent or themselves) receives gold equal to the damage dealt. A player gaining HP receives gold equal to half the HP gained (rounded up). Gold is mainly spent on rerolling the shop, buying cards from it or placing face down cards.
 
 \subsection*{Shields}
 
@@ -224,23 +224,23 @@ Shields may affect multiple attacks while deployed. Multiple shields may affect 
 
 Elemental shields work by subtracting the value of the element they scale with from the value of the element they target (without going negative), this is done before any scaling calculations (such as times 2 or times \magic). Note that ``Magical Barrier'' (``Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.'') can target any of \fire, \earth \ or \water \ (only one per attack), but only in multi-element attacks. The choice of which to target is individual for each attack.
 
-Unlike all of these, ``Paid Militia'' (``Shield any damage by paying one gold per damage until the end of your opponent's turn.'') is applied to the final damage number, since it does not scale with or target particular elements. Preventing the damage (and paying the cost) is optional.
+Unlike all of these, ``Paid Militia'' (``Shield any damage by paying one gold per damage until the end of your opponent's turn.'') is applied to the final damage number, since it does not scale with or target particular elements. Preventing the damage (and paying the cost) is optional (could also be partial).
 
 \subsection*{Buffs}
 
-Elemental buffs work similarly to shields in that they may affect multiple cards while deployed. Also similarly, they double the effective value of their respective elements prior to any scaling calculations.
+Elemental buffs work by doubling the (post elemental shielding) strength of all effects that scale (additively or multiplicatively) with their respective element. Similarly to shields, they may affect multiple cards while deployed and multiple buffs may affect the same cards.
 
 \subsection*{Clarifications}
 
 \begin{itemize}
-\item Players' discards (and discard piles) are face down and are private information, as are any permanently removed cards or the card chosen with ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.''). Gold, HP and discard and draw pile sizes are public information.
-\item Permanently removing a card means removing it from your deck and returning it to the game box. Removed cards can still be targeted by ``Wish'' (i.e. can be inspected upon playing it). 
-\item Whenever a player needs to discard some number of cards (from their hand or face down cards) but has fewer than that, they simply discard all such cards and that effect is considered as exectuted.
+\item Gold, HP and discard and draw pile sizes are public information.
+\item Permanently removing a card means removing it from your deck and returning it to the game box. The removed cards are private information (i.e. not shown), but their count isn't.
+\item ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.'') can target the shop and its draw and discard piles, as well as permanently removed cards (i.e. can be inspected upon playing it). The chosen card is private information.
 \item Cards such as ``Gambling'', ``Cheap Trick'', ``Second Chance'', ``Sleight of Hand'', ``Calculated Risk'', ``Smoke and Mirrors'' and ``Perspective Shift'' affect only one die (chosen by the player), i.e. their effect cannot be split up over multiple dice.
 \item ``At What Cost'' (``Permanently remove a passive you own upon buying this; play up to 1 extra action per turn.'') cannot be bought, if the player does not own another passive card.
-\item ``Veto'' (``Cancel the last action or blessing of your opponent and permanently remove this card.'') can only be played as a response to another active card (action or blessing) by the opponent.
+\item ``Veto'' (``Cancel the last action or blessing of your opponent.'') can only be played as a response to an active card (action or blessing) by the opponent.
 \item ``Madness'' (``Upon buying this reroll all dice (including \chance) and permanently remove this card.'') counts as being played for the purposes of other cards (e.g. could be canceled by ``Veto''). 
-\item Do not take too long (no longer than 1-2 minutes, as agreed) for cards such as ``Well-Laid Plans'' (``Reorder your draw pile.'') and ``Sabotage'' (``Reorder your opponent's draw pile.'').
+\item ``Magnetic Hands'' (``Move any card from your draw or discard pile to your hand, then shuffle your draw pile.'') counts as being a draw for the purposes of ``Exploration ...'' cards.
 \end{itemize}
 
 \newpage
@@ -314,30 +314,30 @@ Elemental buffs work similarly to shields in that they may affect multiple cards
 \card{Mystical Restoration}{Action}{Gain \nature\hspace{1pt}$\times$\hspace{1pt}\magic \ HP.}{\threecost}{imgs/mystical_restoration.png}
 &
 
-\card{Water Reservoirs}{Action}{\small Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\onecost}{imgs/water_reservoirs.png}
+\card{Water Reservoirs}{Blessing}{\small Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\onecost}{imgs/water_reservoirs.png}
 &
-\card{Solid Infrastructure}{Action}{\small Shield \earth \ against \water \ damage until the end of your opponent's turn.}{\onecost}{imgs/solid_infrastructure.png}
+\card{Solid Infrastructure}{Blessing}{\small Shield \earth \ against \water \ damage until the end of your opponent's turn.}{\onecost}{imgs/solid_infrastructure.png}
 &
-\card{Natural Forests}{Action}{\small Shield \nature \ against \earth \ damage until the end of your opponent's turn.}{\onecost}{imgs/natural_forests.png}
+\card{Natural Forests}{Blessing}{\small Shield \nature \ against \earth \ damage until the end of your opponent's turn.}{\onecost}{imgs/natural_forests.png}
 &
-\card{Magical Barrier}{Action}{\footnotesize Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.}{\twocost}{imgs/magical_barrier.png}
+\card{Magical Barrier}{Blessing}{\footnotesize Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.}{\twocost}{imgs/magical_barrier.png}
 &
-\card{Paid Militia}{Action}{\small Shield any damage by paying one gold per damage until the end of your opponent's turn.}{\onecost}{imgs/paid_militia.png}
+\card{Paid Militia}{Blessing}{\small Shield any damage by paying one gold per damage until the end of your opponent's turn.}{\onecost}{imgs/paid_militia.png}
 &
  
-\card{Prometheus's Gift}{Action}{Double the strength of all your \fire \ effects.}{\threecost}{imgs/prometheuss_gift.png}
+\card{Prometheus's Gift}{Action}{Double the strength of all your \fire \ effects until the end of your turn.}{\threecost}{imgs/prometheuss_gift.png}
 &
-\card{Gaia's Favor}{Action}{Double the strength of all your \earth \ effects.}{\threecost}{imgs/gaias_favor.png}
+\card{Gaia's Favor}{Action}{Double the strength of all your \earth \ effects until the end of your turn.}{\threecost}{imgs/gaias_favor.png}
 &
-\card{Poseidon's Trident}{Action}{Double the strength of all your \water \ effects.}{\threecost}{imgs/poseidons_trident.png}
+\card{Poseidon's Trident}{Action}{Double the strength of all your \water \ effects until the end of your turn.}{\threecost}{imgs/poseidons_trident.png}
 &
-\card{Ancient Grimoire}{Action}{Double the strength of all your \magic \ effects.}{\threecost}{imgs/ancient_grimoire.png}
+\card{Ancient Grimoire}{Action}{Double the strength of all your \magic \ effects until the end of your turn.}{\threecost}{imgs/ancient_grimoire.png}
 &
-\card{Nymphs' Grace}{Action}{Double the strength of all your \nature \ effects.}{\twocost}{imgs/nymphs_grace.png}
+\card{Nymphs' Grace}{Action}{Double the strength of all your \nature \ effects until the end of your turn.}{\twocost}{imgs/nymphs_grace.png}
 &
-\card{Midas Touch}{Action}{Double the strength of all your \gold \ effects.}{\onecost}{imgs/midas_touch.png}
+\card{Midas Touch}{Action}{Double the strength of all your \gold \ effects until the end of your turn.}{\onecost}{imgs/midas_touch.png}
 &
-\card{Purism}{Action}{Double the strength of all your single-element effects.}{\threecost}{imgs/purism.png}
+\card{Purism}{Action}{Double the strength of all your single-element effects until the end of your turn.}{\threecost}{imgs/purism.png}
 &
 
 \card{Fortuna's Protection}{Passive}{When the value of the \chance \ die is needed, you may choose for it to not be rerolled.}{\threecost}{imgs/fortunas_protection.png}
@@ -386,14 +386,14 @@ Elemental buffs work similarly to shields in that they may affect multiple cards
 \card{Faulty Table}{Action}{Your opponent must discard 1 card from their face down cards.}{\twocost}{imgs/faulty_table.png}
 &
 
-\card{Veto}{Action}{ \small Cancel the last action or blessing of your opponent and permanently remove this card.}{\twocost}{imgs/veto.png}
+\card{Veto}{Blessing}{Cancel the last action or blessing of your opponent.}{\threecost}{imgs/veto.png}
 &
 
 \card{All for One}{Blessing}{Discard 2 cards from your hand and play up to 1 extra action.}{\onecost}{imgs/all_for_one.png}
 &
-\card{Cruel Pact}{Blessing}{Lose \chance \ HP and play up to 1 extra action.}{\onecost}{imgs/cruel_pact.png}
+\card{Cruel Pact}{Blessing}{Take \chance \ damage and play up to 1 extra action.}{\onecost}{imgs/cruel_pact.png}
 &
-\card{Deal with the Devil}{Blessing}{Lose $2\times$\chance \ HP and play up to 2 extra actions.}{\onecost}{imgs/deal_with_the_devil.png}
+\card{Deal with the Devil}{Blessing}{Take $2\times$\chance \ damage and play up to 2 extra actions.}{\onecost}{imgs/deal_with_the_devil.png}
 &
 \card{Multitasking Novice}{Blessing}{Play up to 1 extra action.}{\twocost}{imgs/multitasking_novice.png}
 &
@@ -427,7 +427,7 @@ Elemental buffs work similarly to shields in that they may affect multiple cards
 
 \card{Reckless Spending}{Passive}{You may reroll the shop and buy cards an unlimited number of times per turn.}{\twocost}{imgs/reckless_spending.png}
 &
-\card{Express Shipping}{Passive}{ Whenever you buy a card, you may pay 5 gold for it to go into your hand.}{\twocost}{imgs/express_shipping.png}
+\card{Express Shipping}{Passive}{Whenever you buy a card, you may pay 5 gold for it to go into your hand.}{\twocost}{imgs/express_shipping.png}
 &
 \card{Merchant's Goodwill}{Passive}{Your shop rerolls cost 1 gold less.}{\twocost}{imgs/merchants_goodwill.png}
 &
@@ -435,7 +435,7 @@ Elemental buffs work similarly to shields in that they may affect multiple cards
 &
 \card{Spacious Table}{Passive}{You have space for 1 extra face down card.}{\twocost}{imgs/spacious_table.png}
 &
-\card{Cheapskate}{Passive}{Face down cards no longer cost gold to play.}{\threecost}{imgs/cheapskate.png}
+\card{Cheapskate}{Passive}{Face down cards no longer cost gold to place.}{\threecost}{imgs/cheapskate.png}
 &
 \card{Clear Mind}{Passive}{Play up to 1 extra action per turn, but draw 1 card less after your turn.}{\fourcost}{imgs/clear_mind.png}
 &
