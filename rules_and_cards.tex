@@ -125,14 +125,18 @@
 \newcommand{\fourcost}{15 gold}
 \newcommand{\fivecost}{21 gold}
 
-\newcommand{\facedowncost}{4}
+\newcommand{\facedowncost}{3}
 \newcommand{\rerollcost}{2}
 \newcommand{\rerollcostincrease}{1}
-\newcommand{\expresscost}{5}
+\newcommand{\expresscost}{4}
+
+\newcommand{\startgold}{5}
 
 \newcommand{\handsize}{4}
 \newcommand{\dacedownsize}{2}
 \newcommand{\shopsize}{5}
+
+\newcommand{\starthp}{120}
 
 \title{Elemental Dice}
 \author{Emil Indzhev}
@@ -202,14 +206,14 @@ Elemental buffs (``Double the strength of all your X effects until the end of yo
 \subsection*{Initial setup}
 
 \begin{itemize}
-\item Each player starts with 120 HP (out of 200) and 9 gold (use the HP tracker for the HP and the coins for the gold).
+\item Each player starts with \starthp \ HP (out of 200) and \startgold \ gold (use the HP tracker for the HP and the coins for the gold).
 \item All with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
 \item All seven elemental dice are rolled and ordered next to the HP tracker like so: \fire, \earth, \water, \nature, \gold, \magic, \chance.
 \item Each player rolls a die and whoever rolls higher choses who goes first. (In case of a tie, reroll.)
-\item The 6 Draft cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'' and ``Marketplace'') are shuffled together; 4 of them are dealt out and the other 2 are permanently removed.
+\item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together; 6 of them are dealt out and the other 2 are permanently removed.
 \item The player who rolled lower in the first player determination may decide to swap who goes first and who goes second by offering 1 Advantage to the other player. If this happens, the other player has the same option, but for 2 Advantage. This repeats (with increasing Advantage numbers) until one player passes up on using this option. (Only the final Advantage offer remains in effect.)
-\item The first player drafts 1 of the 4 dealt out Draft cards, the second one drafts 2 of the remaining 3 and the last card goes to the first player.
-\item The starting draw pile of each player is formed by shuffling together the 10 Starter cards (9 ``Basic Income'' and 1 ``Lucky Find'') and their 2 chosen Draft cards.
+\item The first player drafts 1 of the dealt out \draft \ cards, the second one drafts 2 of the remaining ones, the first one drafts 2, and the last card goes to the second player.
+\item The starting draw pile of each player is formed by shuffling together the 9 Starter cards (8 ``Basic Income'' and 1 ``Lucky Find'') and their 3 chosen \draft \ cards.
 \item The player with X Advantage (if any) may change the value of a die by 1 up to X times (may be the same die, different dice or any other combination).
 \item Each player draws \handsize \ cards from their draw pile into their hand and the first player starts their turn.
 \end{itemize}
@@ -382,9 +386,9 @@ Returning priority is also given to the other player after any of the other type
 \card{Fortuna's Protection}{Relic}{When the value of the \chance \ die is needed, you may choose for it to not be rerolled.}{\threecost}{imgs/fortunas_protection.png}
 &
 
-\card{Gambling}{Spell}{Reroll a die once.}{\onecost}{imgs/gambling.png}
+\card{Gambling}{Spell}{Reroll a die once.}{\draft}{imgs/gambling.png}
 &
-\card{Cheap Trick}{Spell}{Change the value of a die by one.}{\onecost}{imgs/cheap_trick.png}
+\card{Cheap Trick}{Spell}{Change the value of a die by one.}{\draft}{imgs/cheap_trick.png}
 &
 \card{Second Chance}{Spell}{Reroll a die up to twice.}{\twocost}{imgs/second_chance.png}
 &
@@ -517,16 +521,10 @@ Returning priority is also given to the other player after any of the other type
 &
 \card{Basic Income}{Spell}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
 &
-\card{Basic Income}{Spell}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
-&
-\card{Basic Income}{Spell}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
-&
-\card{Lucky Find}{Blessing}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
-&
-\card{Lucky Find}{Blessing}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
-&
 
-\card{}{ \hspace{15mm} }{}{ \hspace{3mm} }{}
+\card{Lucky Find}{Blessing}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
+&
+\card{Lucky Find}{Blessing}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
 &
 
 \end{longtable}
