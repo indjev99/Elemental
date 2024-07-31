@@ -207,12 +207,12 @@ Elemental buffs (``Double the strength of all your X effects until the end of yo
 
 \begin{itemize}
 \item Each player starts with \starthp \ HP (out of 200) and \startgold \ gold (use the HP tracker for the HP and the coins for the gold).
-\item All with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
 \item All seven elemental dice are rolled and ordered next to the HP tracker like so: \fire, \earth, \water, \nature, \gold, \magic, \chance.
-\item Each player rolls a die and whoever rolls higher choses who goes first. (In case of a tie, reroll.)
+\item All with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
 \item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together; 6 of them are dealt out and the other 2 are permanently removed.
+\item Each player rolls a die and whoever rolls higher choses who goes first. (In case of a tie, reroll.)
 \item The player who rolled lower in the first player determination may decide to swap who goes first and who goes second by offering 1 Advantage to the other player. If this happens, the other player has the same option, but for 2 Advantage. This repeats (with increasing Advantage numbers) until one player passes up on using this option. (Only the final Advantage offer remains in effect.)
-\item The first player drafts 1 of the dealt out \draft \ cards, the second one drafts 2 of the remaining ones, the first one drafts 2, and the last card goes to the second player.
+\item The first player drafts (chooses) 1 of the dealt out \draft \ cards, the second one drafts 2 of the remaining ones, the first one drafts 2, and the last card goes to the second player.
 \item The starting draw pile of each player is formed by shuffling together the 9 Starter cards (8 ``Basic Income'' and 1 ``Lucky Find'') and their 3 chosen \draft \ cards.
 \item The player with X Advantage (if any) may change the value of a die by 1 up to X times (may be the same die, different dice or any other combination).
 \item Each player draws \handsize \ cards from their draw pile into their hand and the first player starts their turn.
@@ -417,9 +417,9 @@ Returning priority is also given to the other player after any of the other type
 \card{Forecast}{Blessing}{Draw a card and look at the top \shopsize \ cards of the shop's draw pile.}{\onecost}{imgs/forecast.png}
 &
 
-\card{Well-Laid Plans}{Blessing}{Reorder your draw pile.}{\twocost}{imgs/well_laid_plans.png}
+\card{Well-Laid Plans}{Blessing}{ \small Reorder at the top \handsize \ cards of your draw pile and discard any number of them.}{\twocost}{imgs/well_laid_plans.png}
 &
-\card{Sabotage}{Blessing}{Reorder your opponent's draw pile.}{\twocost}{imgs/sabotage.png}
+\card{Sabotage}{Blessing}{ \small Reorder at the top \handsize \ cards of your opponent's draw pile and discard any number of them.}{\twocost}{imgs/sabotage.png}
 &
 
 \card{Weak Hands}{Blessing}{Your opponent must discard 3 cards from their hand.}{\twocost}{imgs/weak_hands.png}
@@ -455,7 +455,7 @@ Returning priority is also given to the other player after any of the other type
 \card{Exploration God}{Spell}{ \small Draw 5 cards; if this is your first draw this turn, gain 1 mana.}{\fourcost}{imgs/exploration_god.png}
 &
 
-\card{Magnetic Hands}{Spell}{ \small Move any card from your draw or discard pile to your hand, then shuffle your draw pile.}{\twocost}{imgs/magnetic_hands.png}
+\card{Magnetic Hands}{Blessing}{ \small Move any card from your draw or discard pile to your hand, then shuffle your draw pile.}{\threecost}{imgs/magnetic_hands.png}
 &
 
 \card{Optimization Novice}{Spell}{Permanently remove this card and up to 1 card from your hand.}{\onecost}{imgs/optimization_novice.png}
@@ -476,17 +476,17 @@ Returning priority is also given to the other player after any of the other type
 &
 \card{Merchant's Goodwill}{Relic}{Your shop rerolls cost 1 gold less.}{\twocost}{imgs/merchants_goodwill.png}
 &
-\card{Big Handed}{Relic}{Draw 1 extra card after your turn.}{\fourcost}{imgs/big_handed.png}
+\card{Cheapskate}{Relic}{Face down cards no longer cost gold to place.}{\twocost}{imgs/cheapskate.png}
 &
 \card{Spacious Table}{Relic}{You have space for 1 extra face down card.}{\twocost}{imgs/spacious_table.png}
 &
-\card{Cheapskate}{Relic}{Face down cards no longer cost gold to place.}{\threecost}{imgs/cheapskate.png}
+\card{Truly Blessed}{Relic}{ \footnotesize The first time you play a Blessing during your turn, draw a card before executing it.}{\threecost}{imgs/truly_blessed.png}
+&
+\card{Big Handed}{Relic}{Draw 1 extra card after your turn.}{\fourcost}{imgs/big_handed.png}
 &
 \card{Clear Mind}{Relic}{Gain 1 extra mana at the start of your turn, but draw 1 card less after your turn.}{\threecost}{imgs/clear_mind.png}
 &
 \card{At What Cost}{Relic}{ \scriptsize Permanently remove a Relic you own upon buying this; gain 1 extra mana at the start of your turn.}{\fourcost}{imgs/at_what_cost.png}
-&
-\card{Truly Blessed}{Relic}{Draw a card whenever you play a Blessing before executing it.}{\fourcost}{imgs/truly_blessed.png}
 &
 
 \card{Basic Income}{Spell}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
