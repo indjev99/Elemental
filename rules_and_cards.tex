@@ -177,9 +177,9 @@ Mechanically, there are 3 types of cards:
 Furthermore, we can classify most cards depending on what they do:
 
 \begin{itemize}
-\item Attack -- ``Deal X damage'' cards (i.e. reduce the opponent's HP). They scale with one or two of \fire, \earth, \water, \chance \ and \magic. Attacks that scale with \water \ deal damage to both players.
-\item Restore -- ``Restore X HP'' cards. They scale with \nature \ and possibly one of the attack elements.
-\item Gold -- ``Gain X gold'' cards. They scale with \gold \ and possibly one of the attack elements.
+\item Attack -- ``Deal X damage'' cards (i.e. reduce the opponent's HP). They all scale with one or two of \fire, \earth, \water, \chance \ and \magic. Attacks that scale with \water \ deal damage to both players.
+\item Restore -- ``Restore X HP'' cards. They all scale with \nature \ and possibly one of the attack elements.
+\item Gold -- ``Gain X gold'' cards. They all scale with \gold \ and possibly one of the attack elements.
 \item Shield -- ``Shield X against Y damage'' cards. They subtract the value of element X from that of Y to reduce incoming damage. There are shield cards against \fire, \earth \ and \water \ attacks.
 \item Buff -- ``[Increase] the strength of all your X effects'' cards. They affect all cards that scale with the element X. There are Buff cards for all elements except \chance.
 \item Dice Control -- various cards that affect the dice (either changing their values or rerolling them). These are the only way to change the dice values (and thus affect how strong various elemental cards are).
@@ -214,7 +214,7 @@ Buffs (``Double the strength of all your X effects until the end of your turn.''
 \begin{itemize}
 \item Each player starts with \starthp \ HP (out of 200) and \startgold \ gold (use the HP tracker for the HP and the coins for the gold).
 \item All seven elemental dice are rolled and ordered next to the HP tracker like so: \fire, \earth, \water, \nature, \gold, \magic, \chance.
-\item All with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
+\item All cards with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
 \item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together; 6 of them are dealt out and the other 2 are permanently removed.
 \item Each player rolls a die and whoever rolls higher choses who goes first. (In case of a tie, reroll.)
 \item The player who rolled lower in the first player determination may decide to swap who goes first and who goes second by offering 1 Advantage to the other player. If this happens, the other player has the same option, but for 2 Advantage. This repeats (with increasing Advantage numbers) until one player passes up on using this option. (Only the final Advantage offer remains in effect.)
@@ -236,7 +236,7 @@ At the start of their turn, the player gains 1 gold and 1 mana. After that they 
 \item Reroll the shop. The first reroll in a turn costs \rerollcost \ gold and each subsequent is \rerollcostincrease \ gold more expensive.
 Rerolling the shop consists of moving the currently laid out shop cards (if any) to the shop's discard pile followed by drawing and laying out \shopsize \ cards from the shop's draw pile. Note that initially there are no shop cards laid out.
 \item Buy a card from the laid out shop cards by paying its cost. May be done at most once per turn.
-The bought card is not replaced with a new card, so the shop can become empty again. The bought card goes to the player's discard pile, unless it is a Relic, in which case it is immediately and permanently deployed.
+The bought card is not replaced, so the shop can become empty again. The bought card goes to the player's discard pile, unless it is a Relic, in which case it is immediately and permanently deployed.
 \end{itemize}
 
 Whenever a card is played it is kept in the player's play area until its effect is fully executed. After that it is moved to the discard pile. This means that a ``Draw X'' card cannot draw itself. Cards whose effects last longer (shields and buffs) are kept in the play area until their effect expire (at which point they are moved to the discard pile). Effects that give mana (and similar) are considered as executed immediately and the card can be discarded. Use the spare dice to keep track of your mana, if needed.
