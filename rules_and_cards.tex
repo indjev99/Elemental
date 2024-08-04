@@ -13,12 +13,19 @@
 \usepackage[export]{adjustbox}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1.5cm]{geometry}
+\usepackage{nopageno}
+\usepackage{titling}
 
 \setlength{\parskip}{0pt}
 \setlength{\tabcolsep}{0pt}
 
-% To make sure we don't have page numbers.
-\usepackage{nopageno}
+% clear date
+\predate{}
+\postdate{}
+\date{}
+
+\title{Elemental Dice}
+\author{Emil Indzhev}
 
 % Our consistent sizing
 \newcommand{\cardroundingradius}{4mm}
@@ -138,16 +145,13 @@
 
 \newcommand{\starthp}{120}
 
-\title{Elemental Dice}
-\author{Emil Indzhev}
-
 \begin{document}
 
-\maketitle
+% \maketitle
 
 \subsection*{Summary}
 
-The game is played between two players who build their decks and take turns playing cards from them. Other than their deck, at any point, each player has some gold and some HP (hit points). Each player's deck starts weak, but they can improve it by buying better cards or removing weak ones. Some cards give gold, deal damage or restore HP, while others provide various forms of utility, shielding or buffs. Seven elemental dice determine the strengths of various cards: Fire \fire, Earth \earth, Water \water, Nature \nature, Gold \gold, Magic \magic \ and Chance \chance. They are rolled at the start and (mostly) not changed after that. Some cards can change the values of these dice, thus changing how strong other cards are.
+The game is played between two players who build their decks and take turns playing cards from them. Their decks start weak, but they can improve them by buying better cards or removing weak ones. Each player also some mana (used to play cards), gold (used to buy cards) and HP (hit points). Some cards give gold, deal damage or restore HP, while others provide various forms of utility, shielding or buffs. Seven elemental dice determine the strengths of various cards: Fire \fire, Earth \earth, Water \water, Nature \nature, Gold \gold, Magic \magic \ and Chance \chance. They are rolled at the start and not automatically changed after that. However, some cards can change the values of these dice, changing how strong other cards are.
 
 \subsection*{Win condition}
 
@@ -160,32 +164,38 @@ The game ends in one of two cases:
 
 \subsection*{The cards}
 
-There are some \starter \ and \draft \ cards, which each player starts with. The rest are buyable from the shop and have gold costs: \onecost, \twocost, \threecost, \fourcost \ or \fivecost. There are 3 types of cards:
+There are some \starter \ and \draft \ cards, which each player's deck starts with. The rest are buyable from the shop and have gold costs: \onecost, \twocost, \threecost, \fourcost \ or \fivecost.
+
+Mechanically, there are 3 types of cards:
 
 \begin{itemize}
-\item Spell -- The most common type; these cards get played from a player's hand and cost 1 mana to play (so by default a player can only play one of them per turn).
+\item Spell -- The most common type; these cards get played from a player's hand and cost 1 mana to play (default a player only gets 1 mana per turn and, if unused, it is lost at the end of the turn).
 \item Blessing -- Similar to a Spell, except that they cost no mana (so any number of them can be played per turn) and that they can also be played during the opponent's turn.
 \item Relic -- These cards are deployed immediately upon being acquired and remain in play until the end of the game (i.e. they provide passive effects).
 \end{itemize}
 
-\subsection*{The elements}
-
-All 7 elements have a die associated with them. Various elemental cards scale with the values of one or more of these dice. These values mostly remain constant, until changed by some card.
+Furthermore, we can classify most cards depending on what they do:
 
 \begin{itemize}
-\item \fire, \earth, \water, \chance \ -- All attack (``Deal X damage'') cards scale with some of these elements (and possibly \magic).
-\item \water \ -- All attack cards that scale with \water \ deal damage to both players.
-\item \nature \ -- All restore (``Restore X HP'') cards scale with \nature \ and possibly other elements.
-\item \gold \ -- All gold (``Gain X gold'') cards scale with \gold \ and possibly other elements.
-\item \magic \ -- A multiplicative scaler in some attack, restore and gold cards.
-\item \chance \ -- Whenever its value is needed for some effect, its die is rerolled before calculating the effect's strength.
+\item Attack -- ``Deal X damage'' cards (i.e. reduce the opponent's HP). They scale with one or two of \fire, \earth, \water, \chance \ and \magic. Attacks that scale with \water \ deal damage to both players.
+\item Restore -- ``Restore X HP'' cards. They scale with \nature \ and possibly one of the attack elements.
+\item Gold -- ``Gain X gold'' cards. They scale with \gold \ and possibly one of the attack elements.
+\item Shield -- ``Shield X against Y damage'' cards. They subtract the value of element X from that of Y to reduce incoming damage. There are shield cards against \fire, \earth \ and \water \ attacks.
+\item Buff -- ``[Increase] the strength of all your X effects'' cards. They affect all cards that scale with the element X. There are Buff cards for all elements except \chance.
+\item Dice Control -- various cards that affect the dice (either changing their values or rerolling them). These are the only way to change the dice values (and thus affect how strong various elemental cards are).
+\item Draw -- ``Draw X cards'' cards. Useful for finding the valuable cards.
+\item Mana -- ``Gain X mana'' cards. Useful for playing multiple Spells in a single turn.
+\item Removal -- ``Permanently remove X cards from ...'' cards. Permanently removing a card means removing it from one's deck and moving it to the removed cards pile. Useful for removing bad cards.
+\item Other utility -- various other cards with hard to categorize effects. Some may allow seeing otherwise hidden information or messing with the opponent in some way, etc.
 \end{itemize}
 
-There are also buff cards for all elements except \chance \ and shield cards against \fire, \earth \ and \water \ attacks.
+\subsection*{The \chance \ die}
+
+Unlike all other dice, whenever its value is needed by a card, it is rerolled before executing the card.
 
 \subsection*{Gold}
 
-Gold (represented by the coins) is gained passively (1 per turn) and by playing cards. Other than with gold cards: A player dealing damage or restoring HP (to their opponent or themselves) receives gold equal to half the damage dealt/HP restored (rounded up). Gold is mainly spent on rerolling the shop, buying cards from it or placing face down cards.
+Gold (represented by the coins) is gained passively (1 per turn) and by playing cards. Other than with gold cards: A player dealing damage or restoring HP (to their opponent or themselves) receives gold equal to half the damage dealt/HP restored (rounded up). Gold is mainly spent on rerolling the shop, buying cards or placing face down cards.
 
 \subsection*{Shields}
 
@@ -193,15 +203,11 @@ Shields may affect multiple attacks while deployed. Multiple shields may affect 
 
 \vspace{4pt}
 
-Elemental shields (``Shield X against Y damage until the end of your opponent's turn.'') work by subtracting the value of element X from the value of the element Y (without going negative) in incoming damage calculations. This is done before any multiplicative scaling is applied (such as times 2 or times \magic). Note that ``Magical Barrier'' (``Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.'') can target any of \fire, \earth \ or \water \ (only one per attack), but only in multi-element attacks. The choice of which to target is individual for each attack.
-
-\vspace{4pt}
-
-Unlike all of these, ``Paid Militia'' (``Shield any damage by paying one gold per damage until the end of your opponent's turn.'') is applied to the final damage number, since it does not scale with or target particular elements. Preventing the damage (and thus paying the cost) is optional (and could also be partial).
+Shields (``Shield X against Y damage until the end of your opponent's turn.'') work by subtracting the value of element X from the value of the element Y (without going negative) in incoming damage calculations. This is done before any multiplicative scaling is applied (such as times 2 or times \magic). Note that ``Magical Barrier'' (``Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.'') can target any of \fire, \earth \ or \water \ (only one per attack), but only in multi-element attacks. The choice of which to target is individual for each attack.
 
 \subsection*{Buffs}
 
-Elemental buffs (``Double the strength of all your X effects until the end of your turn.'') work by doubling the (post elemental shielding) strength of all effects that scale (additively or multiplicatively) with their respective element. Similar to shields, they may affect multiple cards while deployed and multiple buffs may affect the same cards.
+Buffs (``Double the strength of all your X effects until the end of your turn.'') work by doubling the (post shielding) strength of all effects that scale with their element (and possibly others). Similarly to shields, they may affect multiple cards while deployed and multiple buffs may affect the same cards.
 
 \subsection*{Initial setup}
 
@@ -245,15 +251,11 @@ Blessings and face down cards may also be played during the opponent's turn. Thi
 
 \vspace{4pt}
 
-For example: It is Alice's turn and she plays a \fire \ attack. Then Bob plays a Blessing (from his hand) that allows him to see Alice's hand. After that he plays (flips over and activates) two of his face down cards: first, a card that allows him to reroll the \fire \ die; second, a \water \ shield against this attack. Alice wants to reduce the effectiveness of the shield, so she plays a Blessing that gives her mana, allowing her to play another Spell, after which she plays ``Trickster God'' to swap the values of the \fire \ and \water \ dice. However, Bob counters this by playing the Blessing ``Veto'' from his hand, thus canceling the effect of ``Trickster God''. Finally, Alice's attack is executed, Bob's shield negates all damage.
+Example: During her turn, Alice plays a \fire \ attack. Then Bob plays (flips over and activates) his two face down cards: one that allows him to reroll the \fire \ die, and a \water \ shield against this attack. Alice then plays a Blessing that gives her mana, allowing her to play another Spell, after which she plays ``Trickster God'' to swap the values of the \fire \ and \water \ dice. However, Bob counters this by playing the Blessing ``Veto'' from his hand, thus canceling the effect of ``Trickster God''. Finally, Alice's attack is executed and Bob's shield negates all damage.
 
 \subsection*{Discard pile}
 
 Whenever a player needs to discard some number of cards (from their hand or face down cards) but has fewer than that, they simply discard all such cards and that effect is considered as exectuted. Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its discard pile is shuffled and it becomes the draw pile. This is never triggered by inspection (``Look at top X cards of Y'') effects, even if the draw pile has fewer than X cards.
-
-\subsection*{Permanent removals}
-
-Permanently removing a card means removing it from your deck and moving it to the removed cards pile.
 
 \subsection*{Private and public information}
 
