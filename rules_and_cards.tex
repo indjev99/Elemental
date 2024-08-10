@@ -133,8 +133,8 @@
 \newcommand{\fivecost}{21 gold}
 
 \newcommand{\facedowncost}{3}
-\newcommand{\rerollcost}{2}
-\newcommand{\rerollcostincrease}{1}
+\newcommand{\refreshcost}{2}
+\newcommand{\refreshcostincrease}{1}
 \newcommand{\expresscost}{4}
 
 \newcommand{\startgold}{5}
@@ -144,6 +144,7 @@
 \newcommand{\shopsize}{5}
 
 \newcommand{\starthp}{120}
+\newcommand{\maxhp}{200}
 
 \begin{document}
 
@@ -151,7 +152,7 @@
 
 \subsection*{Summary}
 
-The game is played between two players who build their decks and take turns playing cards from them. Their decks start weak, but they can improve them by buying better cards or removing weak ones. Each player also has some mana (used to play cards), gold (used to buy cards) and HP (if it reaches 0, the player loses). Some cards give gold, deal damage or restore HP, while others provide various forms of utility, shielding or buffs. Seven elemental dice determine the strengths of various cards: Fire \fire, Earth \earth, Water \water, Nature \nature, Gold \gold, Magic \magic \ and Chance \chance. They are rolled at the start and not automatically changed after that. However, some cards can change the values of these dice, changing how strong other cards are.
+The game is played between two players who build their decks and take turns playing cards from them. Their decks start weak, but they can improve them by buying better cards or removing weak ones. Each player also has some mana (used to play cards), gold (used to buy cards) and HP (if it reaches 0, the player loses). Some cards give gold, deal damage or restore HP, while others provide various forms of utility, shielding or buffs. Seven elemental dice determine the strengths of various cards: Fire \fire, Earth \earth, Water \water, Nature \nature, Gold \gold, Magic \magic \ and Chance \chance. They are rolled at the start and stay like that. However, some cards can change the values of these dice, thus changing how strong other cards are.
 
 \subsection*{Win condition}
 
@@ -159,12 +160,12 @@ The game ends in one of two cases:
 
 \begin{itemize}
 \item A player's HP reaches 0 (or less). Then the other player wins. If both players' HPs reach 0 at the same time, the one whose card caused this wins.
-\item A player's HP reaches 200 (or more). Then they win. (Cannot happen to both players simultaneously.)
+\item A player's HP reaches \maxhp \ (or more). Then they win. (Cannot happen to both players simultaneously.)
 \end{itemize}
 
 \subsection*{The cards}
 
-There are some \starter \ and \draft \ cards, which each player's deck starts with. The rest are buyable from the shop and have gold costs: \onecost, \twocost, \threecost, \fourcost \ or \fivecost.
+There are some \starter \ and \draft \ cards, which each player's deck starts with. The rest are buyable from the shop (explained later) and have gold costs: \onecost, \twocost, \threecost, \fourcost \ or \fivecost.
 
 Mechanically, there are 3 types of cards:
 
@@ -195,7 +196,7 @@ Unlike all other dice, whenever its value is needed by a card, it is rerolled be
 
 \subsection*{Gold}
 
-Gold (represented by the coins) is gained passively (1 per turn) and by playing cards. Other than with gold cards: A player dealing damage or restoring HP (to their opponent or themselves) receives gold equal to half the damage dealt/HP restored (rounded up). Gold is mainly spent on rerolling the shop, buying cards or placing face down cards.
+Gold (represented by the coins) is gained passively (1 per turn) and by playing cards. Other than with gold cards: A player dealing damage or restoring HP (to their opponent or themselves) receives gold equal to half the damage dealt/HP restored (rounded up). Gold is mainly spent on refreshing the shop, buying cards or placing face down cards.
 
 \subsection*{Shields}
 
@@ -233,8 +234,8 @@ At the start of their turn, the player gains 1 gold and 1 mana. After that they 
 \item Play a Blessing from their hand at no cost.
 \item Place a face down card at the cost of 1 mana and \facedowncost \ gold. A player may have at most \dacedownsize \ face down cards at a time.
 \item Play (flip over and activate) any number of face down cards at no cost.
-\item Reroll the shop. The first reroll in a turn costs \rerollcost \ gold and each subsequent is \rerollcostincrease \ gold more expensive.
-Rerolling the shop consists of moving the currently laid out shop cards (if any) to the shop's discard pile followed by drawing and laying out \shopsize \ cards from the shop's draw pile. Note that initially there are no shop cards laid out.
+\item Refresh the shop. The first refresh in a turn costs \refreshcost \ gold and each subsequent is \refreshcostincrease \ gold more expensive.
+Refreshing the shop consists of moving the currently laid out shop cards (if any) to the shop's discard pile followed by drawing and laying out \shopsize \ cards from the shop's draw pile. Note that initially there are no shop cards laid out.
 \item Buy a card from the laid out shop cards by paying its cost. May be done at most once per turn.
 The bought card is not replaced, so the shop can become empty again. The bought card goes to the player's discard pile, unless it is a Relic, in which case it is immediately and permanently deployed.
 \end{itemize}
@@ -477,7 +478,7 @@ Returning priority is also given to the other player after any of the other type
 &
 \card{Express Shipping}{Relic}{Whenever you buy a card, you may pay \expresscost \ gold for it to go into your hand.}{\twocost}{imgs/express_shipping.png}
 &
-\card{Merchant's Goodwill}{Relic}{Your shop rerolls cost 1 gold less.}{\twocost}{imgs/merchants_goodwill.png}
+\card{Merchant's Goodwill}{Relic}{Your shop refreshes cost 1 gold less.}{\twocost}{imgs/merchants_goodwill.png}
 &
 \card{Cheapskate}{Relic}{Face down cards no longer cost gold to place.}{\twocost}{imgs/cheapskate.png}
 &
