@@ -286,7 +286,7 @@ After the player's turn is over, they lose all their mana, discard their hand an
 
 \subsection*{During the opponent's turn}
 
-Blessings and face down cards may also be played during the opponent's turn. This can be done at any time, including between the opponent playing a card and executing its effect. In such a situation, the opponent, may in turn, also respond (possibly with multiple cards) before executing their original card. This can repeat ad infinitum. See the detailed priority rules for more information.
+Blessings and face down cards may also be played during the opponent's turn. This can be done at any time, including between the opponent playing a card and executing its effect (calculating its strength is part of the execution). In such a situation, the opponent may in turn also respond (possibly with multiple cards) before executing their original card. Note that those could be spells, if they have the mana, since it is their turn. This chain of responses can repeat ad infinitum (i.e. the player may respond with other blessings or face down cards, etc.). See the detailed priority rules for more information.
 
 \vspace{4pt}
 
@@ -427,7 +427,7 @@ Returning priority is also given to the other player after any of the other type
 \card{Purism}{Spell}{Double the strength of all your single-element effects until the end of your turn.}{\threecost}{imgs/purism.png}
 &
 
-\card{Fortuna's Protection}{Relic}{When the value of the \chance \ die is needed, you may choose for it to not be rerolled.}{\threecost}{imgs/fortunas_protection.png}
+\card{Fortuna's Protection}{Relic}{ \scriptsize You choose whether \chance \ is rerolled each time its value is needed; dice control may no longer affect it.}{\threecost}{imgs/fortunas_protection.png}
 &
 
 \card{Gambling}{Spell}{Reroll a die once.}{\draft}{imgs/gambling.png}
@@ -490,13 +490,13 @@ Returning priority is also given to the other player after any of the other type
 \card{Multitasking God}{Blessing}{Gain 4 mana.}{\fivecost}{imgs/multitasking_god.png}
 &
 
-\card{Exploration Novice}{Spell}{Draw 2 cards; if this is your first draw this turn, gain 1 mana.}{\onecost}{imgs/exploration_novice.png}
+\card{Exploration Novice}{Spell}{Draw 2 cards; if this is your first draw spell this turn, gain 1 mana.}{\onecost}{imgs/exploration_novice.png}
 &
-\card{Exploration Master}{Spell}{Draw 3 cards; if this is your first draw this turn, gain 1 mana.}{\twocost}{imgs/exploration_master.png}
+\card{Exploration Master}{Spell}{Draw 3 cards; if this is your first draw spell this turn, gain 1 mana.}{\twocost}{imgs/exploration_master.png}
 &
-\card{Exploration Lord}{Spell}{Draw 4 cards; if this is your first draw this turn, gain 1 mana.}{\threecost}{imgs/exploration_lord.png}
+\card{Exploration Lord}{Spell}{Draw 4 cards; if this is your first draw spell this turn, gain 1 mana.}{\threecost}{imgs/exploration_lord.png}
 &
-\card{Exploration God}{Spell}{Draw 5 cards; if this is your first draw this turn, gain 1 mana.}{\fourcost}{imgs/exploration_god.png}
+\card{Exploration God}{Spell}{Draw 5 cards; if this is your first draw spell this turn, gain 1 mana.}{\fourcost}{imgs/exploration_god.png}
 &
 
 \card{Magnetic Hands}{Blessing}{ \small Move any card from your draw or discard pile to your hand, then shuffle your draw pile.}{\threecost}{imgs/magnetic_hands.png}
@@ -523,7 +523,7 @@ Returning priority is also given to the other player after any of the other type
 &
 \card{Merchant's Goodwill}{Relic}{Your shop refreshes cost 1 gold less.}{\twocost}{imgs/merchants_goodwill.png}
 &
-\card{Cheapskate}{Relic}{Face down cards no longer cost gold to place.}{\twocost}{imgs/cheapskate.png}
+\card{Cheapskate}{Relic}{Face down cards no longer cost you gold to place.}{\twocost}{imgs/cheapskate.png}
 &
 \card{Spacious Table}{Relic}{You have space for 1 extra face down card.}{\twocost}{imgs/spacious_table.png}
 &
