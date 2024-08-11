@@ -188,7 +188,7 @@ We can also classify most cards depending on what they do:
 \item Restore -- ``Restore X HP'' cards. They all scale with \nature \ and possibly one of the attack elements.
 \item Gold -- ``Gain X gold'' cards. They all scale with \gold \ and possibly one of the attack elements.
 \item Shield -- ``Shield X against Y damage'' cards. They subtract the value of element X from that of Y to reduce incoming damage. There are shield cards against \fire, \earth \ and \water \ attacks.
-\item Buff -- ``[Increase] the strength of all your X effects'' cards. They affect all cards that scale with the element X. There are Buff cards for all elements except \chance.
+\item Buff -- ``[Increase] the strength of all your X effects'' cards. They affect all cards that scale with the element X. There are buff cards for all elements except \chance.
 \item Dice Control -- various cards that affect the dice (either changing their values or rerolling them). These are the only way to change the dice values (and thus affect how strong various elemental cards are).
 \item Draw -- ``Draw X cards'' cards. Useful for finding the valuable cards.
 \item Mana -- ``Gain X mana'' cards. Useful for playing multiple spells in a single turn.
@@ -249,7 +249,7 @@ Buffs (``Double the strength of all your X effects until the end of your turn.''
 \subsection*{Initial setup}
 
 \begin{itemize}
-\item Each player starts with \starthp \ HP (out of 200) and \startgold \ gold.
+\item Each player starts with \starthp \ HP (out of \maxhp) and \startgold \ gold.
 \item All seven elemental dice are rolled and ordered next to the HP tracker like so: \fire, \earth, \water, \nature, \gold, \magic, \chance.
 \item All cards with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
 \item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together; 6 of them are dealt out and the other 2 are permanently removed.
@@ -580,6 +580,8 @@ Returning priority is also given to the other player after any of the other type
 \card{Lucky Find}{Blessing}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
 &
 \card{Lucky Find}{Blessing}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
+&
+\card{}{\hspace{30pt}}{}{\hspace{30pt}}{}
 &
 
 \end{longtable}
