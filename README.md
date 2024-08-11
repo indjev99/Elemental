@@ -1,2 +1,3 @@
 # Elemental-Dice
-WIP deck building board game.
+
+The game is played between two players who build their decks and take turns playing cards from them. Their decks start weak, but they can improve them by buying better cards or removing weak ones. Each player also has some mana (used to play cards), gold (used to buy cards) and HP (if it reaches 0, the player loses). Some cards give gold, deal damage or restore HP, while others provide various forms of utility, shielding or buffs. Seven elemental dice determine the strengths of various cards: Fire, Earth, Water, Nature, Gold, Magic and Chance. They are rolled at the start and stay like that. However, some cards can change the values of these dice, thus changing how strong other cards are.
