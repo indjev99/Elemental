@@ -249,7 +249,7 @@ Buffs (``Double the strength of all your X effects until the end of your turn.''
 \subsection*{Initial setup}
 
 \begin{itemize}
-\item Each player starts with \starthp \ HP (out of 200) and \startgold \ gold (use the HP tracker for the HP and the coins for the gold).
+\item Each player starts with \starthp \ HP (out of 200) and \startgold \ gold.
 \item All seven elemental dice are rolled and ordered next to the HP tracker like so: \fire, \earth, \water, \nature, \gold, \magic, \chance.
 \item All cards with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
 \item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together; 6 of them are dealt out and the other 2 are permanently removed.
@@ -290,11 +290,15 @@ Blessings and face down cards may also be played during the opponent's turn. Thi
 
 \vspace{4pt}
 
-Example: During her turn, Alice plays a \fire \ attack. Then Bob plays (flips over and activates) his two face down cards: one that allows him to reroll the \fire \ die, and a \water \ shield against this attack. Alice then plays a blessing that gives her mana, allowing her to play another spell, after which she plays ``Trickster God'' to swap the values of the \fire \ and \water \ dice. However, Bob counters this by playing the blessing ``Veto'' from his hand, thus canceling the effect of ``Trickster God''. Finally, Alice's attack is executed and Bob's shield negates all damage.
+Example: During her turn, Alice plays a \fire \ attack. Then Bob plays his two face down cards: one that allows him to reroll the \fire \ die, and a \water \ shield against this attack. Alice then plays a blessing that gives her mana, allowing her to play another spell, after which she plays ``Trickster God'' to swap the values of the \fire \ and \water \ dice. However, Bob counters this by playing the blessing ``Veto'' from his hand to cancel the effect of ``Trickster God''. Finally, Alice's attack is executed but Bob's shield negates all damage.
 
 \subsection*{Discard pile}
 
-Whenever a player needs to discard some number of cards (from their hand or face down cards) but has fewer than that, they simply discard all such cards and that effect is considered as exectuted. Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its discard pile is shuffled and it becomes the draw pile. This is never triggered by effects without the ``draw'' keyword (e.g. ``Look at top X cards of your draw pile'', even if the draw pile has fewer than X cards).
+Whenever a player needs to discard some number of cards (from their hand or face down cards), but has fewer than that, they simply discard all such cards and that effect is considered as exectuted. Instead, if the player has more cards than that, they chose which cards to discard.
+
+\vspace*{4pt}
+
+Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its discard pile is shuffled and it becomes the draw pile. This is never triggered by effects without the ``draw'' keyword (e.g. ``Look at top X cards of your draw pile'', even if the draw pile has fewer than X cards).
 
 \subsection*{Private and public information}
 
@@ -326,6 +330,7 @@ Returning priority is also given to the other player after any of the other type
 
 \begin{itemize}
 \item ``Second Chance'', ``Sleight of Hand'', ``Calculated Risk'' and ``Smoke and Mirrors'' affect only one die (chosen by the player), i.e. their effects cannot be split up over multiple dice.
+\item ``Fortuna's Protection'' (``You choose whether \chance \ is rerolled each time its value is needed; dice control may no longer affect it.'') stops either player from using dice control cards on the \chance \ die. The only way its value changes is when a card that scales with it is played and the relic's owner decides that it should be rerolled.
 \item ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.'') can target the shop and its draw and discard piles. The chosen card is private information.
 \item ``At What Cost'' (``Permanently remove a relic you own upon buying this; gain 1 extra mana at the start of your turn.'') cannot be bought, if the player does not own another relic card.
 \item ``Veto'' (``Cancel a not yet executed card of your opponent.'') can be played without a target, but then it does nothing. Cannot target relics.
