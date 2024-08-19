@@ -132,10 +132,10 @@
 \newcommand{\fourcost}{15 gold}
 \newcommand{\fivecost}{21 gold}
 
-\newcommand{\facedowncost}{3}
+\newcommand{\facedowncost}{2}
 \newcommand{\refreshcost}{2}
 \newcommand{\refreshcostincrease}{1}
-\newcommand{\expresscost}{4}
+\newcommand{\expresscost}{3}
 
 \newcommand{\startgold}{5}
 
@@ -335,7 +335,7 @@ Returning priority is also given to the other player after any of the other type
 \item ``Fortuna's Protection'' (``You choose whether \chance \ is rerolled each time its value is needed; dice control may no longer affect it.'') stops either player from using dice control cards on the \chance \ die. The only way its value changes is when a card that scales with it is played and the relic's owner decides that it should be rerolled.
 \item ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.'') can target the shop and its draw and discard piles. The chosen card is private information.
 \item ``At What Cost'' (``Permanently remove a relic you own upon buying this; gain 1 extra mana at the start of your turn.'') cannot be bought, if the player does not own another relic card.
-\item ``Veto'' (``Cancel a not yet executed card of your opponent.'')  can target shields and buffs that are still active. It can also be played without a target, but then it does nothing. Cannot target relics.
+\item ``Veto'' (``Cancel a not yet executed card of your opponent and discard it.'')  can target shields and buffs that are still active. It can also be played without a target, but then it does nothing. Cannot target relics.
 \item ``Madness'' (``Upon buying this reroll all dice and permanently remove this card.'') counts as being played for the purposes of other cards. It can be canceled by ``Veto'', which would only stop the reroll (but the card is still permanently removed). 
 \item ``Curse'' (``Upon buying this, add it to your opponent's discard pile; does nothing afterwards.'') does not count as being played. It cannot be canceled by ``Veto''.
 \end{itemize}
@@ -506,7 +506,7 @@ Returning priority is also given to the other player after any of the other type
 \card{Faulty Table}{Blessing}{Your opponent must discard 1 card from their face down cards.}{\twocost}{imgs/faulty_table.png}
 &
 
-\card{Veto}{Blessing}{Cancel a not yet executed card of your opponent.}{\threecost}{imgs/veto.png}
+\card{Veto}{Blessing}{Cancel a not yet executed card of your opponent and discard it.}{\threecost}{imgs/veto.png}
 &
 
 \card{All for One}{Blessing}{Discard 2 cards from your hand and gain 1 mana.}{\onecost}{imgs/all_for_one.png}
@@ -556,7 +556,7 @@ Returning priority is also given to the other player after any of the other type
 &
 \card{Express Shipping}{Relic}{Whenever you buy a card, you may pay \expresscost \ gold for it to go into your hand.}{\twocost}{imgs/express_shipping.png}
 &
-\card{Merchant's Goodwill}{Relic}{Your shop refreshes cost 1 gold less.}{\twocost}{imgs/merchants_goodwill.png}
+\card{Merchant's Goodwill}{Relic}{Your shop refreshes cost 1 gold less.}{\onecost}{imgs/merchants_goodwill.png}
 &
 \card{Cheapskate}{Relic}{Face down cards no longer cost you gold to place.}{\twocost}{imgs/cheapskate.png}
 &
