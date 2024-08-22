@@ -188,65 +188,61 @@ We can also classify most cards depending on what they do:
 \begin{itemize}
 \item Attack -- ``Deal X damage'' cards (i.e. reduce the opponent's HP). They all scale with one or two of \fire, \earth, \water, \chance \ and \magic. Attacks that scale with \water \ deal damage to both players.
 \item Restore -- ``Restore X HP'' cards. They all scale with \nature \ and possibly one of the attack elements.
-\item Gold -- ``Gain X gold'' cards. They all scale with \gold \ and possibly one of the attack elements.
-\item Shield -- ``Shield X against Y damage'' cards. They subtract the value of element X from that of Y to reduce incoming damage. There are shield cards against \fire, \earth \ and \water \ attacks.
-\item Buff -- ``[Increase] the strength of all your X effects'' cards. They affect all cards that scale with the element X. There are buff cards for all elements except \chance.
-\item Dice Control -- various cards that affect the dice (either changing their values or rerolling them). These are the only way to change the dice values (and thus affect how strong various elemental cards are).
+\item Gold -- ``Gain X gold'' cards. They all (except the starter cards) scale with \gold \ and possibly one of the attack elements.
+\item Buff -- ``Double the strength of all your cards that scale with X'' cards. They buff other cards.
+\item Shield -- ``Shield X against incoming damage that scales with Y'' cards. They reduce incoming damage.
+\item Dice Control -- various cards that affect the dice (either changing their values or rerolling them). These are the only way to change the dice values (and thus affect how strong various other cards are).
 \item Draw -- ``Draw X cards'' cards. Useful for finding the valuable cards.
 \item Mana -- ``Gain X mana'' cards. Useful for playing multiple spells in a single turn.
 \item Removal -- ``Permanently remove X cards from ...'' cards. Permanently removing a card means removing it from one's deck and moving it to the removed cards pile. Useful for removing bad cards.
 \item Other utility -- various other cards with hard to categorize effects. Some may allow seeing otherwise hidden information or messing with the opponent in some way, etc.
 \end{itemize}
 
-\newpage
-
 \subsection*{Elemental scaling}
 
-Many cards' effects have an element symbol instead of a number, e.g. ``Deal \fire \ damage to your opponent''. This means that the amount of damage dealt is equal to the current value of the \fire \ die. We say that this card/effect scales with \fire. Note that the die is not rerolled when playing such a card.
+Many cards' descriptions have an element symbol instead of a number, e.g. ``Deal \fire \ damage to your opponent''. This means that the amount of damage dealt is equal to the current value of the \fire \ die. We say that this card scales with \fire. Note that the die is not rerolled when playing such a card.
 
 \vspace{4pt}
 
-It is also possible to have a stronger scaling like ``2\hspace{1pt}$\times$\hspace{1pt}\fire'', which would mean that the damage is equal to 2 times the current value of the \fire \ die. Other cards may scale with multiple elements like ``\earth\hspace{1pt}$+$\hspace{1pt}\chance'' or ``\water\hspace{1pt}\times\hspace{1pt}\magic'', which would mean that the damage is equal to sum or product, respectively, of the current values of the two listed dice.
+It is also possible to have a stronger scaling like 2\hspace{1pt}$\times$\hspace{1pt}\fire, which would mean that the damage is equal to 2 times the current value of the \fire \ die. Other cards may scale with multiple elements like \earth\hspace{1pt}$+$\hspace{1pt}\chance \ or \water\hspace{1pt}\times\hspace{1pt}\magic, which would mean that the damage is equal to sum or product, respectively, of the current values of the two listed dice.
+
+\vspace{4pt}
+
+In all multi-element scaling cards, the combination is a sum, if neither element is \magic, and a product, otherwise. There are no single-element \magic \ scaling cards, i.e. \magic \ is always a multiplier.
 
 \vspace{4pt}
 
 \subsection*{The \chance \ die}
 
-Unlike all other dice, whenever its value is needed by a card, it is rerolled before executing (and calculating the strength of) the card. Note that dice control cards may still affect the \chance \ die (even potentially in between rerolling it and executing the card/calculating its strength, if it is legal to play the card).
+Unlike all other dice, whenever its value is needed by a card that scales with it, it is rerolled before executing (and calculating the strength of) the card. Note that dice control cards may still affect the \chance \ die, though this usually achieves nothing.
 
-\subsection*{The Shop}
+\subsection*{Buffs}
 
-The shop is where cards are bought from. It has its own draw and discard piles and a laid out shop. Initially, all buyable cards are shuffled in its draw pile and no cards are laid out. Then, by paying some gold, players may refresh the shop -- discard all laid out cards and then draw and lay out \shopsize \ cards. Cards may only be bought from the laid out shop (happens by paying their gold cost).
+Buffs (``Double the strength of all your cards that scale with X until the end of your turn.'') work by doubling the effective values of all dice except \magic \ in the strentgh calculations for all cards (of the player with the buff) that scale with X (and possibly something else). Multiple buffs may affect the same cards (e.g. two buffs means times 4). Buffs are discarded at the end of the player's turn (i.e., if played during the opponent's turn, a buff lasts through that and the player's turn.)
+
+\vspace{4pt}
+
+Example: Alice plays buff that targets \fire. She then plays a \fire\hspace{1pt}$\times$\hspace{1pt}\magic \ attack, a \nature\hspace{1pt}$+$\hspace{1pt}\fire \ restore and a \water\hspace{1pt}$+$\hspace{1pt}\earth \ attack. The first two will be doubled (i.e. will do 2\hspace{1pt}$\times$\hspace{1pt}\fire\hspace{1pt}$\times$\hspace{1pt}\magic \ damage and 2\hspace{1pt}$\times$\hspace{1pt}\nature\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\fire \ restoration, respectively), while the last attack will not be doubled.
+
+\subsection*{Shields}
+
+Shields (``Shield X against incoming damage that scales with Y until the end of your opponent's turn'') work by subtracting (without going negative) the value of die X from all dice except \magic \ in the strentgh calculations for all incoming damage (towards the player with the shielf) that scales with X (and possibly something else). Multiple shields may affect the same card. Shields are discarded at the end of the opponent's turn (i.e., if played during the player's turn, a shield lasts through that and the opponent's turn.)
+
+\vspace{4pt}
+
+This shield subtraction happens after the doubling due to buffs. Both the shield and/or the incoming damage may be buffed. In the first case, the substracted value is doubled. In the second case, the value(s) being subtracted from is/are doubled.
+
+\vspace{4pt}
+
+Example: During her turn, Alice plays a \fire \ buff and a 2\hspace{1pt}$\times$\hspace{1pt}\fire \ attack. The value of the \fire \ die is 4, so this attack would deal $2 \times 2 \times 4 = 16$ damage. However, Bob counters by playing a \water \ shield against \fire. The value of the \water \ die is 3, so the attack now deals $2 \times (2 \times 4 - 3) = 10$ damage. Had Bob also played a \water \ buff, the attack would have dealt $2 \times (2 \times 4 - 2 \times 3) = 4$.
+
+\vspace{4pt}
+
+Example 2: Alice plays a \water\hspace{1pt}$+$\hspace{1pt}\earth \ attack that targets both players. The value of the \water \ die is 2 and that of the \earth \ one is 5, so this attack would deal $2 + 5 = 7$ damage to both players. However, Bob counters by playing a ``Magical Barrier''. The value of the \magic \ die is 4. The attack now deals $0 + (5 - 4) = 1$ damage to Bob (since $2 - 4$ is negative) and still 5 damage to Alice.
 
 \subsection*{Gold}
 
 Gold (represented by the coins) is gained passively (1 per turn) and by playing cards. Other than with gold cards: A player dealing damage or restoring HP (to their opponent or themselves) receives gold equal to half the damage dealt/HP restored (rounded up). Note that, if a card deals damage to both players, the gold gained is half of the total damage dealt. Gold is mainly spent on refreshing the shop, buying cards or placing face down cards.
-
-\subsection*{Shields}
-
-Shields may affect multiple attacks while deployed. Multiple shields may affect the same attack, if all apply. Preventing damage due to shielding also prevents gaining the gold the attacker would have received otherwise. Shields only affect damage incoming towards the player who played them.
-
-\vspace{4pt}
-
-Shields (``Shield X against Y damage until the end of your opponent's turn.'') work by subtracting the value of element X from the value of the element Y (without going negative) in incoming damage calculations. This is done before any multiplicative scaling is applied (such as times 2 or times \magic).
-
-\vspace{4pt}
-
-Note that ``Magical Barrier'' (``Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.'') can target any of \fire, \earth \ or \water \ (only one per attack), but only in multi-element attacks. The choice of which to target is individual for each attack (chosen by the shielder).
-
-\vspace{4pt}
-
-Example: During her turn, Alice plays a ``2\hspace{1pt}$\times$\hspace{1pt}\fire'' attack. The value of the \fire \ die is 4, so this attack would deal $2 \times 4 = 8$ damage (and give Alice 4 gold). However, Bob counters by playing a ``\water \ against \fire'' shield. The value of the \water \ die is 3, so the attack now deals $2 \times (4 - 3) = 2$ damage (and Alice gains only 1 gold).
-
-\vspace{4pt}
-
-Example 2: Alice plays a ``\water\hspace{1pt}$+$\hspace{1pt}\earth'' attack that targets both players. The value of the \water \ die is 2 and that of the \earth \ one is 5, so this attack would deal $2 + 3 = 5$ damage to both players (and give Alice 5 gold). However, Bob counters by playing a ``Magical Barrier''. The value of the \magic \ die is 5 and Bob choses to target the \earth \ element. The attack now deals $2 + 0 = 2$ damage to Bob (since the \magic \ die's value is higher than that of \earth) and still 5 damage to Alice. Alice gains only 4 gold.
-
-\subsection*{Buffs}
-
-Buffs (``Double the strength of all your X effects until the end of your turn.'') work by doubling the (post shielding) strength of all effects that scale with their element (and possibly others). Similarly to shields, they may affect multiple cards while deployed and multiple buffs may affect the same cards.
-
-\newpage
 
 \subsection*{Initial setup}
 
@@ -256,7 +252,7 @@ Buffs (``Double the strength of all your X effects until the end of your turn.''
 \item All cards with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
 \item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together; 6 of them are dealt out and the other 2 are permanently removed.
 \item Each player rolls a die and whoever rolls higher choses who goes first. (In case of a tie, reroll.)
-\item The player who rolled lower in the first player determination may decide to swap who goes first and who goes second by offering 1 advantage (ability to change a die by 1) to the other player. If this happens, the other player has the same option, but for 2 advantage. This repeats (with increasing advantage numbers) until one player passes up on using this option. (Only the final advantage offer remains in effect.)
+\item The player who rolled lower in the first player determination may decide to swap who goes first and who goes second by offering 1 advantage (ability to change a die by 1) to the other player. If this happens, the other player has the same option, but for 2 advantage. This repeats (with increasing advantage numbers) until one player passes up on using this option. Only the final advantage offer remains in effect, as this is effectively an auction for the turn order.
 \item The first player drafts (chooses) 1 of the dealt out \draft \ cards, the second one drafts 2 of the remaining ones, the first one drafts 2, and the last card goes to the second player.
 \item The starting draw pile of each player is formed by shuffling together the 9 Starter cards (8 ``Basic Income'' and 1 ``Lucky Find'') and their 3 chosen \draft \ cards.
 \item The player with X advantage (if any) may change the value of a die by 1 up to X times (may be the same die, different dice or any other combination).
@@ -278,13 +274,15 @@ Refreshing the shop consists of moving the currently laid out shop cards (if any
 The bought card is not replaced, so the shop can become empty again. The bought card goes to the player's discard pile, unless it is relic, in which case it is immediately and permanently deployed.
 \end{itemize}
 
-Whenever a card is played it is kept in the player's play area until its effect is fully executed. After that it is moved to the side of the play area (to be discarded at the end of the turn). Cards whose effects last longer (shields and buffs) are kept in the play area until their effect expires (at which point they are moved directly to the discard pile).
+Whenever a card is played it is kept in the player's play area until the end of their turn (after which it is discarded). Cards whose effect lasts longer (e.g. buffs and shields) are kept in the play area until their effect expires (at which point they are discarded).
 
 \vspace{4pt}
 
-After the player's turn is over, they lose all their mana, discard their hand and their fully executed cards to their discard pile and draw \handsize \ cards from their draw pile.
+After the player's turn is over, they lose all their mana, discard their entire hand and their played cards (unless still active) and then draw \handsize \ cards from their draw pile.
 
-\newpage
+\subsection*{Shop Summary}
+
+The shop is where cards are bought from. It has its own draw and discard piles and a laid out shop. Initially, all buyable cards are shuffled in its draw pile and no cards are laid out. Then, by paying some gold, players may refresh the shop -- discard all laid out cards and then draw and lay out \shopsize \ cards. Cards may only be bought from the laid out shop (happens by paying their gold cost).
 
 \subsection*{During the opponent's turn}
 
@@ -292,7 +290,7 @@ Blessings and face down cards may also be played during the opponent's turn. Thi
 
 \vspace{4pt}
 
-Example: During her turn, Alice plays a \fire \ attack. Then Bob plays his two face down cards: one that allows him to reroll the \fire \ die, and a \water \ shield against this attack. Alice then plays a blessing that gives her mana, allowing her to play another spell, after which she plays ``Trickster God'' to swap the values of the \fire \ and \water \ dice. However, Bob counters this by playing the blessing ``Veto'' from his hand to cancel the effect of ``Trickster God''. Finally, Alice's attack is executed but Bob's shield negates all damage.
+Example: During her turn, Alice plays a \fire \ attack. Then Bob plays his two face down cards: one that allows him to reroll the \fire \ die, and a \water \ shield against this attack. Alice then plays a blessing that gives her mana, allowing her to play another spell, after which she plays ``Trickster God'' to swap the values of the \fire \ and \water \ dice. Finally, Alice's attack is executed but Bob's shield negates some damage.
 
 \subsection*{Discard pile}
 
@@ -304,7 +302,7 @@ Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its 
 
 \subsection*{Private and public information}
 
-A player's hand, face down cards, discard pile, discards and card removals are private information, i.e. they may see them, but the other player cannot. The contents and order of their draw pile and the removed cards pile are hidden information, i.e. nobody can see them. Played cards, gold, HP, mana and all counts (i.e. number of discarded cards, removed cards, face down cards, cards in a player's hand, draw pile or discard pile, or the removed cards pile) are all public information, i.e. both players can see them.
+A player's hand, face down cards, discard pile and discards and are private information, i.e. they may see them, but the other player cannot. A player's draw pile and the shop's draw pile are hidden information, i.e. nobody can see them. The laid out shop, the shop's discard pile, the removed cards pile, a player's played cards, bought cards, removed cards, gold, HP, mana and all counts (i.e. number of discarded cards, face down cards, cards in their hand, draw pile or discard pile) are all public information, i.e. both players can see them.
 
 \subsection*{Resigning}
 
@@ -332,12 +330,10 @@ Returning priority is also given to the other player after any of the other type
 
 \begin{itemize}
 \item ``Second Chance'', ``Sleight of Hand'', ``Calculated Risk'' and ``Smoke and Mirrors'' affect only one die (chosen by the player), i.e. their effects cannot be split up over multiple dice.
-\item ``Fortuna's Protection'' (``You choose whether \chance \ is rerolled each time its value is needed; dice control may no longer affect it.'') stops either player from using dice control cards on the \chance \ die. The only way its value changes is when a card that scales with it is played and the relic's owner decides that it should be rerolled.
-\item ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.'') can target the shop and its draw and discard piles. The chosen card is private information.
+\item ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.'') can target the shop and its draw and discard piles. The chosen card is public information.
 \item ``At What Cost'' (``Permanently remove a relic you own upon buying this; gain 1 extra mana at the start of your turn.'') cannot be bought, if the player does not own another relic card.
-\item ``Veto'' (``Cancel a not yet executed card of your opponent and discard it.'')  can target shields and buffs that are still active. It can also be played without a target, but then it does nothing. Cannot target relics.
-\item ``Madness'' (``Upon buying this reroll all dice and permanently remove this card.'') counts as being played for the purposes of other cards. It can be canceled by ``Veto'', which would only stop the reroll (but the card is still permanently removed). 
-\item ``Curse'' (``Upon buying this, add it to your opponent's discard pile; does nothing afterwards.'') does not count as being played. It cannot be canceled by ``Veto''.
+\item ``Veto'' (``Your opponent receives 1 less mana at the start of their next turn.'') is discarded at the start of the opponent's next turn (i.e. after the player has drawn their hand at the end of their turn).
+\item ``Madness'' (``Upon buying this reroll all dice and permanently remove this card.'') counts as being played for the purposes of other cards (e.g. ``Truly Blessed'')
 \end{itemize}
 
 \newpage
@@ -436,31 +432,33 @@ Returning priority is also given to the other player after any of the other type
 \card{Ancient Alchemy}{Spell}{Gain \gold\hspace{1pt}$\times$\hspace{1pt}\magic \ gold.}{\fourcost}{imgs/ancient_alchemy.png}
 &
 
-\card{Water Reservoirs}{Blessing}{\small Shield \water \ against \fire \ damage until the end of your opponent's turn.}{\onecost}{imgs/water_reservoirs.png}
+\card{Water Reservoirs}{Blessing}{ \small Shield \water \ against incoming damage that scales with \fire \ until the end of your opponent's turn.}{\onecost}{imgs/water_reservoirs.png}
 &
-\card{Solid Infrastructure}{Blessing}{\small Shield \earth \ against \water \ damage until the end of your opponent's turn.}{\onecost}{imgs/solid_infrastructure.png}
+\card{Solid Infrastructure}{Blessing}{ \small Shield \earth \ against incoming damage that scales with \water \ until the end of your opponent's turn.}{\onecost}{imgs/solid_infrastructure.png}
 &
-\card{Natural Forests}{Blessing}{\small Shield \nature \ against \earth \ damage until the end of your opponent's turn.}{\onecost}{imgs/natural_forests.png}
+\card{Natural Forests}{Blessing}{ \small Shield \nature \ against incoming damage that scales with \earth \ until the end of your opponent's turn.}{\onecost}{imgs/natural_forests.png}
 &
-\card{Magical Barrier}{Blessing}{\footnotesize Shield \magic \ against \fire, \earth \ or \water \ in multi-element damage until the end of your opponent's turn.}{\twocost}{imgs/magical_barrier.png}
+\card{Magical Barrier}{Blessing}{ \small Shield \magic \ against incoming damage that scales with multiple elements until the end of your opponent's turn.}{\twocost}{imgs/magical_barrier.png}
 &
-
-\card{Prometheus's Gift}{Spell}{Double the strength of all your \fire \ effects until the end of your turn.}{\threecost}{imgs/prometheuss_gift.png}
-&
-\card{Gaia's Favor}{Spell}{Double the strength of all your \earth \ effects until the end of your turn.}{\threecost}{imgs/gaias_favor.png}
-&
-\card{Poseidon's Trident}{Spell}{Double the strength of all your \water \ effects until the end of your turn.}{\threecost}{imgs/poseidons_trident.png}
-&
-\card{Ancient Grimoire}{Spell}{Double the strength of all your \magic \ effects until the end of your turn.}{\threecost}{imgs/ancient_grimoire.png}
-&
-\card{Nymphs' Grace}{Spell}{Double the strength of all your \nature \ effects until the end of your turn.}{\threecost}{imgs/nymphs_grace.png}
-&
-\card{Midas Touch}{Spell}{Double the strength of all your \gold \ effects until the end of your turn.}{\threecost}{imgs/midas_touch.png}
-&
-\card{Purism}{Spell}{Double the strength of all your single-element effects until the end of your turn.}{\threecost}{imgs/purism.png}
+\card{Paid Militia}{Blessing}{ \small Shield \gold \ against incoming damage that scales with a single element until the end of your opponent's turn.}{\twocost}{imgs/paid_militia.png}
 &
 
-\card{Fortuna's Protection}{Relic}{ \scriptsize You choose whether \chance \ is rerolled each time its value is needed; dice control may no longer affect it.}{\threecost}{imgs/fortunas_protection.png}
+\card{Prometheus's Gift}{Spell}{Double the strength of all your cards that scale with \fire \ until the end of your turn.}{\threecost}{imgs/prometheuss_gift.png}
+&
+\card{Gaia's Favor}{Spell}{Double the strength of all your cards that scale with \earth \ until the end of your turn.}{\threecost}{imgs/gaias_favor.png}
+&
+\card{Poseidon's Trident}{Spell}{Double the strength of all your cards that scale with \water \ until the end of your turn.}{\threecost}{imgs/poseidons_trident.png}
+&
+\card{Ancient Grimoire}{Spell}{Double the strength of all your cards that scale with \magic \ until the end of your turn.}{\threecost}{imgs/ancient_grimoire.png}
+&
+\card{Nymphs' Grace}{Spell}{Double the strength of all your cards that scale with \nature \ until the end of your turn.}{\threecost}{imgs/nymphs_grace.png}
+&
+\card{Midas Touch}{Spell}{Double the strength of all your cards that scale with \gold \ until the end of your turn.}{\threecost}{imgs/midas_touch.png}
+&
+\card{Purism}{Spell}{Double the strength of all your cards that scale with a single element until the end of your turn.}{\threecost}{imgs/purism.png}
+&
+
+\card{Fortuna's Protection}{Relic}{You choose whether the \chance \ die is rerolled each time its value is needed.}{\threecost}{imgs/fortunas_protection.png}
 &
 
 \card{Madness}{Blessing}{Upon buying this, reroll all dice and permanently remove this card.}{\onecost}{imgs/madness.png}
@@ -506,14 +504,15 @@ Returning priority is also given to the other player after any of the other type
 \card{Faulty Table}{Blessing}{Your opponent must discard 1 card from their face down cards.}{\twocost}{imgs/faulty_table.png}
 &
 
-\card{Veto}{Blessing}{Cancel a not yet executed card of your opponent and discard it.}{\threecost}{imgs/veto.png}
+\card{Veto}{Spell}{Your opponent receives 1 less mana at the start of their next turn.}{\twocost}{imgs/veto.png}
 &
 
 \card{All for One}{Blessing}{Discard 2 cards from your hand and gain 1 mana.}{\onecost}{imgs/all_for_one.png}
 &
+
 \card{Cruel Pact}{Blessing}{Take \chance \ damage and gain 1 mana.}{\onecost}{imgs/cruel_pact.png}
 &
-\card{Deal with the Devil}{Blessing}{Take $2\times$\chance \ damage and gain 2 mana.}{\onecost}{imgs/deal_with_the_devil.png}
+\card{Deal with the Devil}{Blessing}{Take \chance \ damage and gain 2 mana.}{\twocost}{imgs/deal_with_the_devil.png}
 &
 
 \card{Multitasking Novice}{Blessing}{Gain 1 mana.}{\twocost}{imgs/multitasking_novice.png}
@@ -556,7 +555,7 @@ Returning priority is also given to the other player after any of the other type
 &
 \card{Express Shipping}{Relic}{Whenever you buy a card, you may pay \expresscost \ gold for it to go into your hand.}{\twocost}{imgs/express_shipping.png}
 &
-\card{Merchant's Goodwill}{Relic}{Your shop refreshes cost 1 gold less.}{\onecost}{imgs/merchants_goodwill.png}
+\card{Merchant's Goodwill}{Relic}{Your shop refreshes cost 1 less gold.}{\onecost}{imgs/merchants_goodwill.png}
 &
 \card{Cheapskate}{Relic}{Face down cards no longer cost you gold to place.}{\twocost}{imgs/cheapskate.png}
 &
@@ -566,7 +565,7 @@ Returning priority is also given to the other player after any of the other type
 &
 \card{Big Handed}{Relic}{Draw 1 extra card after your turn.}{\fourcost}{imgs/big_handed.png}
 &
-\card{Clear Mind}{Relic}{Gain 1 extra mana at the start of your turn, but draw 1 card less after your turn.}{\threecost}{imgs/clear_mind.png}
+\card{Clear Mind}{Relic}{ \small Gain 1 extra mana at the start of your turn, but draw 1 fewer cards after your turn.}{\threecost}{imgs/clear_mind.png}
 &
 \card{At What Cost}{Relic}{ \scriptsize Permanently remove a relic you own upon buying this; gain 1 extra mana at the start of your turn.}{\fourcost}{imgs/at_what_cost.png}
 &
