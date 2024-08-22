@@ -161,7 +161,7 @@ The game is played between two players who build their decks and take turns play
 The game ends in one of two cases:
 
 \begin{itemize}
-\item A player's HP reaches 0 (or less). Then the other player wins. If both players' HPs reach 0 at the same time, the one whose card caused this wins.
+\item A player's HP reaches 0 (or less). Then the other player wins. If both players' HPs reach 0 at the same time, the winner is the player whose card dealt the final damage.
 \item A player's HP reaches \maxhp \ (or more). Then they win. (Cannot happen to both players simultaneously.)
 \end{itemize}
 
@@ -218,7 +218,7 @@ Unlike all other dice, whenever its value is needed by a card that scales with i
 
 \subsection*{Buffs}
 
-Buffs (``Double the strength of all your cards that scale with X until the end of your turn.'') work by doubling the effective values of all dice except \magic \ in the strentgh calculations for all cards (of the player with the buff) that scale with X (and possibly something else). Multiple buffs may affect the same cards (e.g. two buffs means times 4). Buffs are discarded at the end of the player's turn (i.e., if played during the opponent's turn, a buff lasts through that and the player's turn.)
+Buffs (``Double the strength of all your cards that scale with X until the end of your turn.'') work by doubling the effective values of all dice except \magic \ in the strength calculations for all cards (of the player with the buff) that scale with X (and possibly something else). Multiple buffs may affect the same cards (e.g. two buffs means times 4). Buffs are discarded at the end of the player's turn (i.e., if played during the opponent's turn, a buff lasts through that and the player's turn.)
 
 \vspace{4pt}
 
@@ -226,7 +226,7 @@ Example: Alice plays buff that targets \fire. She then plays a \fire\hspace{1pt}
 
 \subsection*{Shields}
 
-Shields (``Shield X against incoming damage that scales with Y until the end of your opponent's turn'') work by subtracting (without going negative) the value of die X from all dice except \magic \ in the strentgh calculations for all incoming damage (towards the player with the shielf) that scales with X (and possibly something else). Multiple shields may affect the same card. Shields are discarded at the end of the opponent's turn (i.e., if played during the player's turn, a shield lasts through that and the opponent's turn.)
+Shields (``Shield X against incoming damage that scales with Y until the end of your opponent's turn'') work by subtracting (without going negative) the value of die X from all dice except \magic \ in the strength calculations for all incoming damage (towards the player with the shield) that scales with X (and possibly something else). Multiple shields may affect the same card. Shields are discarded at the end of the opponent's turn (i.e., if played during the player's turn, a shield lasts through that and the opponent's turn.)
 
 \vspace{4pt}
 
@@ -251,7 +251,7 @@ Gold (represented by the coins) is gained passively (1 per turn) and by playing 
 \item All seven elemental dice are rolled and ordered next to the HP tracker like so: \fire, \earth, \water, \nature, \gold, \magic, \chance.
 \item All cards with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
 \item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together; 6 of them are dealt out and the other 2 are permanently removed.
-\item Each player rolls a die and whoever rolls higher choses who goes first. (In case of a tie, reroll.)
+\item Each player rolls a die and whoever rolls higher chooses who goes first. (In case of a tie, reroll.)
 \item The player who rolled lower in the first player determination may decide to swap who goes first and who goes second by offering 1 advantage (ability to change a die by 1) to the other player. If this happens, the other player has the same option, but for 2 advantage. This repeats (with increasing advantage numbers) until one player passes up on using this option. Only the final advantage offer remains in effect, as this is effectively an auction for the turn order.
 \item The first player drafts (chooses) 1 of the dealt out \draft \ cards, the second one drafts 2 of the remaining ones, the first one drafts 2, and the last card goes to the second player.
 \item The starting draw pile of each player is formed by shuffling together the 9 Starter cards (8 ``Basic Income'' and 1 ``Lucky Find'') and their 3 chosen \draft \ cards.
@@ -286,7 +286,7 @@ The shop is where cards are bought from. It has its own draw and discard piles a
 
 \subsection*{Interruptions from the opponent}
 
-Whenever the current player plays a spell that scales with an element/elements (i.e. an attack, a restore or a gold card), the opponent can interrupt it before it is executed (rolling the \chance \ die due to its rule is considered part of the execution). The interrupted card is rotated by 90 degrees clockwise to indicate that it is yet to be executed. Then the opponent can play any number of cards (which can only be face down cards or blessings from their hand, since it is not their turn). After they declare that they are done the current player has the chance to do the same (though, since it is their turn, they can do any valid action: play spells from their hand, place face down cards or even interract with the shop). This can repeat any number of times (i.e. the opponent going again, then the current player, etc.) until one of the players chooses to do nothing (i.e. passes). After that the interrupted card is executed (and rotated by 90 degrees counterclockwise) and the current player continues their regular turn.
+Whenever the current player plays a spell that scales with an element/elements (i.e. an attack, a restore or a gold card), the opponent can interrupt it before it is executed (rolling the \chance \ die due to its rule is considered part of the execution). The interrupted card is rotated by 90 degrees clockwise to indicate that it is yet to be executed. Then the opponent can play any number of cards (which can only be face down cards or blessings from their hand, since it is not their turn). After they declare that they are done the current player has the chance to do the same (though, since it is their turn, they can do any valid action: play spells from their hand, place face down cards or even interact with the shop). This can repeat any number of times (i.e. the opponent going again, then the current player, etc.) until one of the players chooses to do nothing (i.e. passes). After that the interrupted card is executed (and rotated by 90 degrees counterclockwise) and the current player continues their regular turn.
 
 \vspace{4pt}
 
