@@ -1,6 +1,6 @@
 \documentclass[dvipsnames,parskip,a4paper]{scrartcl}
 
-% Colour and design packages
+% color and design packages
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -48,21 +48,21 @@
 \newcommand{\cardimghalfwidth}{25.65mm}
 \newcommand{\cardimghalfheight}{23.2mm}
 
-% Consistent colours
-\newcommand{\cardcolour}{gray!60}
-\newcommand{\cardboxcolour}{gray!30}
-\newcommand{\cardboxbordercolour}{gray}
-\newcommand{\cardbordercolour}{gray}
+% Consistent colors
+\newcommand{\cardcolor}{gray!60}
+\newcommand{\cardboxcolor}{gray!30}
+\newcommand{\cardboxbordercolor}{gray}
+\newcommand{\cardbordercolor}{gray}
 
 % Card template
 \newcommand{\card}[5]{
 
 \begin{tikzpicture}[baseline = (current bounding box.center)]
-\draw[rounded corners = \cardroundingradius, fill = \cardcolour, draw = \cardbordercolour, thick] (0,0) rectangle
+\draw[rounded corners = \cardroundingradius, fill = \cardcolor, draw = \cardbordercolor, thick] (0,0) rectangle
     (\cardwidth, \cardheight);
 
 \node (title) at (0.5 * \cardwidth, \cardheight - \cardborderspace)
-    [ anchor = north, fill = \cardboxcolour, draw = \cardboxbordercolour, thick, text centered, 
+    [ anchor = north, fill = \cardboxcolor, draw = \cardboxbordercolor, thick, text centered, 
     rounded corners = \cardboxroundingradius,
     inner sep = \cardtextborderspace,
     text width = \cardwidth - 2 * (\cardborderspace + \cardtextborderspace),
@@ -70,7 +70,7 @@
     { \Large #1 };
 
 \node (image) at (0.5 * \cardwidth, \cardborderspace + \cardtcheight + \cardtextheight + 2 * \cardvspace)
-    [ anchor = south, fill = \cardboxcolour, thick, text centered,
+    [ anchor = south, fill = \cardboxcolor, thick, text centered,
     rounded corners = \cardboxroundingradius,
     inner sep = \cardimgborderspace,
     text width = \cardwidth - 2 * (\cardborderspace + \cardimgborderspace),
@@ -78,7 +78,7 @@
     {\includegraphics[max size={\cardimgwidth}{\cardimgheight}, min size={\cardimgwidth}{\cardimgheight}, Clip*={.5\width-\cardimghalfwidth} {.5\height-\cardimghalfheight} {.5\width+\cardimghalfwidth} {.5\height+\cardimghalfheight}]{ #5 }};
 
 \node (image_border) at (0.5 * \cardwidth, \cardborderspace + \cardtcheight + \cardtextheight + 2 * \cardvspace)
-    [ anchor = south, draw = \cardboxbordercolour, thick, text centered,
+    [ anchor = south, draw = \cardboxbordercolor, thick, text centered,
     rounded corners = \cardboxroundingradius,
     inner sep = \cardimgborderspace,
     text width = \cardwidth - 2 * (\cardborderspace + \cardimgborderspace),
@@ -86,7 +86,7 @@
     {};
 
 \node (text) at (0.5 * \cardwidth, \cardborderspace + \cardtcheight + \cardvspace)
-    [ anchor = south, fill = \cardboxcolour, draw = \cardboxbordercolour, thick, text centered,
+    [ anchor = south, fill = \cardboxcolor, draw = \cardboxbordercolor, thick, text centered,
     rounded corners = \cardboxroundingradius,
     inner sep = \cardtextborderspace,
     text width = \cardwidth - 2 * (\cardborderspace + \cardtextborderspace),
@@ -94,7 +94,7 @@
     { #3 };
 
 \node (type)
-    [ fill = \cardboxcolour, draw = \cardboxbordercolour, thick,
+    [ fill = \cardboxcolor, draw = \cardboxbordercolor, thick,
     below left = \cardvspace + \cardtcheight and 0mm of text, anchor = south west,
     rounded corners = \cardboxroundingradius,
     inner sep = \cardtextborderspace,
@@ -102,7 +102,7 @@
     { #2 };
 
 \node (cost)
-    [ fill = \cardboxcolour, draw = \cardboxbordercolour, thick,
+    [ fill = \cardboxcolor, draw = \cardboxbordercolor, thick,
     below right = \cardvspace + \cardtcheight and 0mm of text, anchor = south east,
     rounded corners = \cardboxroundingradius,
     inner sep = \cardtextborderspace,
@@ -284,13 +284,25 @@ After the player's turn is over, they lose all their mana, discard their entire 
 
 The shop is where cards are bought from. It has its own draw and discard piles and a laid out shop. Initially, all buyable cards are shuffled in its draw pile and no cards are laid out. Then, by paying some gold, players may refresh the shop -- discard all laid out cards and then draw and lay out \shopsize \ cards. Cards may only be bought from the laid out shop (happens by paying their gold cost).
 
-\subsection*{During the opponent's turn}
+\subsection*{Interruptions from the opponent}
 
-Blessings and face down cards may also be played during the opponent's turn. This can be done at any time, including between the opponent playing a card and executing its effect (calculating its strength is part of the execution). In such a situation, the opponent may in turn also respond (possibly with multiple cards) before executing their original card. Note that those could be spells, if they have the mana, since it is their turn. This chain of responses can repeat ad infinitum (i.e. the player may respond with other blessings or face down cards, etc.). See the detailed priority rules for more information.
+Whenever the current player plays a spell that scales with an element/elements (i.e. an attack, a restore or a gold card), the opponent can interrupt it before it is executed (rolling the \chance \ die due to its rule is considered part of the execution). The interrupted card is rotated by 90 degrees clockwise to indicate that it is yet to be executed. Then the opponent can play any number of cards (which can only be face down cards or blessings from their hand, since it is not their turn). After they declare that they are done the current player has the chance to do the same (though, since it is their turn, they can do any valid action: play spells from their hand, place face down cards or even interract with the shop). This can repeat any number of times (i.e. the opponent going again, then the current player, etc.) until one of the players chooses to do nothing (i.e. passes). After that the interrupted card is executed (and rotated by 90 degrees counterclockwise) and the current player continues their regular turn.
 
 \vspace{4pt}
 
-Example: During her turn, Alice plays a \fire \ attack. Then Bob plays his two face down cards: one that allows him to reroll the \fire \ die, and a \water \ shield against this attack. Alice then plays a blessing that gives her mana, allowing her to play another spell, after which she plays ``Trickster God'' to swap the values of the \fire \ and \water \ dice. Finally, Alice's attack is executed but Bob's shield negates some damage.
+If either player plays another elemental spell during this process, the other player can interrupt it, too. In that case, this process starts again for that card. When a player passes and the process ends, the last interrupted card is resolved. After that the player whose card that was can continue playing cards (or other valid for them actions) and so on until the previous interrupted card is resolved. Finally, when the first interrupted card is resolved, the whole thing ends. Note that it is important to keep track of the order of the interrupted cards, so consider laying them out in a time line, if needed.
+
+\vspace{4pt}
+
+The opponent has one more opportunity to interrupt during the current player's turn: right after the start (after the current player gets his gold and mana, but before doing any actions). All the same rules apply, except that there is no initial interrupted card, so after the interruption process is done, the current player simply starts their turn.
+
+\vspace{4pt}
+
+All cards played by the opponent (unless still active) are discarded at the end of the current player's turn.
+
+\vspace{4pt}
+
+Example: In a very close game, Alice is at 4 HP and Bob at 2 HP. During her turn, Alice plays a \fire \ attack. The current value of \fire \ is 6, so she would win. Bob interrupts this and plays a face down card that allows him to reroll the \fire \ die. It rolls a 2, so he is still losing. Then, he plays a blessing from his hand: a \water \ shield against \fire \ attacks. The value of \water \ is 4, so this would mitigate all damage. He is done for now. Alice then plays a blessing that gives her mana, allowing her to play another spell (from her hand): ``Trickster God'', which she uses to swap the values of the \fire \ and \water \ dice. Bob is again losing so he plays his second face down card: a \chance \ attack, which has a 50\% chance of winning him the game. Alice interrupts this by playing a \gold \ shield against single element attacks. The value of \gold \ is 2, so Bob needs a 6 to win. Alice is done and Bob passes as he has nothing more to do. He rolls the \chace \ die to execute his attack, but the die rolls a 4. He is done and Alice passes, as she is winning anyway. Finally, Alice's attack is executed and she wins the game.
 
 \subsection*{Discard pile}
 
@@ -302,29 +314,11 @@ Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its 
 
 \subsection*{Private and public information}
 
-A player's hand, face down cards, discard pile and discards and are private information, i.e. they may see them, but the other player cannot. A player's draw pile and the shop's draw pile are hidden information, i.e. nobody can see them. The laid out shop, the shop's discard pile, the removed cards pile, a player's played cards, bought cards, removed cards, gold, HP, mana and all counts (i.e. number of discarded cards, face down cards, cards in their hand, draw pile or discard pile) are all public information, i.e. both players can see them.
+A player's hand, face down cards, discard pile and discards are private information, i.e. only they may see them. The laid out shop, the shop's discard pile, the removed cards pile, a player's played cards, bought cards, removed cards, gold, HP, mana and all counts (e.g. number of cards in hand) are all public information, i.e. everyone can see them. All draw piles are hidden information, i.e. nobody can see them.
 
 \subsection*{Resigning}
 
 This is a two player game that is played until one player wins and the other loses. If at any point, during their turn, a player no longer wishes to continue (since they are convinced that they cannot win anymore or any other reason), they can resign. This means they lose the game and their opponent wins. This is a full-fledged victory. However, resigning too easily is discouraged. Resigning right before one's opponent is about to pull off a big combo and win is also discouraged. In general, players should try their best to play games out until the end.
-
-\subsection*{Detailed priority rules}
-
-The details will rarely matter, but this section makes it precise whose ``turn'' it is to act in all situations. At any time one player has ``priority'', i.e. they may act, if they choose. If they chose not to, the priority may transfer to the other player or it may not (depending on the priority state). There is also a stack of cards/effects to be executed (which may be in the middle of execution).
-
-\vspace{4pt}
-
-When a player plays a card its effects (e.g. 1. do X, 2. draw cards) are added to the stack. They are then executed in a row and the card is discarded when the last one is executed. Playing the card and each subsequent effect execution gives priority to the other player.
-
-\vspace{4pt}
-
-If an effect reveals some new information or options to the player whose card caused it (e.g. seeing cards, drawing, a die roll), the priority returns to them, if the other player chooses not to use it. This also happens upon full execution of a card's effects. This is ``returning priority''.
-
-\vspace{4pt}
-
-Returning priority is also given to the other player after any of the other types of actions (e.g. placing a face down card, shop rolling, buying a card) and at the start of a player's turn (i.e. the other player has priority first). Non-returning priority is also given to the other player at the end of a turn, after discarding everything, but before drawing a new hand.
-
-\newpage
 
 \subsection*{Card Clarifications}
 
@@ -524,13 +518,13 @@ Returning priority is also given to the other player after any of the other type
 \card{Multitasking God}{Blessing}{Gain 4 mana.}{\fivecost}{imgs/multitasking_god.png}
 &
 
-\card{Exploration Novice}{Spell}{Draw 2 cards; if this is your first draw spell this turn, gain 1 mana.}{\twocost}{imgs/exploration_novice.png}
+\card{Exploration Novice}{Spell}{ \small Draw 2 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\twocost}{imgs/exploration_novice.png}
 &
-\card{Exploration Master}{Spell}{Draw 3 cards; if this is your first draw spell this turn, gain 1 mana.}{\threecost}{imgs/exploration_master.png}
+\card{Exploration Master}{Spell}{ \small Draw 3 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\threecost}{imgs/exploration_master.png}
 &
-\card{Exploration Lord}{Spell}{Draw 4 cards; if this is your first draw spell this turn, gain 1 mana.}{\fourcost}{imgs/exploration_lord.png}
+\card{Exploration Lord}{Spell}{ \small Draw 4 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\fourcost}{imgs/exploration_lord.png}
 &
-\card{Exploration God}{Spell}{Draw 5 cards; if this is your first draw spell this turn, gain 1 mana.}{\fivecost}{imgs/exploration_god.png}
+\card{Exploration God}{Spell}{ \small Draw 5 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\fivecost}{imgs/exploration_god.png}
 &
 
 \card{Magnetic Hands}{Blessing}{ \small Move any card from your draw or discard pile to your hand, then shuffle your draw pile.}{\threecost}{imgs/magnetic_hands.png}
