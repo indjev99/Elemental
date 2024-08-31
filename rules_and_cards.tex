@@ -328,8 +328,8 @@ This is a two player game that is played until one player wins and the other los
 
 \begin{itemize}
 \item ``Second Chance'', ``Sleight of Hand'', ``Calculated Risk'' and ``Smoke and Mirrors'' affect only one die (chosen by the player), i.e. their effects cannot be split up over multiple dice.
-\item ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile.'') can target the shop and its draw and discard piles. The chosen card is public information.
-\item ``At What Cost'' (``Permanently remove a relic you own upon buying this; gain 1 extra mana at the start of your turn.'') cannot be bought, if the player does not own another relic card.
+\item ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile; permanently remove this card after 3 uses.'') can target the shop and its draw and discard piles. The chosen card is public information. Playing this does not use up the regular one per turn shop buy.
+\item ``At What Cost'' (``Permanently remove a relic you own upon buying this; gain 1 extra mana at the start of your turn.'') cannot be bought, if the player does not own another relic card, not even by ``Wish''.
 \item ``Veto'' (``Your opponent receives 1 less mana at the start of their next turn.'') is discarded at the start of the opponent's next turn (i.e. after the player has drawn their hand at the end of their turn).
 \item ``Madness'' (``Upon buying this reroll all dice and permanently remove this card.'') counts as being played for the purposes of other cards (e.g. ``Truly Blessed'')
 \end{itemize}
@@ -529,7 +529,7 @@ This is a two player game that is played until one player wins and the other los
 \card{Exploration God}{Spell}{ \small Draw 5 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\fivecost}{imgs/exploration_god.png}
 &
 
-\card{Magnetic Hands}{Blessing}{ \small Move any card from your draw or discard pile to your hand, then shuffle your draw pile.}{\threecost}{imgs/magnetic_hands.png}
+\card{Magnetic Hands}{Blessing}{ \small Move any card from your draw pile to your hand and then shuffle your draw pile.}{\threecost}{imgs/magnetic_hands.png}
 &
 
 \card{Curse}{Spell}{Upon buying this, add it to your opponent's discard pile; does nothing afterwards.}{\twocost}{imgs/curse.png}
@@ -544,7 +544,7 @@ This is a two player game that is played until one player wins and the other los
 \card{Optimization God}{Spell}{Permanently remove this card and up to 3 cards from your hand or discard pile.}{\fourcost}{imgs/optimization_god.png}
 &
 
-\card{Wish}{Blessing}{Buy any unowned card in the game for free, then shuffle the shop's draw pile.}{\fivecost}{imgs/wish.png}
+\card{Wish}{Blessing}{Buy any unowned card in the game for free, then shuffle the shop's draw pile; permanently remove this card after 3 uses.}{\fivecost}{imgs/wish.png}
 &
 
 \card{Reckless Spending}{Relic}{You may buy cards from the shop an unlimited number of times per turn.}{\onecost}{imgs/reckless_spending.png}
@@ -553,7 +553,7 @@ This is a two player game that is played until one player wins and the other los
 &
 \card{Merchant's Goodwill}{Relic}{Your shop refreshes cost 1 less gold.}{\onecost}{imgs/merchants_goodwill.png}
 &
-\card{Trading Vessels}{Relic}{Gain 1 extra gold at the start of your turn.}{\threecost}{imgs/trading_vessels.png}
+\card{Trading Vessels}{Relic}{Gain 1 extra gold at the start of your turn.}{\twocost}{imgs/trading_vessels.png}
 &
 \card{Cheapskate}{Relic}{Face down cards no longer cost you gold to place.}{\twocost}{imgs/cheapskate.png}
 &
