@@ -115,13 +115,13 @@
 
 % Elemental symbols
 \newcommand{\icon}[1]{\raisebox{-\icondepth}{\includegraphics[height=\iconsize]{ #1 }}}
+\newcommand{\chance}{\icon{icons/chance.png}}
 \newcommand{\fire}{\icon{icons/fire.png}}
 \newcommand{\earth}{\icon{icons/earth.png}}
 \newcommand{\water}{\icon{icons/water.png}}
 \newcommand{\nature}{\icon{icons/nature.png}}
 \newcommand{\magic}{\icon{icons/magic.png}}
 \newcommand{\gold}{\icon{icons/gold.png}}
-\newcommand{\chance}{\icon{icons/chance.png}}
 
 % Costs
 \newcommand{\starter}{Starter}
@@ -154,7 +154,7 @@
 
 \subsection*{Summary}
 
-The game is played between two players who build their decks and take turns playing cards from them. Their decks start weak, but they can improve them by buying better cards or removing weak ones. Each player also has some mana (used to play cards), gold (used to buy cards) and HP (if it reaches 0, the player loses). Some cards give gold, deal damage or restore HP, while others provide various forms of utility, shielding or buffs. Seven elemental dice determine the strengths of various cards: Fire \fire, Earth \earth, Water \water, Nature \nature, Gold \gold, Magic \magic \ and Chance \chance. They are rolled at the start and stay like that. However, some cards can change the values of these dice, thus changing how strong other cards are.
+The game is played between two players who build their decks and take turns playing cards from them. Their decks start weak, but they can improve them by buying better cards or removing weak ones. Each player also has some mana (used to play cards), gold (used to buy cards) and HP (if it reaches 0, the player loses). Some cards give gold, deal damage or restore HP, while others provide various forms of utility, shielding or buffs. Seven elemental dice determine the strengths of various cards: Chance \chance, Fire \fire, Earth \earth, Water \water, Nature \nature, Gold \gold \ and Magic \magic. They are rolled at the start and stay like that. However, some cards can change the values of these dice, thus changing how strong other cards are.
 
 \subsection*{Win condition}
 
@@ -186,15 +186,15 @@ Spells and blessings are usually played from the hand, but can also be placed fa
 We can also classify most cards depending on what they do:
 
 \begin{itemize}
-\item Attack -- ``Deal X damage'' cards (i.e. reduce the opponent's HP). They all scale with one or two of \fire, \earth, \water, \chance \ and \magic. Attacks that scale with \water \ deal damage to both players.
+\item Attack -- ``Deal X damage'' cards (i.e. reduce the opponent's HP). They all scale with one or two of \chance, \fire, \earth, \water \ and \magic. Attacks that scale with \water \ deal damage to both players.
 \item Restore -- ``Restore X HP'' cards. They all scale with \nature \ and possibly one of the attack elements.
 \item Gold -- ``Gain X gold'' cards. They all (except the starter cards) scale with \gold \ and possibly one of the attack elements.
 \item Buff -- ``Double the strength of all your cards that scale with X'' cards. They buff other cards.
-\item Shield -- ``Shield X against incoming damage that scales with Y'' cards. They reduce incoming damage.
+\item Shield -- ``Shield X against damage that scales with Y'' cards. They reduce incoming damage.
 \item Dice Control -- various cards that affect the dice (either changing their values or rerolling them). These are the only way to change the dice values (and thus affect how strong various other cards are).
 \item Draw -- ``Draw X cards'' cards. Useful for finding the valuable cards.
 \item Mana -- ``Gain X mana'' cards. Useful for playing multiple spells in a single turn.
-\item Removal -- ``Permanently remove X cards from ...'' cards. Permanently removing a card means removing it from one's deck and moving it to the removed cards pile. Useful for removing bad cards.
+\item Trash -- ``Trash X cards from ...'' cards. Trash a card means removing it from one's deck and moving it to the trash pile. Useful for removing bad cards.
 \item Other utility -- various other cards with hard to categorize effects. Some may allow seeing otherwise hidden information or messing with the opponent in some way, etc.
 \end{itemize}
 
@@ -218,7 +218,7 @@ Unlike all other dice, whenever its value is needed by a card that scales with i
 
 \subsection*{Buffs}
 
-Buffs (``Double the strength of all your cards that scale with X until the end of your turn.'') work by doubling the effective values of all dice except \magic \ in the strength calculations for all cards (of the player with the buff) that scale with X (and possibly something else). Multiple buffs may affect the same cards (e.g. two buffs means times 4). Buffs are discarded at the end of the player's turn (i.e., if played during the opponent's turn, a buff lasts through that and the player's turn.)
+Buffs (``Double the strength of all your cards that scale with X until the end of your turn.'') work by doubling the effective values of all dice except \magic \ in the strength calculations for all cards (of the player with the buff) that scale with X (and possibly something else). Multiple buffs may affect the same cards (i.e. two buffs means times 4). Buffs are discarded at the end of the player's turn (i.e. if played during the opponent's turn, a buff lasts through that and the player's turn.)
 
 \vspace{4pt}
 
@@ -226,7 +226,7 @@ Example: Alice plays buff that targets \fire. She then plays a \fire\hspace{1pt}
 
 \subsection*{Shields}
 
-Shields (``Shield X against incoming damage that scales with Y until the end of your opponent's turn'') work by subtracting (without going negative) the value of die X from all dice except \magic \ in the strength calculations for all incoming damage (towards the player with the shield) that scales with X (and possibly something else). Multiple shields may affect the same card. Shields are discarded at the end of the opponent's turn (i.e., if played during the player's turn, a shield lasts through that and the opponent's turn.)
+Shields (``Shield X against damage that scales with Y until the end of your opponent's turn'') work by subtracting (without going negative) the value of die X from all dice except \magic \ in the strength calculations for all incoming damage (towards the player with the shield) that scales with X (and possibly something else). Multiple shields may affect the same card. Shields are discarded at the end of the opponent's turn (i.e. if played during the player's turn, a shield lasts through that and the opponent's turn.)
 
 \vspace{4pt}
 
@@ -238,7 +238,7 @@ Example: During her turn, Alice plays a \fire \ buff and a 2\hspace{1pt}$\times$
 
 \vspace{4pt}
 
-Example 2: Alice plays a \water\hspace{1pt}$+$\hspace{1pt}\earth \ attack that targets both players. The value of the \water \ die is 2 and that of the \earth \ one is 5, so this attack would deal $2 + 5 = 7$ damage to both players. However, Bob counters by playing a ``Magical Barrier''. The value of the \magic \ die is 4. The attack now deals $0 + (5 - 4) = 1$ damage to Bob (since $2 - 4$ is negative) and still 5 damage to Alice.
+Example 2: Alice plays a \water\hspace{1pt}$+$\hspace{1pt}\earth \ attack that targets both players. The value of the \water \ die is 2 and that of the \earth \ one is 5, so this attack would deal $2 + 5 = 7$ damage to both players. However, Alice has already played a \magic \ shield against multi-element damage. The value of the \magic \ die is 4. The attack now deals $0 + (5 - 4) = 1$ damage to Alice (since $2 - 4$ is negative) and still 5 damage to Bob.
 
 \subsection*{Gold}
 
@@ -248,9 +248,9 @@ Gold (represented by the coins) is gained passively (1 per turn) and by playing 
 
 \begin{itemize}
 \item Each player starts with \starthp \ HP (out of \maxhp) and \startgold \ gold.
-\item All seven elemental dice are rolled and ordered next to the HP tracker like so: \fire, \earth, \water, \nature, \gold, \magic, \chance.
+\item All seven elemental dice are rolled and ordered next to the HP tracker like so: \chance, \fire, \earth, \water, \nature, \gold, \magic.
 \item All cards with gold costs are shuffled together and form the shop's draw pile. No shop cards are laid out at the start.
-\item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together; 6 of them are dealt out and the other 2 are permanently removed.
+\item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together; 6 of them are dealt out and the other 2 are trashed.
 \item Each player rolls a die and whoever rolls higher chooses who goes first. (In case of a tie, reroll.)
 \item The player who rolled lower in the first player determination may decide to swap who goes first and who goes second by offering 1 advantage (ability to change a die by 1) to the other player. If this happens, the other player has the same option, but for 2 advantage. This repeats (with increasing advantage numbers) until one player passes up on using this option. Only the final advantage offer remains in effect, as this is effectively an auction for the turn order.
 \item The first player drafts (chooses) 1 of the dealt out \draft \ cards, the second one drafts 2 of the remaining ones, the first one drafts 2, and the last card goes to the second player.
@@ -267,10 +267,10 @@ At the start of their turn, the player gains 1 gold and 1 mana. After that they 
 \item Play a spell from their hand at the cost of 1 mana.
 \item Play a blessing from their hand at no cost.
 \item Place a face down card at the cost of 1 mana and \facedowncost \ gold. A player may have at most \dacedownsize \ face down cards at a time.
-\item Play (flip over and activate) any number of face down cards at no cost.
-\item Refresh the shop. The first refresh in a turn costs \refreshcost \ gold and each subsequent is \refreshcostincrease \ gold more expensive.
+\item Play (flip over and activate) a face down card at no cost.
+\item Refresh the shop. The first refresh in a given turn costs \refreshcost \ gold and each subsequent is \refreshcostincrease \ gold more expensive.
 Refreshing the shop consists of moving the currently laid out shop cards (if any) to the shop's discard pile followed by drawing and laying out \shopsize \ cards from the shop's draw pile. Note that initially there are no shop cards laid out.
-\item Buy a card from the laid out shop cards by paying its cost. May be done at most once per turn.
+\item Buy a card from the laid out shop cards by paying its cost.
 The bought card is not replaced, so the shop can become empty again. The bought card goes to the player's discard pile, unless it is relic, in which case it is immediately and permanently deployed.
 \end{itemize}
 
@@ -314,7 +314,7 @@ Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its 
 
 \subsection*{Private and public information}
 
-A player's hand, face down cards, discard pile and discards are private information, i.e. only they may see them. The laid out shop, the shop's discard pile, the removed cards pile, a player's played cards, bought cards, removed cards, gold, HP, mana and all counts (e.g. number of cards in hand) are all public information, i.e. everyone can see them. All draw piles are hidden information, i.e. nobody can see them.
+A player's hand, face down cards, discard pile and discards are private information, i.e. only they may see them. The laid out shop, the shop's discard pile, the trash pile, a player's played cards, bought cards, trashed cards, gold, HP, mana and all counts (e.g. number of cards in hand) are all public information, i.e. everyone can see them. All draw piles are hidden information, i.e. nobody can see them.
 
 \subsection*{Trackers and tokens}
 
@@ -328,10 +328,8 @@ This is a two player game that is played until one player wins and the other los
 
 \begin{itemize}
 \item ``Second Chance'', ``Sleight of Hand'', ``Calculated Risk'' and ``Smoke and Mirrors'' affect only one die (chosen by the player), i.e. their effects cannot be split up over multiple dice.
-\item ``Wish'' (``Buy any unowned card in the game for free, then shuffle the shop's draw pile; permanently remove this card after 3 uses.'') can target the shop and its draw and discard piles. The chosen card is public information. Playing this does not use up the regular one per turn shop buy.
-\item ``At What Cost'' (``Permanently remove a relic you own upon buying this; gain 1 extra mana at the start of your turn.'') cannot be bought, if the player does not own another relic card, not even by ``Wish''.
+\item ``Wish'' (``Buy any unowned card for free and then shuffle the shop's draw pile; trash this card after 3 uses.'') can target cards in the shop and its draw and discard piles. The chosen card is public information.
 \item ``Veto'' (``Your opponent receives 1 less mana at the start of their next turn.'') is discarded at the start of the opponent's next turn (i.e. after the player has drawn their hand at the end of their turn).
-\item ``Madness'' (``Upon buying this reroll all dice and permanently remove this card.'') counts as being played for the purposes of other cards (e.g. ``Truly Blessed'')
 \end{itemize}
 
 \newpage
@@ -367,7 +365,7 @@ This is a two player game that is played until one player wins and the other los
 &
 \card{Tremor}{Spell}{Deal \earth \ damage to your opponent.}{\draft}{imgs/tremor.png}
 &
-\card{Heavy Rain}{Spell}{Deal \water \ damage to both yourself and  your opponent.}{\draft}{imgs/heavy_rain.png}
+\card{Heavy Rain}{Spell}{ \small Deal \water \ damage to your opponent and yourself; opponent shields affect self damage.}{\draft}{imgs/heavy_rain.png}
 &
 \card{Blind Attack}{Spell}{Deal \chance \ damage to your opponent.}{\draft}{imgs/blind_attack.png}
 &
@@ -375,7 +373,7 @@ This is a two player game that is played until one player wins and the other los
 &
 \card{Massive Earthquake}{Spell}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\earth \ damage to your opponent.}{\threecost}{imgs/massive_earthquake.png}
 &
-\card{Torrential Rainstorm}{Spell}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\water \ damage to both yourself and your opponent.}{\threecost}{imgs/torrential_rainstorm.png}
+\card{Torrential Rainstorm}{Spell}{ \small Deal 2\hspace{1pt}$\times$\hspace{1pt}\water \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/torrential_rainstorm.png}
 &
 \card{Haphazard Offence}{Spell}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\chance \ to your opponent.}{\threecost}{imgs/haphazard_offence.png}
 &
@@ -385,17 +383,17 @@ This is a two player game that is played until one player wins and the other los
 &
 \card{Chaotic Avalanche}{Spell}{Deal \earth\hspace{1pt}$+$\hspace{1pt}\chance \ damage to your opponent.}{\threecost}{imgs/chaotic_avalanche.png}
 &
-\card{Scalding Fog}{Spell}{Deal \water\hspace{1pt}$+$\hspace{1pt}\fire \ damage to both yourself and your opponent.}{\threecost}{imgs/scalding_fog.png}
+\card{Scalding Fog}{Spell}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\fire \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/scalding_fog.png}
 &
-\card{Devastating Mudslide}{Spell}{Deal \water\hspace{1pt}$+$\hspace{1pt}\earth \ damage to both yourself and your opponent.}{\threecost}{imgs/devastating_mudslide.png}
+\card{Devastating Mudslide}{Spell}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\earth \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/devastating_mudslide.png}
 &
-\card{Wild Seas}{Spell}{Deal \water\hspace{1pt}$+$\hspace{1pt}\chance \ damage to both yourself and your opponent.}{\threecost}{imgs/wild_seas.png}
+\card{Wild Seas}{Spell}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\chance \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/wild_seas.png}
 &
 \card{Magical Inferno}{Spell}{Deal \fire\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fourcost}{imgs/magical_inferno.png}
 &
 \card{Arcane Meteor}{Spell}{Deal \earth\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fourcost}{imgs/arcane_meteor.png}
 &
-\card{Biblical Flood}{Spell}{Deal \water\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to both yourself and your opponent.}{\fourcost}{imgs/biblical_flood.png}
+\card{Biblical Flood}{Spell}{ \small Deal \water\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent and yourself; opponent shields affect self damage.}{\fourcost}{imgs/biblical_flood.png}
 &
 \card{Ethereal Havoc}{Spell}{Deal \chance\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fourcost}{imgs/ethereal_havoc.png}
 &
@@ -430,36 +428,30 @@ This is a two player game that is played until one player wins and the other los
 \card{Ancient Alchemy}{Spell}{Gain \gold\hspace{1pt}$\times$\hspace{1pt}\magic \ gold.}{\fourcost}{imgs/ancient_alchemy.png}
 &
 
-\card{Water Reservoirs}{Blessing}{ \small Shield \water \ against incoming damage that scales with \fire \ until the end of your opponent's turn.}{\onecost}{imgs/water_reservoirs.png}
+\card{Water Reservoirs}{Blessing}{ \small Shield \water \ against damage that scales with \fire \ until the end of your opponent's turn.}{\onecost}{imgs/water_reservoirs.png}
 &
-\card{Solid Infrastructure}{Blessing}{ \small Shield \earth \ against incoming damage that scales with \water \ until the end of your opponent's turn.}{\onecost}{imgs/solid_infrastructure.png}
+\card{Solid Infrastructure}{Blessing}{ \small Shield \earth \ against damage that scales with \water \ until the end of your opponent's turn.}{\onecost}{imgs/solid_infrastructure.png}
 &
-\card{Natural Forests}{Blessing}{ \small Shield \nature \ against incoming damage that scales with \earth \ until the end of your opponent's turn.}{\onecost}{imgs/natural_forests.png}
+\card{Natural Forests}{Blessing}{ \small Shield \nature \ against damage that scales with \earth \ until the end of your opponent's turn.}{\onecost}{imgs/natural_forests.png}
 &
-\card{Magical Barrier}{Blessing}{ \small Shield \magic \ against incoming damage that scales with multiple elements until the end of your opponent's turn.}{\twocost}{imgs/magical_barrier.png}
+\card{Paid Militia}{Blessing}{ \footnotesize Shield \gold \ against damage that scales with a single element until the end of your opponent's turn.}{\twocost}{imgs/paid_militia.png}
 &
-\card{Paid Militia}{Blessing}{ \small Shield \gold \ against incoming damage that scales with a single element until the end of your opponent's turn.}{\twocost}{imgs/paid_militia.png}
-&
-
-\card{Prometheus's Gift}{Spell}{Double the strength of all your cards that scale with \fire \ until the end of your turn.}{\threecost}{imgs/prometheuss_gift.png}
-&
-\card{Gaia's Favor}{Spell}{Double the strength of all your cards that scale with \earth \ until the end of your turn.}{\threecost}{imgs/gaias_favor.png}
-&
-\card{Poseidon's Trident}{Spell}{Double the strength of all your cards that scale with \water \ until the end of your turn.}{\threecost}{imgs/poseidons_trident.png}
-&
-\card{Ancient Grimoire}{Spell}{Double the strength of all your cards that scale with \magic \ until the end of your turn.}{\threecost}{imgs/ancient_grimoire.png}
-&
-\card{Nymphs' Grace}{Spell}{Double the strength of all your cards that scale with \nature \ until the end of your turn.}{\threecost}{imgs/nymphs_grace.png}
-&
-\card{Midas Touch}{Spell}{Double the strength of all your cards that scale with \gold \ until the end of your turn.}{\threecost}{imgs/midas_touch.png}
-&
-\card{Purism}{Spell}{Double the strength of all your cards that scale with a single element until the end of your turn.}{\threecost}{imgs/purism.png}
+\card{Magical Barrier}{Blessing}{ \scriptsize Shield \magic \ against damage that scales with multiple elements until the end of your opponent's turn.}{\twocost}{imgs/magical_barrier.png}
 &
 
-\card{Fortuna's Protection}{Relic}{You choose whether the \chance \ die is rerolled each time its value is needed.}{\threecost}{imgs/fortunas_protection.png}
+\card{Prometheus's Gift}{Spell}{Double the strength of all your cards that scale with \fire \ until the end of your turn.}{\twocost}{imgs/prometheuss_gift.png}
 &
-
-\card{Madness}{Blessing}{Upon buying this, reroll all dice and permanently remove this card.}{\onecost}{imgs/madness.png}
+\card{Gaia's Favor}{Spell}{Double the strength of all your cards that scale with \earth \ until the end of your turn.}{\twocost}{imgs/gaias_favor.png}
+&
+\card{Poseidon's Trident}{Spell}{Double the strength of all your cards that scale with \water \ until the end of your turn.}{\twocost}{imgs/poseidons_trident.png}
+&
+\card{Ancient Grimoire}{Spell}{Double the strength of all your cards that scale with \magic \ until the end of your turn.}{\twocost}{imgs/ancient_grimoire.png}
+&
+\card{Nymphs' Grace}{Spell}{Double the strength of all your cards that scale with \nature \ until the end of your turn.}{\twocost}{imgs/nymphs_grace.png}
+&
+\card{Midas Touch}{Spell}{Double the strength of all your cards that scale with \gold \ until the end of your turn.}{\twocost}{imgs/midas_touch.png}
+&
+\card{Purism}{Spell}{ \footnotesize Double the strength of all your cards that scale with a single element until the end of your turn.}{\twocost}{imgs/purism.png}
 &
 
 \card{Gambling}{Spell}{Reroll a die up to 1 time.}{\draft}{imgs/gambling.png}
@@ -480,35 +472,9 @@ This is a two player game that is played until one player wins and the other los
 &
 \card{Cosmic Puppeteer}{Spell}{Change the values of all dice by up to 1 each.}{\fourcost}{imgs/cosmic_puppeteer.png}
 &
-
-\card{Mirror Wall}{Blessing}{Draw a card and look at your opponent's hand.}{\onecost}{imgs/mirror_wall.png}
+\card{Madness}{Spell}{Upon buying, reroll all dice and trash this card.}{\onecost}{imgs/madness.png}
 &
-\card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down cards.}{\onecost}{imgs/mirror_table.png}
-&
-\card{Sneak Peek}{Blessing}{Draw a card and look at the top \handsize \ cards of your draw pile.}{\onecost}{imgs/sneak_peak.png}
-&
-\card{Forecast}{Blessing}{Draw a card and look at the top \shopsize \ cards of the shop's draw pile.}{\onecost}{imgs/forecast.png}
-&
-
-\card{Well-Laid Plans}{Blessing}{ \small Reorder at the top \handsize \ cards of your draw pile and discard any number of them.}{\twocost}{imgs/well_laid_plans.png}
-&
-\card{Sabotage}{Blessing}{ \small Reorder at the top \handsize \ cards of your opponent's draw pile and discard any number of them.}{\twocost}{imgs/sabotage.png}
-&
-
-\card{Weak Hands}{Blessing}{Your opponent must discard 3 cards from their hand.}{\twocost}{imgs/weak_hands.png}
-&
-\card{Faulty Table}{Blessing}{Your opponent must discard 1 card from their face down cards.}{\twocost}{imgs/faulty_table.png}
-&
-
-\card{Veto}{Spell}{Your opponent receives 1 less mana at the start of their next turn.}{\twocost}{imgs/veto.png}
-&
-
-\card{All for One}{Blessing}{Discard 2 cards from your hand and gain 1 mana.}{\onecost}{imgs/all_for_one.png}
-&
-
-\card{Cruel Pact}{Blessing}{Take \chance \ damage and gain 1 mana.}{\onecost}{imgs/cruel_pact.png}
-&
-\card{Deal with the Devil}{Blessing}{Take \chance \ damage and gain 2 mana.}{\twocost}{imgs/deal_with_the_devil.png}
+\card{Fortuna's Protection}{Relic}{You choose whether the \chance \ die is rerolled each time its value is needed.}{\threecost}{imgs/fortunas_protection.png}
 &
 
 \card{Multitasking Novice}{Blessing}{Gain 1 mana.}{\twocost}{imgs/multitasking_novice.png}
@@ -519,6 +485,16 @@ This is a two player game that is played until one player wins and the other los
 &
 \card{Multitasking God}{Blessing}{Gain 3 mana and draw a card.}{\fivecost}{imgs/multitasking_god.png}
 &
+\card{Cruel Pact}{Blessing}{Take \chance \ damage and gain 1 mana.}{\onecost}{imgs/cruel_pact.png}
+&
+\card{Deal with the Devil}{Blessing}{Take \chance \ damage and gain 2 mana.}{\twocost}{imgs/deal_with_the_devil.png}
+&
+\card{All for One}{Blessing}{Up to once during your turn, discard 3 cards from your hand and gain 1 mana.}{\twocost}{imgs/all_for_one.png}
+&
+\card{Clear Mind}{Relic}{ \small Gain 1 extra mana at the start of your turn, but draw 1 fewer cards after your turn.}{\threecost}{imgs/clear_mind.png}
+&
+\card{At What Cost}{Relic}{ \footnotesize Upon buying, trash a relic you own; gain 1 extra mana at the start of your turn.}{\fourcost}{imgs/at_what_cost.png}
+&
 
 \card{Exploration Novice}{Spell}{ \small Draw 2 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\twocost}{imgs/exploration_novice.png}
 &
@@ -528,44 +504,61 @@ This is a two player game that is played until one player wins and the other los
 &
 \card{Exploration God}{Spell}{ \small Draw 5 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\fivecost}{imgs/exploration_god.png}
 &
-
-\card{Magnetic Hands}{Blessing}{ \small Move any card from your draw pile to your hand and then shuffle your draw pile.}{\threecost}{imgs/magnetic_hands.png}
+\card{Well-Laid Plans}{Blessing}{ \small Reorder the top \handsize \ cards of your draw pile and discard any number of them.}{\twocost}{imgs/well_laid_plans.png}
 &
-
-\card{Curse}{Spell}{Upon buying this, add it to your opponent's discard pile; does nothing afterwards.}{\twocost}{imgs/curse.png}
-&
-
-\card{Optimization Novice}{Spell}{Permanently remove this card and up to 1 card from your hand.}{\onecost}{imgs/optimization_novice.png}
-&
-\card{Optimization Master}{Spell}{Permanently remove this card and up to 2 cards from your hand.}{\twocost}{imgs/optimization_master.png}
-&
-\card{Optimization Lord}{Spell}{Permanently remove this card and up to 3 cards from your hand.}{\threecost}{imgs/optimization_lord.png}
-&
-\card{Optimization God}{Spell}{Permanently remove this card and up to 3 cards from your hand or discard pile.}{\fourcost}{imgs/optimization_god.png}
-&
-
-\card{Wish}{Blessing}{Buy any unowned card in the game for free, then shuffle the shop's draw pile; permanently remove this card after 3 uses.}{\fivecost}{imgs/wish.png}
-&
-
-\card{Reckless Spending}{Relic}{You may buy cards from the shop an unlimited number of times per turn.}{\onecost}{imgs/reckless_spending.png}
-&
-\card{Express Shipping}{Relic}{Whenever you buy a card, you may pay \expresscost \ gold for it to go into your hand.}{\twocost}{imgs/express_shipping.png}
-&
-\card{Merchant's Goodwill}{Relic}{Your shop refreshes cost 1 less gold.}{\onecost}{imgs/merchants_goodwill.png}
-&
-\card{Trading Vessels}{Relic}{Gain 1 extra gold at the start of your turn.}{\twocost}{imgs/trading_vessels.png}
-&
-\card{Cheapskate}{Relic}{Face down cards no longer cost you gold to place.}{\twocost}{imgs/cheapskate.png}
-&
-\card{Spacious Table}{Relic}{You have space for 1 extra face down card.}{\twocost}{imgs/spacious_table.png}
+\card{Magnetic Hands}{Blessing}{ \small Move any card from your draw pile to your hand and shuffle your draw pile.}{\twocost}{imgs/magnetic_hands.png}
 &
 \card{Truly Blessed}{Relic}{ \footnotesize The first time you play a blessing during your turn, draw a card before executing it.}{\threecost}{imgs/truly_blessed.png}
 &
 \card{Big Handed}{Relic}{Draw 1 extra card after your turn.}{\fourcost}{imgs/big_handed.png}
 &
-\card{Clear Mind}{Relic}{ \small Gain 1 extra mana at the start of your turn, but draw 1 fewer cards after your turn.}{\threecost}{imgs/clear_mind.png}
+
+\card{Optimization Novice}{Spell}{Trash this card and up to 1 card from your hand.}{\onecost}{imgs/optimization_novice.png}
 &
-\card{At What Cost}{Relic}{ \scriptsize Permanently remove a relic you own upon buying this; gain 1 extra mana at the start of your turn.}{\fourcost}{imgs/at_what_cost.png}
+\card{Optimization Master}{Spell}{Trash this card and up to 2 cards from your hand.}{\twocost}{imgs/optimization_master.png}
+&
+\card{Optimization Lord}{Spell}{Trash this card and up to 3 cards from your hand.}{\threecost}{imgs/optimization_lord.png}
+&
+\card{Optimization God}{Spell}{Trash this card and up to 3 cards from your hand or discard pile.}{\fourcost}{imgs/optimization_god.png}
+&
+\card{Spring Cleaning}{Spell}{Upon buying, trash this card and up to 1 card from your hand.}{\twocost}{imgs/spring_cleaning.png}
+&
+
+\card{Wish}{Spell}{ \footnotesize Buy any unowned card for free and shuffle the shop's draw pile; trash this card after 3 uses.}{\fivecost}{imgs/wish.png}
+&
+\card{Scout}{Spell}{ \small Upon buying, buy any unowned card, shuffle the shop's draw pile and trash this card.}{\twocost}{imgs/scout.png}
+&
+\card{Express Shipping}{Relic}{Whenever you buy a card, you may pay \expresscost \ gold for it to go into your hand.}{\twocost}{imgs/express_shipping.png}
+&
+
+\card{Mirror Wall}{Blessing}{Draw a card and look at your opponent's hand.}{\onecost}{imgs/mirror_wall.png}
+&
+\card{Mirror Table}{Blessing}{Draw a card and look at your opponent's face down cards.}{\onecost}{imgs/mirror_table.png}
+&
+\card{Sneak Peek}{Blessing}{Draw a card and look at the top \handsize \ cards of your draw pile.}{\onecost}{imgs/sneak_peak.png}
+&
+\card{Forecast}{Blessing}{Draw a card and look at the top \shopsize \ cards of the shop's draw pile.}{\onecost}{imgs/forecast.png}
+&
+
+\card{Spacious Table}{Relic}{You have space for 1 extra face down card.}{\twocost}{imgs/spacious_table.png}
+&
+
+\card{Merchant's Goodwill}{Relic}{Your shop refreshes cost 1 less gold.}{\onecost}{imgs/merchants_goodwill.png}
+&
+\card{Cheapskate}{Relic}{Face down cards no longer cost you gold to place.}{\twocost}{imgs/cheapskate.png}
+&
+\card{Trading Vessels}{Relic}{Gain 1 extra gold at the start of your turn.}{\twocost}{imgs/trading_vessels.png}
+&
+
+\card{Veto}{Spell}{Your opponent receives 1 less mana at the start of their next turn.}{\onecost}{imgs/veto.png}
+&
+\card{Weak Hands}{Blessing}{Your opponent must discard 3 cards from their hand.}{\twocost}{imgs/weak_hands.png}
+&
+\card{Faulty Table}{Blessing}{Your opponent must discard 1 card from their face down cards.}{\twocost}{imgs/faulty_table.png}
+&
+\card{Sabotage}{Blessing}{ \small Reorder the top \handsize \ cards of your opponent's draw pile and discard any number of them.}{\twocost}{imgs/sabotage.png}
+&
+\card{Curse}{Spell}{ \footnotesize Upon buying, add this card to your opponent's discard pile instead; does nothing afterwards.}{\twocost}{imgs/curse.png}
 &
 
 \card{Basic Income}{Spell}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
@@ -604,6 +597,11 @@ This is a two player game that is played until one player wins and the other los
 \card{Lucky Find}{Blessing}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
 &
 \card{Lucky Find}{Blessing}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
+&
+
+\card{}{\hspace{30pt}}{}{\hspace{30pt}}{}
+&
+\card{}{\hspace{30pt}}{}{\hspace{30pt}}{}
 &
 \card{}{\hspace{30pt}}{}{\hspace{30pt}}{}
 &
