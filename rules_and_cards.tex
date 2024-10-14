@@ -15,6 +15,7 @@
 \usepackage[margin=1.5cm]{geometry}
 \usepackage{nopageno}
 \usepackage{titling}
+\usepackage{wrapfig}
 
 \setlength{\parskip}{0pt}
 \setlength{\tabcolsep}{0pt}
@@ -166,7 +167,7 @@
 
 \subsection*{Summary}
 
-The game is played between two players who build their decks and take turns playing cards from them. Their decks start weak, but they can improve them by buying better cards or removing weak ones. Each player also has some mana (used to play cards), gold (used to buy cards) and HP (if it reaches 0, the player loses). Some cards give gold, deal damage or restore HP, while others provide various forms of utility, shielding or buffs. Seven elemental dice determine the strengths of various cards: Chance \chance, Fire \fire, Earth \earth, Water \water, Nature \nature, Gold \gold \ and Magic \magic. They are rolled at the start and stay like that. However, some cards can change the values of these dice, thus changing how strong other cards are.
+The game is played between two players who build their decks and take turns playing cards from them. Their decks start weak, but they can improve them by buying better cards or removing weak ones. Each player also has some mana (used to play cards), gold (used to buy cards) and HP (if it reaches 0, the player loses). Some cards give gold, deal damage or restore HP, while others provide various forms of utility, shielding or buffs. Seven elemental dice determine the strengths of various cards: Chance \chance, Fire \fire, Earth \earth, Water \water, Nature \nature, Gold \gold \ and Magic \magic. They are rolled at the start and stay as they are. However, some cards can change the values of these dice, thus changing how strong other cards are.
 
 \subsection*{Win condition}
 
@@ -338,6 +339,23 @@ If at any point, a player no longer wishes to continue, they can resign. This me
 \item ``At What Cost'', when bought, must trash itself, if the player owns no other relics.
 \item ``Vicious Curse'' does not prevent the trashing of relics, only of cards in the player's deck.
 \item ``Veto'' is active until the start of the opponent's next turn.
+\end{itemize}
+
+\subsection*{Card Legend}
+
+\begin{wrapfigure}{l}{}
+\card{Name}{Type}{neutralcolor}{Effect}{Cost}{}
+\end{wrapfigure}
+
+The ``Cost'' is either a gold amount (e.g. ``10 gold'') for buyable cards or one of ``Starter'' or ``Draft'' for non-buyable cards.
+
+The color of each card depends on its type (additionally, starter cards have more washed out colors):
+\begin{itemize}
+\item Spell -- \colorbox{spellcolor}{Purple}
+\item Blessing -- \colorbox{blessingcolor}{Yellow}
+\item Relic -- \colorbox{reliccolor}{Blue}
+\item Miracle -- \colorbox{miraclecolor}{Orange}
+\item Curse -- \colorbox{cursecolor}{Gray}
 \end{itemize}
 
 \newpage
@@ -614,6 +632,6 @@ If at any point, a player no longer wishes to continue, they can resign. This me
             \node at (-0.5*\gridwidth+\x*\cellsize-\cellsize/2,-0.5*\gridheight+\y*\cellsize+\cellsize/2) {\z};
 
 \end{scope}
-\end{tikzpicture}    
+\end{tikzpicture}
 
 \end{document}
