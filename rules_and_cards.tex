@@ -219,29 +219,27 @@ Many cards' descriptions have an element symbol instead of a number, e.g. ``Deal
 
 \vspace{4pt}
 
-It is also possible to have a stronger scaling like 2\hspace{1pt}$\times$\hspace{1pt}\fire, which would mean that the damage is equal to 2 times the current value of the \fire \ die. Other cards may scale with multiple elements like \earth\hspace{1pt}$+$\hspace{1pt}\chance \ or \water\hspace{1pt}\times\hspace{1pt}\magic, which would mean that the damage is equal to sum or product, respectively, of the current values of the two listed dice.
-
-\vspace{4pt}
-
-In all multi-element scaling cards, the combination is a sum, if neither element is \magic, and a product, otherwise. There are no single-element \magic \ scaling cards, i.e. \magic \ is always a multiplier for another element.
-
-\vspace{4pt}
+It is also possible to have a stronger scaling like 3\hspace{1pt}$\times$\hspace{1pt}\fire, i.e. the damage is equal to 3 times the current value of the \fire \ die. Other cards may scale with multiple elements like \earth\hspace{1pt}$+$\hspace{1pt}\chance \, i.e. the damage is equal to sum of the current values of the \earth \ and \chance \ dice.
 
 \subsection*{The \chance \ die}
 
 Unlike all other dice, whenever its value is needed by a card that scales with it, it is rerolled before executing (and calculating the strength of) the card. Note that dice control cards can still affect the \chance \ die, though this usually achieves nothing.
 
-\subsection*{Buffs}
+\subsection*{Gold}
 
-Buffs (``Double the strength of all your cards scaling with X until the end of your turn.'') work by doubling the effective values of all dice except \magic \ in the strength calculations for all cards (of the player with the buff) that scale with X (and possibly something else). Multiple buffs can affect the same cards (i.e. two buffs means times 4). Buffs are discarded at the end of the player's turn (i.e. if played during the opponent's turn, a buff lasts through that and the player's turn.)
+Gold is gained passively (1 per turn) and by playing cards. Other than with gold cards: A player dealing damage or restoring HP (to their opponent or themselves) receives gold equal to half the damage dealt/HP restored (rounded up). Note that, if a card deals damage to both players, the gold gained is half of the total damage dealt. Gold is mainly spent on refreshing the shop, buying cards or placing face down cards.
+
+\subsection*{Buff cards}
+
+Buff cards (``Double the strength of all your cards scaling with X until the end of your turn.'') work by doubling the effective values of all dice in the strength calculations for all cards (of the player with the buff) that scale with X (and possibly something else). Multiple buffs can affect the same cards (i.e. two buffs means times 4). Buffs are discarded at the end of the player's turn (i.e. if played during the opponent's turn, a buff lasts through that and the player's turn.)
 
 \vspace{4pt}
 
-Example: Alice plays buff that targets \fire. She then plays a \fire\hspace{1pt}$\times$\hspace{1pt}\magic \ attack, a \nature\hspace{1pt}$+$\hspace{1pt}\fire \ restore and a \water\hspace{1pt}$+$\hspace{1pt}\earth \ attack. The first two will be doubled (i.e. will do 2\hspace{1pt}$\times$\hspace{1pt}\fire\hspace{1pt}$\times$\hspace{1pt}\magic \ damage and 2\hspace{1pt}$\times$\hspace{1pt}\nature\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\fire \ restoration, respectively), while the last attack will not be doubled.
+Example: Alice plays a \fire \ buff. She then plays a 2\hspace{1pt}$\times$\fire\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\magic \ attack, a \nature\hspace{1pt}$+$\hspace{1pt}\fire \ restore and a \water\hspace{1pt}$+$\hspace{1pt}\earth \ attack. The first two effects will be doubled, while the last one will not.
 
-\subsection*{Shields}
+\subsection*{Shield cards}
 
-Shields (``Shield X against damage scaling with Y until the end of your opponent's turn'') work by subtracting (without going negative) the value of die X from all dice except \magic \ in the strength calculations for all incoming damage (towards the player with the shield) that scales with X (and possibly something else). Multiple shields can affect the same card. Shields are discarded at the end of the opponent's turn (i.e. if played during the player's turn, a shield lasts through that and the opponent's turn.)
+Shield cards (``Shield X against damage scaling with Y until the end of your opponent's turn'') work by subtracting (without going negative) the value of die X from all dice in the strength calculations for all incoming damage (towards the player with the shield) that scales with X (and possibly something else). Multiple shields can affect the same card. Shields are discarded at the end of the opponent's turn (i.e. if played during the player's turn, a shield lasts through that and the opponent's turn.)
 
 \vspace{4pt}
 
@@ -255,9 +253,7 @@ Example: During her turn, Alice plays a \fire \ buff and a 2\hspace{1pt}$\times$
 
 Example 2: Alice plays a \water\hspace{1pt}$+$\hspace{1pt}\earth \ attack that targets both players. The value of the \water \ die is 2 and that of the \earth \ one is 5, so this attack would deal $2 + 5 = 7$ damage to both players. However, Alice has already played a \magic \ shield against multi-element damage. The value of the \magic \ die is 4. The attack now deals $0 + (5 - 4) = 1$ damage to Alice (since $2 - 4$ is negative) and still 5 damage to Bob.
 
-\subsection*{Gold}
-
-Gold (represented by the coins) is gained passively (1 per turn) and by playing cards. Other than with gold cards: A player dealing damage or restoring HP (to their opponent or themselves) receives gold equal to half the damage dealt/HP restored (rounded up). Note that, if a card deals damage to both players, the gold gained is half of the total damage dealt. Gold is mainly spent on refreshing the shop, buying cards or placing face down cards.
+\newpage
 
 \subsection*{Initial setup}
 
@@ -267,7 +263,7 @@ Gold (represented by the coins) is gained passively (1 per turn) and by playing 
 \item All cards with gold costs are shuffled together and form the shop's draw pile.
 \item The 8 \draft \ cards (``Fire'', ``Tremor'', ``Heavy Rain'', ``Blind Attack'', ``Flower Gardens'', ``Marketplace'', ``Gambling'' and ``Cheap Trick'') are shuffled together. Then 6 of them are dealt out for drafting and the other 2 are trashed.
 \item Each player rolls a die and whoever rolls higher chooses who goes first. (In case of a tie, reroll.)
-\item The player who rolled lower in the first player determination can decide to swap who goes first and who goes second by bidding 1 gold. If this happens, the other player has the same option, but for 2 gold. This auction ends when a player declines to bid or when a player bids \startgold \ gold. After that, the last bidder loses the amount of gold they bid.
+\item \textit{Optional step for competitive play:} The player who rolled lower in the first player determination can decide to swap who goes first and who goes second by bidding 1 gold. If this happens, the other player has the same option, but for 2 gold. This auction ends when a player declines to bid or when a player bids \startgold \ gold. After that, the last bidder loses the amount of gold they bid.
 \item The first player drafts (chooses) 1 of the dealt out \draft \ cards, the second one drafts 2 of the remaining ones, the first one drafts 2, and the last card goes to the second player.
 \item The starting draw pile of each player is formed by shuffling together the 9 Starter cards (8 ``Basic Income'' and 1 ``Lucky Find'') and their 3 chosen \draft \ cards.
 \item Each player draws \handsize \ cards from their draw pile into their hand and the first player starts their turn.
@@ -292,7 +288,7 @@ Whenever a card is played, it is initially active. Once its effect is executed/e
 
 \vspace{4pt}
 
-After the current player declares their turn to be over, they lose all their mana and discard their entire hand, both players discard their inactive played cards and then the current player draws \handsize \ cards from their draw pile. Finally, the opponent's turn starts, but before they can act, the current player can play any number of off-turn cards (blessings or face down cards) until they declare that they are done.
+After the current player declares their turn to be over, they lose all their mana and discard their entire hand, both players discard their inactive played cards and then the current player draws \handsize \ cards from their draw pile. Finally, the opponent's turn starts, but before they can act, the current player can play any number of off-turn cards (blessings and face down cards) until they declare that they are done.
 
 \subsection*{Interruptions from the opponent}
 
@@ -308,7 +304,7 @@ Also note that, in case there are multiple interrupted cards at the same time, i
 
 \vspace{4pt}
 
-Example: In a very close game, Alice is at 4 HP and Bob at 2 HP. During her turn, Alice plays a \fire \ attack. The current value of \fire \ is 6, so she would win. Bob interrupts this and flips a face down card that allows him to reroll the \fire \ die. It rolls a 2, so he is still losing. Then, he plays a blessing from his hand: a \water \ shield against \fire \ attacks. The value of \water \ is 4, so this would mitigate all damage. He is done for now. Alice then plays a blessing that gives her mana, allowing her to play another spell (from her hand): ``Trickster God'', which she uses to swap the values of the \fire \ and \water \ dice. Bob is again losing so he flips his second face down card: a \chance \ attack, which has a 50\% chance of winning him the game. Alice interrupts this by playing a \gold \ shield against single element attacks. The value of \gold \ is 2, so Bob needs a 6 to win. Alice is done and Bob passes as he has nothing more to do. He rolls the \chace \ die to execute his attack, but the die lands on a 4. He is done. Alice is also done. Finally, Alice's attack is executed and she wins the game.
+Example: In a very close game, Alice is at 4 HP and Bob at 2 HP. During her turn, Alice plays a \fire \ attack. The current value of \fire \ is 6, so she would win. Bob interrupts this and flips a face down card that allows him to reroll the \fire \ die. It rolls a 2, so he is still losing. Then, he plays a blessing from his hand: a \water \ shield against \fire \ attacks. The value of \water \ is 4, so this would mitigate all damage. He is done for now. Alice then plays a blessing that gives her mana, allowing her to play another spell (from her hand): ``Trickster God'', which she uses to swap the values of the \fire \ and \water \ dice. Bob is again losing so he flips his second face down card: a \chance \ attack, which has a 50\% chance of winning him the game. Alice interrupts this by playing a \gold \ shield against single element attacks. The value of \gold \ is 2, so Bob needs a 6 to win. Alice is done, as is Bob as he has nothing more to do. He rolls the \chace \ die to execute his attack, but the die lands on a 4. He is done. Alice is also done. Finally, Alice's attack is executed and she wins the game.
 
 \subsection*{Discard pile}
 
@@ -324,7 +320,7 @@ A player's hand, face down cards, discard pile and discards are private informat
 
 \subsection*{Trackers and tokens}
 
-Use the 7 colored dice for the elements. Use the spare dice to roll for turn order choice. Use the HP tracker (the large grid) and the two differently colored pawns to keep track of players' HPs. Use the coins to keep track of players' gold. If needed, use the spare dice or other tokens to keep track of mana.
+Use the 7 colored D6 dice for the elements. Use the spare dice to roll for turn order choice. Use the HP tracker (the large grid) and the two differently colored pawns to keep track of players' HPs. Use the coins to keep track of players' gold. If needed, use the spare dice or other tokens to keep track of mana.
 
 \subsection*{Resigning}
 
@@ -333,11 +329,11 @@ If at any point, a player no longer wishes to continue, they can resign. This me
 \subsection*{Card Clarifications}
 
 \begin{itemize}
-\item ``Second Chance'', ``Sleight of Hand'', ``Calculated Risk'' and ``Smoke and Mirrors'' affect only one die (chosen by the player), i.e. their effects cannot be split up over multiple dice.
+\item Dice control cards that do not explicitly specify they affect multiple dice affect only one die.
 \item ``Wish'' and ``Scout'' can target cards in the shop and its draw and discard piles, but not trashed cards.
 \item ``At What Cost'', when bought, must trash itself, if the player owns no other relics.
-\item ``Vicious Curse'' does not prevent the trashing of relics, only of cards in the player's deck.
 \item ``Veto'' is active until the start of the opponent's next turn.
+\item ``Vicious Curse'' does not prevent the trashing of relics. Other cards may be trashed in the same action as ``Vicious Curse'', e.g. ``Optimization Master'' can be played to trash itself, ``Vicious Curse'' and some other card. Otherwise, if a card that requires trashing deck cards is executed without trashing ``Vicious Curse'', no trashing of deck cards happens.
 \end{itemize}
 
 \subsection*{Card Legend}
@@ -389,13 +385,21 @@ The color of each card depends on its type (additionally, starter cards have mor
 &
 \card{Wild Seas}{Spell}{spellcolor}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\chance \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/wild_seas.png}
 &
-\card{Magical Inferno}{Spell}{spellcolor}{Deal \fire\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fourcost}{imgs/magical_inferno.png}
+\card{Scorching Firestorm}{Spell}{spellcolor}{Deal 3\hspace{1pt}$\times$\hspace{1pt}\fire \ damage to your opponent.}{\fourcost}{imgs/scorching_firestorm.png}
 &
-\card{Arcane Meteor}{Spell}{spellcolor}{Deal \earth\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fourcost}{imgs/arcane_meteor.png}
+\card{Megaquake}{Spell}{spellcolor}{Deal 3\hspace{1pt}$\times$\hspace{1pt}\earth \ damage to your opponent.}{\fourcost}{imgs/megaquake.png}
 &
-\card{Biblical Flood}{Spell}{spellcolor}{ \small Deal \water\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent and yourself; opponent shields affect self damage.}{\fourcost}{imgs/biblical_flood.png}
+\card{Tsunami}{Spell}{spellcolor}{ \small Deal 3\hspace{1pt}$\times$\hspace{1pt}\water \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/tsunami.png}
 &
-\card{Ethereal Havoc}{Spell}{spellcolor}{Deal \chance\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fourcost}{imgs/ethereal_havoc.png}
+\card{Chaotic Invasion}{Spell}{spellcolor}{Deal 3\hspace{1pt}$\times$\hspace{1pt}\chance \ to your opponent.}{\fourcost}{imgs/chaotic_invasion.png}
+&
+\card{Magical Inferno}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\fire\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fivecost}{imgs/magical_inferno.png}
+&
+\card{Arcane Meteor}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\earth\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fivecost}{imgs/arcane_meteor.png}
+&
+\card{Biblical Flood}{Spell}{spellcolor}{ \footnotesize Deal 2\hspace{1pt}$\times$\hspace{1pt}\water\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent and yourself; opponent shields affect self damage.}{\fivecost}{imgs/biblical_flood.png}
+&
+\card{Ethereal Havoc}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\chance\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fivecost}{imgs/ethereal_havoc.png}
 &
 
 \card{Flower Gardens}{Spell}{spellcolor}{Restore \nature \ HP.}{\draft}{imgs/flower_gardens.png}
@@ -410,7 +414,9 @@ The color of each card depends on its type (additionally, starter cards have mor
 & 
 \card{Clover Fields}{Spell}{spellcolor}{Restore \nature\hspace{1pt}$+$\hspace{1pt}\chance \ HP.}{\threecost}{imgs/clover_fields.png}
 &
-\card{Mystical Restoration}{Spell}{spellcolor}{Restore \nature\hspace{1pt}$\times$\hspace{1pt}\magic \ HP.}{\fourcost}{imgs/mystical_restoration.png}
+\card{Verdant Wilderness}{Spell}{spellcolor}{Restore 3\hspace{1pt}$\times$\hspace{1pt}\nature \ HP.}{\fourcost}{imgs/verdant_wilderness.png}
+&
+\card{Mystical Restoration}{Spell}{spellcolor}{Restore 2\hspace{1pt}$\times$\hspace{1pt}\nature\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ HP.}{\fivecost}{imgs/mystical_restoration.png}
 &
 
 \card{Marketplace}{Spell}{spellcolor}{Gain \gold \ gold.}{\draft}{imgs/marketplace.png}
@@ -425,7 +431,9 @@ The color of each card depends on its type (additionally, starter cards have mor
 &
 \card{Free Market}{Spell}{spellcolor}{Gain \gold\hspace{1pt}$+$\hspace{1pt}\chance \ gold.}{\threecost}{imgs/free_market.png}
 &
-\card{Ancient Alchemy}{Spell}{spellcolor}{Gain \gold\hspace{1pt}$\times$\hspace{1pt}\magic \ gold.}{\fourcost}{imgs/ancient_alchemy.png}
+\card{Gilded Citadel}{Spell}{spellcolor}{Gain 3\hspace{1pt}$\times$\hspace{1pt}\gold \ gold.}{\fourcost}{imgs/gilded_citadel.png}
+&
+\card{Ancient Alchemy}{Spell}{spellcolor}{Gain 2\hspace{1pt}$\times$\hspace{1pt}\gold\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ gold.}{\fivecost}{imgs/ancient_alchemy.png}
 &
 
 \card{Water Reservoirs}{Blessing}{blessingcolor}{ \small Shield \water \ against damage scaling with \fire \ until the end of your opponent's turn.}{\onecost}{imgs/water_reservoirs.png}
@@ -454,11 +462,15 @@ The color of each card depends on its type (additionally, starter cards have mor
 \card{Purism}{Spell}{spellcolor}{ \footnotesize Double the strength of all your cards scaling with a single element until the end of your turn.}{\twocost}{imgs/purism.png}
 &
 
-\card{Gambling}{Spell}{spellcolor}{Reroll a die up to 1 time.}{\draft}{imgs/gambling.png}
+\card{Gambling}{Spell}{spellcolor}{Reroll a die up to once.}{\draft}{imgs/gambling.png}
 &
-\card{Second Chance}{Spell}{spellcolor}{Reroll a die up to 2 times.}{\twocost}{imgs/second_chance.png}
+\card{Second Chance}{Spell}{spellcolor}{Reroll a die up to twice.}{\twocost}{imgs/second_chance.png}
 &
 \card{Calculated Risk}{Spell}{spellcolor}{Reroll a die up to 4 times.}{\threecost}{imgs/calculated_risk.png}
+&
+\card{Serial Gambling}{Spell}{spellcolor}{Reroll two dice up to once each.}{\twocost}{imgs/serial_gambling.png}
+&
+\card{Risk Tolerance}{Spell}{spellcolor}{ \footnotesize Reroll a die up to twice and another up to once; do the rolls and die selections in any order.}{\threecost}{imgs/risk_tolerance.png}
 &
 \card{Cheap Trick}{Spell}{spellcolor}{Change the value of a die by up to 1.}{\draft}{imgs/cheap_trick.png}
 &
@@ -466,9 +478,15 @@ The color of each card depends on its type (additionally, starter cards have mor
 &
 \card{Smoke and Mirrors}{Spell}{spellcolor}{Change the value of a die by up to 3.}{\threecost}{imgs/smoke_and_mirrors.png}
 &
-\card{Perspective Shift}{Spell}{spellcolor}{Flip a die over, i.e. set its value to 7 minus its current value.}{\threecost}{imgs/perspective_shift.png}
+\card{Two-Handed Trick}{Spell}{spellcolor}{Change the values of two dice by up to 1 each.}{\twocost}{imgs/two_handed_trick.png}
 &
-\card{Trickster God}{Spell}{spellcolor}{Swap the values of a pair of dice.}{\fourcost}{imgs/trickster_god.png}
+\card{Misdirection}{Spell}{spellcolor}{Change the value of a die by up to 2 and of another by up to 1.}{\threecost}{imgs/misdirection.png}
+&
+\card{Cheat Die}{Spell}{spellcolor}{Reroll a die up to once and then change its value by up to 1.}{\twocost}{imgs/cheat_die.png}
+&
+\card{Perspective Shift}{Spell}{spellcolor}{Flip a die over: set its value to 7 minus its current value.}{\threecost}{imgs/perspective_shift.png}
+&
+\card{Trickster God}{Spell}{spellcolor}{Swap the values of two dice.}{\fourcost}{imgs/trickster_god.png}
 &
 \card{Cosmic Puppeteer}{Spell}{spellcolor}{Change the values of all dice by up to 1 each.}{\fourcost}{imgs/cosmic_puppeteer.png}
 &
@@ -485,32 +503,36 @@ The color of each card depends on its type (additionally, starter cards have mor
 &
 \card{Multitasking God}{Blessing}{blessingcolor}{Gain 3 mana and draw a card.}{\fivecost}{imgs/multitasking_god.png}
 &
-\card{Cruel Pact}{Blessing}{blessingcolor}{Take \chance \ damage and gain 1 mana.}{\onecost}{imgs/cruel_pact.png}
+\card{Cruel Pact}{Blessing}{blessingcolor}{Deal \chance \ damage to yourself and gain 1 mana.}{\onecost}{imgs/cruel_pact.png}
 &
-\card{Deal with the Devil}{Blessing}{blessingcolor}{Take \chance \ damage and gain 2 mana.}{\twocost}{imgs/deal_with_the_devil.png}
+\card{Deal with the Devil}{Blessing}{blessingcolor}{Deal \chance \ damage to yourself and gain 2 mana.}{\twocost}{imgs/deal_with_the_devil.png}
 &
 \card{All for One}{Relic}{reliccolor}{Up to once during your turn, discard 3 cards from your hand and gain 1 mana.}{\twocost}{imgs/all_for_one.png}
 &
-\card{Clear Mind}{Relic}{reliccolor}{ \small Gain 1 extra mana at the start of your turn, but draw 1 fewer cards after your turn.}{\threecost}{imgs/clear_mind.png}
+\card{Clear Mind}{Relic}{reliccolor}{ \small Gain 1 extra mana at the start of your turn, but draw 1 fewer cards after your turn.}{\twocost}{imgs/clear_mind.png}
+&
+\card{Mana Crystals}{Relic}{reliccolor}{Retain up to 1 mana at the end of your turn.}{\threecost}{imgs/mana_crystals.png}
 &
 \card{At What Cost}{Relic}{reliccolor}{ \footnotesize Upon buying, trash a relic you own; gain 1 extra mana at the start of your turn.}{\fourcost}{imgs/at_what_cost.png}
 &
 
-\card{Exploration Novice}{Spell}{spellcolor}{ \small Draw 2 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\twocost}{imgs/exploration_novice.png}
+\card{Exploration Novice}{Spell}{spellcolor}{ \small Draw 2 cards; if this is the first draw spell you play during your turn, gain 1 mana.}{\twocost}{imgs/exploration_novice.png}
 &
-\card{Exploration Master}{Spell}{spellcolor}{ \small Draw 3 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\threecost}{imgs/exploration_master.png}
+\card{Exploration Master}{Spell}{spellcolor}{ \small Draw 3 cards; if this is the first draw spell you play during your turn, gain 1 mana.}{\threecost}{imgs/exploration_master.png}
 &
-\card{Exploration Lord}{Spell}{spellcolor}{ \small Draw 4 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\fourcost}{imgs/exploration_lord.png}
+\card{Exploration Lord}{Spell}{spellcolor}{ \small Draw 4 cards; if this is the first draw spell you play during your turn, gain 1 mana.}{\fourcost}{imgs/exploration_lord.png}
 &
-\card{Exploration God}{Spell}{spellcolor}{ \small Draw 5 cards; if this is the first time you play a draw spell during your turn, gain 1 mana.}{\fivecost}{imgs/exploration_god.png}
+\card{Exploration God}{Spell}{spellcolor}{ \small Draw 5 cards; if this is the first draw spell you play during your turn, gain 1 mana.}{\fivecost}{imgs/exploration_god.png}
+&
+\card{Room for More}{Spell}{spellcolor}{ \scriptsize Draw cards up to 5 in your hand; if this is the first draw spell you play during your turn, gain 1 mana.}{\threecost}{imgs/room_for_more.png}
+&
+\card{Plenty of Room}{Spell}{spellcolor}{ \scriptsize Draw cards up to 6 in your hand; if this is the first draw spell you play during your turn, gain 1 mana.}{\fourcost}{imgs/plenty_of_room.png}
 &
 \card{Well-Laid Plans}{Blessing}{blessingcolor}{ \small Reorder the top \handsize \ cards of your draw pile and discard any number of them.}{\twocost}{imgs/well_laid_plans.png}
 &
-\card{Magnetic Hands}{Blessing}{blessingcolor}{ \small Move any card from your draw pile to your hand and shuffle your draw pile.}{\twocost}{imgs/magnetic_hands.png}
-&
 \card{Truly Blessed}{Relic}{reliccolor}{ \footnotesize The first time you play a blessing during your turn, draw a card before executing it.}{\threecost}{imgs/truly_blessed.png}
 &
-\card{Big Handed}{Relic}{reliccolor}{Draw 1 extra card after your turn.}{\fourcost}{imgs/big_handed.png}
+\card{Big Handed}{Relic}{reliccolor}{Draw 1 extra card after your turn.}{\fivecost}{imgs/big_handed.png}
 &
 
 \card{Optimization Novice}{Spell}{spellcolor}{Trash this card and up to 1 card from your hand.}{\onecost}{imgs/optimization_novice.png}
@@ -523,12 +545,14 @@ The color of each card depends on its type (additionally, starter cards have mor
 &
 \card{Spring Cleaning}{Miracle}{miraclecolor}{Upon buying, trash up to 1 card from your hand.}{\twocost}{imgs/spring_cleaning.png}
 &
+\card{Divine Purification}{Miracle}{miraclecolor}{Upon buying, trash all cards from your hand.}{\fourcost}{imgs/divine_purification.png}
+&
 
-\card{Wish}{Spell}{spellcolor}{ \footnotesize Buy any unowned card for free and shuffle the shop's draw pile; trash this card after 3 uses.}{\fivecost}{imgs/wish.png}
+\card{Wish}{Spell}{spellcolor}{ \footnotesize Buy any unowned card for free and shuffle the shop's draw pile; trash this card after 2 uses.}{\fivecost}{imgs/wish.png}
 &
 \card{Scout}{Miracle}{miraclecolor}{Upon buying, buy any unowned card and shuffle the shop's draw pile.}{\twocost}{imgs/scout.png}
 &
-\card{Express Shipping}{Relic}{reliccolor}{ \small Whenever you buy a playable card, you can pay \expresscost \ gold for it to go into your hand.}{\twocost}{imgs/express_shipping.png}
+\card{Express Shipping}{Relic}{reliccolor}{ \small Whenever you buy a playable card, you can pay \expresscost \ gold for it to go into your hand.}{\threecost}{imgs/express_shipping.png}
 &
 
 \card{Mirror Wall}{Blessing}{blessingcolor}{Draw a card and look at your opponent's hand.}{\onecost}{imgs/mirror_wall.png}
@@ -543,7 +567,7 @@ The color of each card depends on its type (additionally, starter cards have mor
 \card{Spacious Table}{Relic}{reliccolor}{You have space for 1 extra face down card.}{\twocost}{imgs/spacious_table.png}
 &
 
-\card{Merchant's Goodwill}{Relic}{reliccolor}{Your shop refreshes cost 1 less gold.}{\onecost}{imgs/merchants_goodwill.png}
+\card{Merchant's Goodwill}{Relic}{reliccolor}{Your shop refreshes and card buys cost 1 less gold.}{\twocost}{imgs/merchants_goodwill.png}
 &
 \card{Cheapskate}{Relic}{reliccolor}{Face down cards no longer cost you gold to place.}{\twocost}{imgs/cheapskate.png}
 &
@@ -552,11 +576,11 @@ The color of each card depends on its type (additionally, starter cards have mor
 
 \card{Veto}{Spell}{spellcolor}{Your opponent receives 1 less mana at the start of their next turn.}{\onecost}{imgs/veto.png}
 &
-\card{Weak Hands}{Blessing}{blessingcolor}{Your opponent must discard 3 cards from their hand.}{\twocost}{imgs/weak_hands.png}
+\card{Weak Hands}{Blessing}{blessingcolor}{Your opponent must discard cards from their hand down to 1 left.}{\twocost}{imgs/weak_hands.png}
 &
 \card{Faulty Table}{Blessing}{blessingcolor}{Your opponent must discard 1 card from their face down cards.}{\twocost}{imgs/faulty_table.png}
 &
-\card{Sabotage}{Blessing}{blessingcolor}{ \small Reorder the top \handsize \ cards of your opponent's draw pile and discard any number of them.}{\twocost}{imgs/sabotage.png}
+\card{Sabotage}{Blessing}{blessingcolor}{ \small Reorder the top \handsize \ cards of your opponent's draw pile and discard any number of them.}{\threecost}{imgs/sabotage.png}
 &
 \card{Curse}{Curse}{cursecolor}{You cannot trash this card.}{\twocost}{imgs/curse.png}
 &
@@ -599,11 +623,6 @@ The color of each card depends on its type (additionally, starter cards have mor
 \card{Lucky Find}{Blessing}{startblessingcolor}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
 &
 \card{Lucky Find}{Blessing}{startblessingcolor}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
-&
-
-\card{}{\hspace{30pt}}{neutralcolor}{}{\hspace{30pt}}{}
-&
-\card{}{\hspace{30pt}}{neutralcolor}{}{\hspace{30pt}}{}
 &
 
 \end{longtable}
