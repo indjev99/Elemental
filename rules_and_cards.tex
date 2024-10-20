@@ -194,7 +194,7 @@ Mechanically, there are 5 types of cards (listed in order of decreasing commonne
 \item Curses -- Go into the opponent's deck upon being bought and are unplayable.
 \end{itemize}
 
-Playable cards (spells and blessings) can also be placed face down at a cost of 1 mana and 2 gold and then be flipped later like a blessing: at no cost and potentially during the opponent's turn.
+Cards can also be placed face down at a cost of 1 mana and 2 gold and then (if playable, i.e. spells and blessings) be flipped later like a blessing: at no cost and potentially during the opponent's turn.
 
 \vspace{4pt}
 
@@ -276,8 +276,8 @@ At the start of their turn, the player gains 1 gold and 1 mana. After that they 
 \begin{itemize}
 \item Play a spell from their hand at the cost of 1 mana.
 \item Play a blessing from their hand at no cost.
-\item Place a playable card (spell or blessing) from their hand face down at the cost of 1 mana and \facedowncost \ gold. A player can have at most \facedownsize \ face down cards at a time.
-\item Play (flip over and activate) a face down card at no cost.
+\item Place a card from their hand face down at the cost of 1 mana and \facedowncost \ gold. A player can have at most \facedownsize \ face down cards at a time.
+\item Play (flip over and activate) a playable (i.e. spell or blessing) face down card at no cost.
 \item Refresh the shop. The first refresh in a given turn costs \refreshcost \ gold and each subsequent is \refreshcostincrease \ gold more expensive.
 Refreshing the shop consists of moving the currently laid out shop cards (if any) to the shop's discard pile followed by drawing and laying out \shopsize \ cards from the shop's draw pile. Note that initially there are no shop cards laid out.
 \item Buy a card from the laid out shop cards by paying its cost.
