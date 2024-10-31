@@ -1,0 +1,281 @@
+\documentclass[dvipsnames,parskip,a4paper]{scrartcl}
+
+\usepackage{import}
+
+\import{./}{lib.tex}
+
+\begin{document}
+
+\begin{longtable}{ c c c }
+
+\card{Fire}{Spell}{spellcolor}{Deal \fire \ damage to your opponent.}{\draft}{imgs/fire.png}
+&
+\card{Tremor}{Spell}{spellcolor}{Deal \earth \ damage to your opponent.}{\draft}{imgs/tremor.png}
+&
+\card{Heavy Rain}{Spell}{spellcolor}{ \small Deal \water \ damage to your opponent and yourself; opponent shields affect self damage.}{\draft}{imgs/heavy_rain.png}
+&
+\card{Blind Attack}{Spell}{spellcolor}{Deal \chance \ damage to your opponent.}{\draft}{imgs/blind_attack.png}
+&
+\card{Blazing Fire}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\fire \ damage to your opponent.}{\threecost}{imgs/blazing_fire.png}
+&
+\card{Massive Earthquake}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\earth \ damage to your opponent.}{\threecost}{imgs/massive_earthquake.png}
+&
+\card{Torrential Rainstorm}{Spell}{spellcolor}{ \small Deal 2\hspace{1pt}$\times$\hspace{1pt}\water \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/torrential_rainstorm.png}
+&
+\card{Haphazard Offence}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\chance \ to your opponent.}{\threecost}{imgs/haphazard_offence.png}
+&
+\card{Lava Surge}{Spell}{spellcolor}{Deal \fire\hspace{1pt}$+$\hspace{1pt}\earth \ damage to your opponent.}{\threecost}{imgs/lava_surge.png}
+&
+\card{Erratic Blaze}{Spell}{spellcolor}{Deal \fire\hspace{1pt}$+$\hspace{1pt}\chance \ damage to your opponent.}{\threecost}{imgs/erratic_blaze.png}
+&
+\card{Chaotic Avalanche}{Spell}{spellcolor}{Deal \earth\hspace{1pt}$+$\hspace{1pt}\chance \ damage to your opponent.}{\threecost}{imgs/chaotic_avalanche.png}
+&
+\card{Scalding Fog}{Spell}{spellcolor}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\fire \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/scalding_fog.png}
+&
+\card{Devastating Mudslide}{Spell}{spellcolor}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\earth \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/devastating_mudslide.png}
+&
+\card{Wild Seas}{Spell}{spellcolor}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\chance \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/wild_seas.png}
+&
+\card{Scorching Firestorm}{Spell}{spellcolor}{Deal 3\hspace{1pt}$\times$\hspace{1pt}\fire \ damage to your opponent.}{\fourcost}{imgs/scorching_firestorm.png}
+&
+\card{Megaquake}{Spell}{spellcolor}{Deal 3\hspace{1pt}$\times$\hspace{1pt}\earth \ damage to your opponent.}{\fourcost}{imgs/megaquake.png}
+&
+\card{Tsunami}{Spell}{spellcolor}{ \small Deal 3\hspace{1pt}$\times$\hspace{1pt}\water \ damage to your opponent and yourself; opponent shields affect self damage.}{\fourcost}{imgs/tsunami.png}
+&
+\card{Chaotic Invasion}{Spell}{spellcolor}{Deal 3\hspace{1pt}$\times$\hspace{1pt}\chance \ to your opponent.}{\fourcost}{imgs/chaotic_invasion.png}
+&
+\card{Magical Inferno}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\fire\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fivecost}{imgs/magical_inferno.png}
+&
+\card{Arcane Meteor}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\earth\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fivecost}{imgs/arcane_meteor.png}
+&
+\card{Biblical Flood}{Spell}{spellcolor}{ \footnotesize Deal 2\hspace{1pt}$\times$\hspace{1pt}\water\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent and yourself; opponent shields affect self damage.}{\fivecost}{imgs/biblical_flood.png}
+&
+\card{Ethereal Havoc}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\chance\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fivecost}{imgs/ethereal_havoc.png}
+&
+
+\card{Flower Gardens}{Spell}{spellcolor}{Restore \nature \ HP.}{\draft}{imgs/flower_gardens.png}
+&
+\card{Lush Forests}{Spell}{spellcolor}{Restore 2\hspace{1pt}$\times$\hspace{1pt}\nature \ HP.}{\threecost}{imgs/lush_forests.png}
+&
+\card{Controlled Burn}{Spell}{spellcolor}{Restore \nature\hspace{1pt}$+$\hspace{1pt}\fire \ HP.}{\threecost}{imgs/controlled_burn.png}
+&
+\card{Fertile Soils}{Spell}{spellcolor}{Restore \nature\hspace{1pt}$+$\hspace{1pt}\earth \ HP.}{\threecost}{imgs/fertile_soils.png}
+&
+\card{Hot Springs}{Spell}{spellcolor}{Restore \nature\hspace{1pt}$+$\hspace{1pt}\water \ HP.}{\threecost}{imgs/hot_springs.png}
+& 
+\card{Clover Fields}{Spell}{spellcolor}{Restore \nature\hspace{1pt}$+$\hspace{1pt}\chance \ HP.}{\threecost}{imgs/clover_fields.png}
+&
+\card{Verdant Wilderness}{Spell}{spellcolor}{Restore 3\hspace{1pt}$\times$\hspace{1pt}\nature \ HP.}{\fourcost}{imgs/verdant_wilderness.png}
+&
+\card{Mystical Restoration}{Spell}{spellcolor}{Restore 2\hspace{1pt}$\times$\hspace{1pt}\nature\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ HP.}{\fivecost}{imgs/mystical_restoration.png}
+&
+
+\card{Marketplace}{Spell}{spellcolor}{Gain \gold \ gold.}{\draft}{imgs/marketplace.png}
+&
+\card{Treasury}{Spell}{spellcolor}{Gain 2\hspace{1pt}$\times$\hspace{1pt}\gold \ gold.}{\threecost}{imgs/treasury.png}
+&
+\card{Gold Foundry}{Spell}{spellcolor}{Gain \gold\hspace{1pt}$+$\hspace{1pt}\fire \ gold.}{\threecost}{imgs/gold_foundry.png}
+&
+\card{Gold Mine}{Spell}{spellcolor}{Gain \gold\hspace{1pt}$+$\hspace{1pt}\earth \ gold.}{\threecost}{imgs/gold_mine.png}
+&
+\card{Gold Panning}{Spell}{spellcolor}{Gain \gold\hspace{1pt}$+$\hspace{1pt}\water \ gold.}{\threecost}{imgs/gold_panning.png}
+&
+\card{Free Market}{Spell}{spellcolor}{Gain \gold\hspace{1pt}$+$\hspace{1pt}\chance \ gold.}{\threecost}{imgs/free_market.png}
+&
+\card{Gilded Citadel}{Spell}{spellcolor}{Gain 3\hspace{1pt}$\times$\hspace{1pt}\gold \ gold.}{\fourcost}{imgs/gilded_citadel.png}
+&
+\card{Ancient Alchemy}{Spell}{spellcolor}{Gain 2\hspace{1pt}$\times$\hspace{1pt}\gold\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ gold.}{\fivecost}{imgs/ancient_alchemy.png}
+&
+
+\card{Water Reservoirs}{Blessing}{blessingcolor}{ \small Shield \water \ against damage scaling with \fire \ until the end of your opponent's turn.}{\onecost}{imgs/water_reservoirs.png}
+&
+\card{Solid Infrastructure}{Blessing}{blessingcolor}{ \small Shield \earth \ against damage scaling with \water \ until the end of your opponent's turn.}{\onecost}{imgs/solid_infrastructure.png}
+&
+\card{Natural Forests}{Blessing}{blessingcolor}{ \small Shield \nature \ against damage scaling with \earth \ until the end of your opponent's turn.}{\onecost}{imgs/natural_forests.png}
+&
+\card{Paid Militia}{Blessing}{blessingcolor}{ \footnotesize Shield \gold \ against damage scaling with a single element until the end of your opponent's turn.}{\twocost}{imgs/paid_militia.png}
+&
+\card{Magical Barrier}{Blessing}{blessingcolor}{ \footnotesize Shield \magic \ against damage scaling with multiple elements until the end of your opponent's turn.}{\twocost}{imgs/magical_barrier.png}
+&
+
+\card{Prometheus's Gift}{Spell}{spellcolor}{Double the strength of all your cards scaling with \fire \ until the end of your turn.}{\twocost}{imgs/prometheuss_gift.png}
+&
+\card{Gaia's Favor}{Spell}{spellcolor}{Double the strength of all your cards scaling with \earth \ until the end of your turn.}{\twocost}{imgs/gaias_favor.png}
+&
+\card{Poseidon's Trident}{Spell}{spellcolor}{Double the strength of all your cards scaling with \water \ until the end of your turn.}{\twocost}{imgs/poseidons_trident.png}
+&
+\card{Ancient Grimoire}{Spell}{spellcolor}{Double the strength of all your cards scaling with \magic \ until the end of your turn.}{\twocost}{imgs/ancient_grimoire.png}
+&
+\card{Nymphs' Grace}{Spell}{spellcolor}{Double the strength of all your cards scaling with \nature \ until the end of your turn.}{\twocost}{imgs/nymphs_grace.png}
+&
+\card{Midas Touch}{Spell}{spellcolor}{Double the strength of all your cards scaling with \gold \ until the end of your turn.}{\twocost}{imgs/midas_touch.png}
+&
+\card{Purism}{Spell}{spellcolor}{ \footnotesize Double the strength of all your cards scaling with a single element until the end of your turn.}{\twocost}{imgs/purism.png}
+&
+
+\card{Gambling}{Spell}{spellcolor}{Reroll a die up to once.}{\draft}{imgs/gambling.png}
+&
+\card{Second Chance}{Spell}{spellcolor}{Reroll a die up to twice.}{\twocost}{imgs/second_chance.png}
+&
+\card{Calculated Risk}{Spell}{spellcolor}{Reroll a die up to 4 times.}{\threecost}{imgs/calculated_risk.png}
+&
+\card{Serial Gambling}{Spell}{spellcolor}{Reroll two dice up to once each.}{\twocost}{imgs/serial_gambling.png}
+&
+\card{Risk Tolerance}{Spell}{spellcolor}{ \footnotesize Reroll a die up to twice and another up to once; do the rolls and die selections in any order.}{\threecost}{imgs/risk_tolerance.png}
+&
+\card{Cheap Trick}{Spell}{spellcolor}{Change the value of a die by up to 1.}{\draft}{imgs/cheap_trick.png}
+&
+\card{Sleight of Hand}{Spell}{spellcolor}{Change the value of a die by up to 2.}{\twocost}{imgs/sleight_of_hand.png}
+&
+\card{Smoke and Mirrors}{Spell}{spellcolor}{Change the value of a die by up to 3.}{\threecost}{imgs/smoke_and_mirrors.png}
+&
+\card{Two-Handed Trick}{Spell}{spellcolor}{Change the values of two dice by up to 1 each.}{\twocost}{imgs/two_handed_trick.png}
+&
+\card{Misdirection}{Spell}{spellcolor}{Change the value of a die by up to 2 and of another by up to 1.}{\threecost}{imgs/misdirection.png}
+&
+\card{Cheat Die}{Spell}{spellcolor}{Reroll a die up to once and then change its value by up to 1.}{\twocost}{imgs/cheat_die.png}
+&
+\card{Perspective Shift}{Spell}{spellcolor}{Flip a die over: set its value to 7 minus its current value.}{\threecost}{imgs/perspective_shift.png}
+&
+\card{Trickster God}{Spell}{spellcolor}{Swap the values of two dice.}{\fourcost}{imgs/trickster_god.png}
+&
+\card{Cosmic Puppeteer}{Spell}{spellcolor}{Change the values of all dice by up to 1 each.}{\fourcost}{imgs/cosmic_puppeteer.png}
+&
+\card{Madness}{Miracle}{miraclecolor}{Upon buying, reroll all dice.}{\onecost}{imgs/madness.png}
+&
+\card{Fortuna's Protection}{Relic}{reliccolor}{You choose whether the \chance \ die is rerolled each time its value is needed.}{\threecost}{imgs/fortunas_protection.png}
+&
+
+\card{Multitasking Novice}{Blessing}{blessingcolor}{Gain 1 mana.}{\twocost}{imgs/multitasking_novice.png}
+&
+\card{Multitasking Master}{Blessing}{blessingcolor}{Gain 2 mana.}{\threecost}{imgs/multitasking_master.png}
+&
+\card{Multitasking Lord}{Blessing}{blessingcolor}{Gain 2 mana and draw a card.}{\fourcost}{imgs/multitasking_lord.png}
+&
+\card{Multitasking God}{Blessing}{blessingcolor}{Gain 3 mana and draw a card.}{\fivecost}{imgs/multitasking_god.png}
+&
+\card{Cruel Pact}{Blessing}{blessingcolor}{Deal \chance \ damage to yourself and gain 1 mana.}{\onecost}{imgs/cruel_pact.png}
+&
+\card{Deal with the Devil}{Blessing}{blessingcolor}{Deal \chance \ damage to yourself and gain 2 mana.}{\twocost}{imgs/deal_with_the_devil.png}
+&
+\card{All for One}{Relic}{reliccolor}{Up to once during your turn, discard 3 cards from your hand and gain 1 mana.}{\twocost}{imgs/all_for_one.png}
+&
+\card{Clear Mind}{Relic}{reliccolor}{ \small Gain 1 extra mana at the start of your turn, but draw 1 fewer cards after your turn.}{\twocost}{imgs/clear_mind.png}
+&
+\card{Mana Crystals}{Relic}{reliccolor}{Retain up to 1 mana at the end of your turn.}{\threecost}{imgs/mana_crystals.png}
+&
+\card{At What Cost}{Relic}{reliccolor}{ \footnotesize Upon buying, trash a relic you own; gain 1 extra mana at the start of your turn.}{\fourcost}{imgs/at_what_cost.png}
+&
+
+\card{Exploration Novice}{Spell}{spellcolor}{ \small Draw 2 cards; if this is the first draw spell you play during your turn, gain 1 mana.}{\twocost}{imgs/exploration_novice.png}
+&
+\card{Exploration Master}{Spell}{spellcolor}{ \small Draw 3 cards; if this is the first draw spell you play during your turn, gain 1 mana.}{\threecost}{imgs/exploration_master.png}
+&
+\card{Exploration Lord}{Spell}{spellcolor}{ \small Draw 4 cards; if this is the first draw spell you play during your turn, gain 1 mana.}{\fourcost}{imgs/exploration_lord.png}
+&
+\card{Exploration God}{Spell}{spellcolor}{ \small Draw 5 cards; if this is the first draw spell you play during your turn, gain 1 mana.}{\fivecost}{imgs/exploration_god.png}
+&
+\card{Room for More}{Spell}{spellcolor}{ \scriptsize Draw cards up to 5 in your hand; if this is the first draw spell you play during your turn, gain 1 mana.}{\threecost}{imgs/room_for_more.png}
+&
+\card{Plenty of Room}{Spell}{spellcolor}{ \scriptsize Draw cards up to 6 in your hand; if this is the first draw spell you play during your turn, gain 1 mana.}{\fourcost}{imgs/plenty_of_room.png}
+&
+\card{Well-Laid Plans}{Blessing}{blessingcolor}{ \small Reorder the top \handsize \ cards of your draw pile and discard any number of them.}{\twocost}{imgs/well_laid_plans.png}
+&
+\card{Truly Blessed}{Relic}{reliccolor}{ \footnotesize The first time you play a blessing during your turn, draw a card before executing it.}{\threecost}{imgs/truly_blessed.png}
+&
+\card{Big Handed}{Relic}{reliccolor}{Draw 1 extra card after your turn.}{\fivecost}{imgs/big_handed.png}
+&
+
+\card{Optimization Novice}{Spell}{spellcolor}{Trash this card and up to 1 card from your hand.}{\onecost}{imgs/optimization_novice.png}
+&
+\card{Optimization Master}{Spell}{spellcolor}{Trash this card and up to 2 cards from your hand.}{\twocost}{imgs/optimization_master.png}
+&
+\card{Optimization Lord}{Spell}{spellcolor}{Trash this card and up to 3 cards from your hand.}{\threecost}{imgs/optimization_lord.png}
+&
+\card{Optimization God}{Spell}{spellcolor}{Trash this card and up to 3 cards from your hand or discard pile.}{\fourcost}{imgs/optimization_god.png}
+&
+\card{Spring Cleaning}{Miracle}{miraclecolor}{Upon buying, trash up to 1 card from your hand.}{\twocost}{imgs/spring_cleaning.png}
+&
+\card{Divine Purification}{Miracle}{miraclecolor}{Upon buying, trash all cards from your hand.}{\fourcost}{imgs/divine_purification.png}
+&
+
+\card{Wish}{Spell}{spellcolor}{ \footnotesize Buy any unowned card for free and shuffle the shop's draw pile; trash this card after 2 uses.}{\fivecost}{imgs/wish.png}
+&
+\card{Scout}{Miracle}{miraclecolor}{Upon buying, buy any unowned card and shuffle the shop's draw pile.}{\twocost}{imgs/scout.png}
+&
+\card{Express Shipping}{Relic}{reliccolor}{ \small Whenever you buy a playable card, you can pay \expresscost \ gold for it to go into your hand.}{\threecost}{imgs/express_shipping.png}
+&
+
+\card{Mirror Wall}{Blessing}{blessingcolor}{Draw a card and look at your opponent's hand.}{\onecost}{imgs/mirror_wall.png}
+&
+\card{Mirror Table}{Blessing}{blessingcolor}{Draw a card and look at your opponent's face down cards.}{\onecost}{imgs/mirror_table.png}
+&
+\card{Sneak Peek}{Blessing}{blessingcolor}{Draw a card and look at the top \handsize \ cards of your draw pile.}{\onecost}{imgs/sneak_peak.png}
+&
+\card{Forecast}{Blessing}{blessingcolor}{Draw a card and look at the top \shopsize \ cards of the shop's draw pile.}{\onecost}{imgs/forecast.png}
+&
+
+\card{Spacious Table}{Relic}{reliccolor}{You have space for 1 extra face down card.}{\twocost}{imgs/spacious_table.png}
+&
+
+\card{Merchant's Goodwill}{Relic}{reliccolor}{Your shop refreshes and card buys cost 1 less gold.}{\twocost}{imgs/merchants_goodwill.png}
+&
+\card{Cheapskate}{Relic}{reliccolor}{Face down cards no longer cost you gold to place.}{\twocost}{imgs/cheapskate.png}
+&
+\card{Trading Vessels}{Relic}{reliccolor}{Gain 1 extra gold at the start of your turn.}{\twocost}{imgs/trading_vessels.png}
+&
+
+\card{Veto}{Spell}{spellcolor}{Your opponent receives 1 less mana at the start of their next turn.}{\onecost}{imgs/veto.png}
+&
+\card{Weak Hands}{Blessing}{blessingcolor}{Your opponent must discard cards from their hand down to 1 left.}{\twocost}{imgs/weak_hands.png}
+&
+\card{Faulty Table}{Blessing}{blessingcolor}{Your opponent must discard 1 card from their face down cards.}{\twocost}{imgs/faulty_table.png}
+&
+\card{Sabotage}{Blessing}{blessingcolor}{ \small Reorder the top \handsize \ cards of your opponent's draw pile and discard any number of them.}{\threecost}{imgs/sabotage.png}
+&
+\card{Curse}{Curse}{cursecolor}{You cannot trash this card.}{\twocost}{imgs/curse.png}
+&
+\card{Vicious Curse}{Curse}{cursecolor}{You cannot trash any other cards from your deck while you own this card.}{\threecost}{imgs/vicious_curse.png}
+&
+
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+\card{Basic Income}{Spell}{startspellcolor}{Gain 1 gold.}{\starter}{imgs/basic_income.png}
+&
+
+\card{Lucky Find}{Blessing}{startblessingcolor}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
+&
+\card{Lucky Find}{Blessing}{startblessingcolor}{Gain 1 gold.}{\starter}{imgs/lucky_find.png}
+&
+
+\end{longtable}
+
+\end{document}

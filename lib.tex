@@ -1,0 +1,158 @@
+% Color and design packages
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{pifont}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{longtable}
+\usepackage{fontspec}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{nopageno}
+\usepackage{titling}
+\usepackage{wrapfig}
+
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+
+% Clear date
+\predate{}
+\postdate{}
+\date{}
+
+\title{Elemental Dice}
+\author{Emil Indzhev}
+
+% Card sizing
+\newcommand{\cardroundingradius}{4mm}
+\newcommand{\cardboxroundingradius}{0.5mm}
+\newcommand{\cardtextborderspace}{1.28mm}
+\newcommand{\cardwidth}{57.5mm}
+\newcommand{\cardheight}{89mm}
+\newcommand{\cardtitleheight}{7.1mm}
+\newcommand{\cardtextheight}{15.8mm}
+\newcommand{\cardtcheight}{6mm}
+\newcommand{\cardborderspace}{3mm}
+\newcommand{\cardvspace}{2.5mm}
+
+\newcommand{\iconsize}{3.4mm}
+\newcommand{\icondepth}{0.45mm}
+
+\newcommand{\cardimgborderspace}{0.1mm}
+\newcommand{\cardimgwidth}{51.3mm}
+\newcommand{\cardimgheight}{46.4mm}
+\newcommand{\cardimghalfwidth}{25.65mm}
+\newcommand{\cardimghalfheight}{23.2mm}
+
+% Consistent colors
+\newcommand{\cardcolormod}{!100}
+\newcommand{\cardboxcolormod}{!50}
+\newcommand{\cardboxbordercolormod}{!75!black}
+\newcommand{\cardbordercolormod}{!75!black}
+
+% Card template
+\newcommand{\card}[6]{
+
+\begin{tikzpicture}[baseline = (current bounding box.center)]
+\draw[rounded corners = \cardroundingradius, fill = #3\cardcolormod, draw = #3\cardbordercolormod, thick] (0,0) rectangle
+    (\cardwidth, \cardheight);
+
+\node (title) at (0.5 * \cardwidth, \cardheight - \cardborderspace)
+    [ anchor = north, fill = #3\cardboxcolormod, draw = #3\cardboxbordercolormod, thick, text centered, 
+    rounded corners = \cardboxroundingradius,
+    inner sep = \cardtextborderspace,
+    text width = \cardwidth - 2 * (\cardborderspace + \cardtextborderspace),
+    minimum height = \cardtitleheight]
+    { \Large #1 };
+
+\node (image) at (0.5 * \cardwidth, \cardborderspace + \cardtcheight + \cardtextheight + 2 * \cardvspace)
+    [ anchor = south, fill = #3\cardboxcolormod, thick, text centered,
+    rounded corners = \cardboxroundingradius,
+    inner sep = \cardimgborderspace,
+    text width = \cardwidth - 2 * (\cardborderspace + \cardimgborderspace),
+    minimum height = \cardheight - \cardtcheight - \cardtextheight - \cardtitleheight - 2 * \cardborderspace - 3 * \cardvspace]
+    {\includegraphics[max size={\cardimgwidth}{\cardimgheight}, min size={\cardimgwidth}{\cardimgheight}, Clip*={.5\width-\cardimghalfwidth} {.5\height-\cardimghalfheight} {.5\width+\cardimghalfwidth} {.5\height+\cardimghalfheight}]{ #6 }};
+
+\node (image_border) at (0.5 * \cardwidth, \cardborderspace + \cardtcheight + \cardtextheight + 2 * \cardvspace)
+    [ anchor = south, draw = #3\cardboxbordercolormod, thick, text centered,
+    rounded corners = \cardboxroundingradius,
+    inner sep = \cardimgborderspace,
+    text width = \cardwidth - 2 * (\cardborderspace + \cardimgborderspace),
+    minimum height = \cardheight - \cardtcheight - \cardtextheight - \cardtitleheight - 2 * \cardborderspace - 3 * \cardvspace]
+    {};
+
+\node (text) at (0.5 * \cardwidth, \cardborderspace + \cardtcheight + \cardvspace)
+    [ anchor = south, fill = #3\cardboxcolormod, draw = #3\cardboxbordercolormod, thick, text centered,
+    rounded corners = \cardboxroundingradius,
+    inner sep = \cardtextborderspace,
+    text width = \cardwidth - 2 * (\cardborderspace + \cardtextborderspace),
+    minimum height = \cardtextheight]
+    { #4 };
+
+\node (type)
+    [ fill = #3\cardboxcolormod, draw = #3\cardboxbordercolormod, thick,
+    below left = \cardvspace + \cardtcheight and 0mm of text, anchor = south west,
+    rounded corners = \cardboxroundingradius,
+    inner sep = \cardtextborderspace,
+    minimum height = \cardtcheight]
+    { #2 };
+
+\node (cost)
+    [ fill = #3\cardboxcolormod, draw = #3\cardboxbordercolormod, thick,
+    below right = \cardvspace + \cardtcheight and 0mm of text, anchor = south east,
+    rounded corners = \cardboxroundingradius,
+    inner sep = \cardtextborderspace,
+    minimum height = \cardtcheight]
+    { #5 };
+
+\end{tikzpicture}%
+
+}
+
+% Card type colors
+\definecolor{spellcolor}{rgb}{0.73, 0.62, 0.73}
+\definecolor{blessingcolor}{rgb}{0.80, 0.76, 0.53}
+\definecolor{reliccolor}{rgb}{0.62, 0.67, 0.74}
+\definecolor{miraclecolor}{rgb}{0.80, 0.66, 0.53}
+\definecolor{cursecolor}{rgb}{0.57, 0.57, 0.57}
+\definecolor{neutralcolor}{rgb}{0.70, 0.70, 0.70}
+\definecolor{startspellcolor}{rgb}{0.72, 0.66, 0.72}
+\definecolor{startblessingcolor}{rgb}{0.75, 0.73, 0.61}
+
+% Elemental symbols
+\newcommand{\icon}[1]{\raisebox{-\icondepth}{\includegraphics[height=\iconsize]{ #1 }}}
+\newcommand{\chance}{\icon{icons/chance.png}}
+\newcommand{\fire}{\icon{icons/fire.png}}
+\newcommand{\earth}{\icon{icons/earth.png}}
+\newcommand{\water}{\icon{icons/water.png}}
+\newcommand{\nature}{\icon{icons/nature.png}}
+\newcommand{\magic}{\icon{icons/magic.png}}
+\newcommand{\gold}{\icon{icons/gold.png}}
+
+% Costs
+\newcommand{\starter}{Starter}
+\newcommand{\draft}{Draft}
+\newcommand{\onecost}{3 gold}
+\newcommand{\twocost}{6 gold}
+\newcommand{\threecost}{10 gold}
+\newcommand{\fourcost}{15 gold}
+\newcommand{\fivecost}{21 gold}
+
+\newcommand{\facedowncost}{2}
+\newcommand{\refreshcost}{2}
+\newcommand{\refreshcostincrease}{1}
+\newcommand{\expresscost}{3}
+
+\newcommand{\startgold}{5}
+
+% Counts and sizes
+\newcommand{\handsize}{4}
+\newcommand{\facedownsize}{2}
+\newcommand{\shopsize}{5}
+
+% HPs
+\newcommand{\starthp}{90}
+\newcommand{\maxhp}{160}
