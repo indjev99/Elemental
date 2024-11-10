@@ -151,11 +151,11 @@ Also note that, in case there are multiple interrupted cards at the same time, i
 
 Example: In a very close game, Alice is at 4 HP and Bob at 2 HP. During her turn, Alice plays a \fire \ attack. The current value of \fire \ is 6, so she would win. Bob interrupts this and flips a face down card that allows him to reroll the \fire \ die. It rolls a 2, so he is still losing. Then, he plays a blessing from his hand: a \water \ shield against \fire \ attacks. The value of \water \ is 4, so this would mitigate all damage. He is done for now. Alice then plays a blessing that gives her mana, allowing her to play another spell (from her hand): ``Trickster God'', which she uses to swap the values of the \fire \ and \water \ dice. Bob is again losing so he flips his second face down card: a \chance \ attack, which has a 50\% chance of winning him the game. Alice interrupts this by playing a \gold \ shield against single element attacks. The value of \gold \ is 2, so Bob needs a 6 to win. Alice is done, as is Bob as he has nothing more to do. He rolls the \chace \ die to execute his attack, but the die lands on a 4. He is done. Alice is also done. Finally, Alice's attack is executed and she wins the game.
 
-\subsection*{Discard pile}
+\subsection*{Card trashing and discarding}
 
-Whenever a player needs to discard some number of cards (from their hand or face down cards), but has fewer than that, they simply discard all such cards and that effect is considered as executed. Instead, if the player has more cards than that, they chose which cards to discard.
+Whenever a player needs to trash/discard some number of cards (from their hand or face down cards), but has fewer than that, they simply trash/discard all such cards and that effect is considered as executed. Instead, if the player has more cards than that, they chose which cards to trash/discard.
 
-\vspace*{4pt}
+\subsection*{Reshuffling the discard pile}
 
 Whenever a card needs to be drawn from a deck's draw pile, but it is empty, its discard pile is shuffled and it becomes the draw pile. This is never triggered by effects without the ``draw'' keyword (e.g. ``Look at top X cards of your draw pile'', even if the draw pile has fewer than X cards).
 
@@ -177,8 +177,9 @@ If at any point, a player no longer wishes to continue, they can resign. This me
 \item Dice control cards that do not explicitly specify they affect multiple dice affect only one die.
 \item For cards that trash multiple other cards, the player choses the order in which to trash those cards.
 \item Losing HP is not the same as dealing damage and does not grant gold.
+\item Active effects of relics (``During your turn you may'') may be used any number of times.
+\item Cards with ``Buy any unowned card'' refer to cards in the shop and its draw and discard piles.
 \item ``At What Cost'', when bought, must trash itself, if the player owns no other relics.
-\item ``Wish'' and ``Scout'' can target cards in the shop and its draw and discard piles, but not trashed cards.
 \item ``Veto'' is active until the start of the opponent's next turn.
 \item ``Vicious Curse'' does not apply to trashing miracles.
 \end{itemize}
