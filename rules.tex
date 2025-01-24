@@ -33,13 +33,13 @@ Mechanically, there are 5 types of cards (listed in order of decreasing commonne
 
 \begin{itemize}
 \item Spells -- Go into a player's deck upon being bought and cost 1 mana to play.
-\item Blessings -- Similar to spells, but cost no mana and can also be played during the opponent's turn.
+\item Blessings -- Similar to spells, but cost no mana.
 \item Relics -- Deployed immediately upon being bought and remain in play until the end of the game.
 \item Miracles -- Only have effects upon being bought and then they trash themselves.
 \item Curses -- Go into the opponent's deck upon being bought and are unplayable.
 \end{itemize}
 
-Cards can also be placed face down at a cost of 1 mana and 2 gold and then be flipped later like a blessing: at no cost and potentially during the opponent's turn.
+Cards can also be placed face down at a cost of 1 mana and \facedowncost \ gold and then be played later at no cost.
 
 \vspace{4pt}
 
@@ -116,17 +116,17 @@ Example 2: Alice plays a \water\hspace{1pt}$+$\hspace{1pt}\earth \ attack that t
 
 \subsection*{A player's turn}
 
-At the start of their turn, the player gains 1 gold and 1 mana. Then the opponent has a chance to play any number of off-turn cards (blessings and face down cards) until they declare that they are done. After that the current player can do any of the following actions (in any order, possibly multiple times and/or interleaved):
+At the start of their turn, the player gains 1 gold and 1 mana. Then the current player can do any of the following actions (in any order, possibly multiple times and/or interleaved):
 
 \begin{itemize}
 \item Play a spell from their hand at the cost of 1 mana.
 \item Play a blessing from their hand at no cost.
-\item Place a card from their hand face down at the cost of 1 mana and \facedowncost \ gold. A player can have at most \facedownsize \ face down cards at a time.
 \item Play (flip over and activate) a face down card at no cost. If the card is a curse, it does nothing.
+\item Place a card from their hand face down at the cost of 1 mana and \facedowncost \ gold. A player can have at most \facedownsize \ face down cards at a time.
 \item Refresh the shop. The first refresh in a given turn costs \refreshcost \ gold and each subsequent is \refreshcostincrease \ gold more expensive.
 Refreshing the shop consists of moving the currently laid out shop cards (if any) to the shop's discard pile followed by drawing and laying out \shopsize \ cards from the shop's draw pile. Note that initially there are no shop cards laid out.
 \item Buy a card from the laid out shop cards by paying its cost.
-The bought card is not replaced, so the shop can become empty again. If the card is a playable card (spell or blessing), it goes into the player's discard pile; if it is a relic, it is immediately and permanently deployed; if it is a miracle, it is immediately trashed; if it is a curse, it goes goes into the opponent's discard pile.
+The bought card is not replaced, so the shop can eventually become empty again. If the card is a playable card (spell or blessing), it goes into the player's discard pile; if it is a relic, it is immediately and permanently deployed; if it is a miracle, it is immediately trashed; if it is a curse, it goes goes into the opponent's discard pile.
 \end{itemize}
 
 Whenever a card is played, it is initially active. Once its effect is executed/expires (instantly for most cards), it becomes inactive and is set to the side to be discarded at the end of the turn. Active cards are kept in the main play area and may persist between turns.
@@ -141,7 +141,7 @@ Whenever a player plays a spell that scales with an element/elements (i.e. an at
 
 \vspace{4pt}
 
-Note that both players can only do actions valid for them. This is restricted to only playing off-turn cards (blessings and face down cards) for the player whose turn it is not (regardless of whether they are interrupting or being interrupted). However, for the player whose turn it is, all the usual actions are valid, including: playing spells from their hand, placing face down cards and even interacting with the shop.
+Note that both players can only do actions valid for them. This is restricted to only playing cards (from their hand or face down) for the player whose turn it is *not* (regardless of whether they are interrupting or being interrupted). However, for the player whose turn it is, all the usual actions are valid, including: playing cards, placing face down cards and even interacting with the shop.
 
 \vspace{4pt}
 
