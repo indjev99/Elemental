@@ -12,7 +12,7 @@
 &
 \card{Tremor}{Spell}{spellcolor}{Deal \earth \ damage to your opponent.}{\draft}{imgs/tremor.png}
 &
-\card{Heavy Rain}{Spell}{spellcolor}{ \small Deal \water \ damage to your opponent and yourself; opponent shields affect self damage.}{\draft}{imgs/heavy_rain.png}
+\card{Heavy Rain}{Spell}{spellcolor}{ \small Deal \water \ damage to your opponent and then yourself; opponent shields affect self damage.}{\draft}{imgs/heavy_rain.png}
 &
 \card{Blind Attack}{Spell}{spellcolor}{Deal \chance \ damage to your opponent.}{\draft}{imgs/blind_attack.png}
 &
@@ -20,7 +20,7 @@
 &
 \card{Massive Earthquake}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\earth \ damage to your opponent.}{\threecost}{imgs/massive_earthquake.png}
 &
-\card{Torrential Rainstorm}{Spell}{spellcolor}{ \small Deal 2\hspace{1pt}$\times$\hspace{1pt}\water \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/torrential_rainstorm.png}
+\card{Torrential Rainstorm}{Spell}{spellcolor}{ \footnotesize Deal 2\hspace{1pt}$\times$\hspace{1pt}\water \ damage to your opponent and then yourself; opponent shields affect self damage.}{\threecost}{imgs/torrential_rainstorm.png}
 &
 \card{Haphazard Offence}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\chance \ to your opponent.}{\threecost}{imgs/haphazard_offence.png}
 &
@@ -30,17 +30,17 @@
 &
 \card{Chaotic Avalanche}{Spell}{spellcolor}{Deal \earth\hspace{1pt}$+$\hspace{1pt}\chance \ damage to your opponent.}{\threecost}{imgs/chaotic_avalanche.png}
 &
-\card{Scalding Fog}{Spell}{spellcolor}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\fire \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/scalding_fog.png}
+\card{Scalding Fog}{Spell}{spellcolor}{ \footnotesize Deal \water\hspace{1pt}$+$\hspace{1pt}\fire \ damage to your opponent and then yourself; opponent shields affect self damage.}{\threecost}{imgs/scalding_fog.png}
 &
-\card{Devastating Mudslide}{Spell}{spellcolor}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\earth \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/devastating_mudslide.png}
+\card{Devastating Mudslide}{Spell}{spellcolor}{ \footnotesize Deal \water\hspace{1pt}$+$\hspace{1pt}\earth \ damage to your opponent and then yourself; opponent shields affect self damage.}{\threecost}{imgs/devastating_mudslide.png}
 &
-\card{Wild Seas}{Spell}{spellcolor}{ \small Deal \water\hspace{1pt}$+$\hspace{1pt}\chance \ damage to your opponent and yourself; opponent shields affect self damage.}{\threecost}{imgs/wild_seas.png}
+\card{Wild Seas}{Spell}{spellcolor}{ \footnotesize Deal \water\hspace{1pt}$+$\hspace{1pt}\chance \ damage to your opponent and then yourself; opponent shields affect self damage.}{\threecost}{imgs/wild_seas.png}
 &
 \card{Scorching Firestorm}{Spell}{spellcolor}{Deal 3\hspace{1pt}$\times$\hspace{1pt}\fire \ damage to your opponent.}{\fourcost}{imgs/scorching_firestorm.png}
 &
 \card{Megaquake}{Spell}{spellcolor}{Deal 3\hspace{1pt}$\times$\hspace{1pt}\earth \ damage to your opponent.}{\fourcost}{imgs/megaquake.png}
 &
-\card{Tsunami}{Spell}{spellcolor}{ \small Deal 3\hspace{1pt}$\times$\hspace{1pt}\water \ damage to your opponent and yourself; opponent shields affect self damage.}{\fourcost}{imgs/tsunami.png}
+\card{Tsunami}{Spell}{spellcolor}{ \footnotesize Deal 3\hspace{1pt}$\times$\hspace{1pt}\water \ damage to your opponent and then yourself; opponent shields affect self damage.}{\fourcost}{imgs/tsunami.png}
 &
 \card{Chaotic Invasion}{Spell}{spellcolor}{Deal 3\hspace{1pt}$\times$\hspace{1pt}\chance \ to your opponent.}{\fourcost}{imgs/chaotic_invasion.png}
 &
@@ -48,7 +48,7 @@
 &
 \card{Arcane Meteor}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\earth\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fivecost}{imgs/arcane_meteor.png}
 &
-\card{Biblical Flood}{Spell}{spellcolor}{ \footnotesize Deal 2\hspace{1pt}$\times$\hspace{1pt}\water\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent and yourself; opponent shields affect self damage.}{\fivecost}{imgs/biblical_flood.png}
+\card{Biblical Flood}{Spell}{spellcolor}{ \scriptsize Deal 2\hspace{1pt}$\times$\hspace{1pt}\water\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent and then yourself; opponent shields affect self damage.}{\fivecost}{imgs/biblical_flood.png}
 &
 \card{Ethereal Havoc}{Spell}{spellcolor}{Deal 2\hspace{1pt}$\times$\hspace{1pt}\chance\hspace{1pt}$+$\hspace{1pt}2\hspace{1pt}$\times$\hspace{1pt}\magic \ damage to your opponent.}{\fivecost}{imgs/ethereal_havoc.png}
 &
@@ -145,7 +145,11 @@
 &
 \card{Madness}{Miracle}{miraclecolor}{Upon buying, reroll all dice.}{\onecost}{imgs/madness.png}
 &
-\card{Fortuna's Protection}{Relic}{reliccolor}{You choose whether the \chance \ die is rerolled each time its value is needed.}{\twocost}{imgs/fortunas_protection.png}
+\card{Fortuna's Protection}{Relic}{reliccolor}{You choose whether to reroll \chance \ die each time its value is needed.}{\twocost}{imgs/fortunas_protection.png}
+&
+\card{Magic Juice}{Relic}{reliccolor}{ \scriptsize Whenever you can change the value of a die by up to X, you can change it by up to X\hspace{1pt}$+$\hspace{1pt}1 instead.}{\threecost}{imgs/magic_juice.png}
+&
+\card{Luck in a Bottle}{Relic}{reliccolor}{Whenever you reroll a die and get a 1 or a 6, you can reroll the die again for free.}{\twocost}{imgs/luck_in_a_bottle.png}
 &
 
 \card{Multitasking Novice}{Blessing}{blessingcolor}{Gain 1 mana.}{\twocost}{imgs/multitasking_novice.png}
@@ -187,7 +191,7 @@
 &
 \card{Plenty of Room}{Spell}{spellcolor}{ \scriptsize Draw cards up to 6 in your hand; if this is the first draw spell you play during your turn, gain 1 mana.}{\fourcost}{imgs/plenty_of_room.png}
 &
-\card{Well-Laid Plans}{Blessing}{blessingcolor}{ \small Reorder the top \handsize \ cards of your draw pile and discard any number of them.}{\twocost}{imgs/well_laid_plans.png}
+\card{Well-Laid Plans}{Blessing}{blessingcolor}{ \small Look at the top \handsize \ cards of your draw pile and discard any number of them.}{\twocost}{imgs/well_laid_plans.png}
 &
 \card{One for All}{Relic}{reliccolor}{Up to once during your turn you can discard 1 face down card to draw 2 cards.}{\twocost}{imgs/one_for_all.png}
 &
@@ -241,7 +245,7 @@
 &
 \card{Faulty Table}{Blessing}{blessingcolor}{Your opponent must discard 1 card from their face down cards.}{\twocost}{imgs/faulty_table.png}
 &
-\card{Sabotage}{Blessing}{blessingcolor}{ \small Reorder the top \handsize \ cards of your opponent's draw pile and discard any number of them.}{\threecost}{imgs/sabotage.png}
+\card{Sabotage}{Blessing}{blessingcolor}{ \small Look at the top \handsize \ cards of your opponent's draw pile and discard any number of them.}{\threecost}{imgs/sabotage.png}
 &
 \card{Curse}{Curse}{cursecolor}{If you trash this card, lose 10 HP.}{\twocost}{imgs/curse.png}
 &
